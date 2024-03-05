@@ -2455,8 +2455,6 @@ public class TrangChu extends javax.swing.JFrame {
 
         frame_XemCapNhatKhachHang.getContentPane().add(jPanel129, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 530));
 
-        frame_thanhToan.setPreferredSize(new java.awt.Dimension(363, 640));
-
         jPanel89.setBackground(new java.awt.Color(255, 255, 255));
         jPanel89.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -2873,6 +2871,7 @@ public class TrangChu extends javax.swing.JFrame {
         jScrollPane7.setViewportBorder(new javax.swing.border.MatteBorder(null));
 
         jPanel174.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel174.setPreferredSize(new java.awt.Dimension(350, 756));
         jPanel174.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel175.setBackground(new java.awt.Color(255, 255, 255));
@@ -6669,7 +6668,7 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
         frame_HoaDon.setVisible(true);
-        frame_HoaDon.setSize(363, 680);
+        frame_HoaDon.setSize(360, 770);
         frame_HoaDon.setLocation(1175,0);
     }//GEN-LAST:event_jButton30ActionPerformed
 
@@ -6989,8 +6988,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
-    private javax.swing.JLabel jLabel73;
-    private javax.swing.JLabel jLabel74;
     private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel77;
@@ -7219,8 +7216,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel88;
     private javax.swing.JPanel jPanel89;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JPanel jPanel90;
-    private javax.swing.JPanel jPanel91;
     private javax.swing.JPanel jPanel92;
     private javax.swing.JPanel jPanel93;
     private javax.swing.JPanel jPanel94;
