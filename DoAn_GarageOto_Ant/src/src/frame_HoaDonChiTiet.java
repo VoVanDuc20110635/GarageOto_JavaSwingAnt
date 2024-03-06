@@ -4,6 +4,8 @@
  */
 package src;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author WINDOWS 10
@@ -15,6 +17,7 @@ public class frame_HoaDonChiTiet extends javax.swing.JFrame {
      */
     public frame_HoaDonChiTiet() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**

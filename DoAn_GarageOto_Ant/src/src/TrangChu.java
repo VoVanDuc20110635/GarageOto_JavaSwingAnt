@@ -18,10 +18,12 @@ public class TrangChu extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    private frame_HoaDonChiTiet frame_HoaDonChiTiet;
     public TrangChu() {
         
         getContentPane().setBackground(Color.white);
         initComponents();
+        frame_HoaDonChiTiet = new frame_HoaDonChiTiet();
         setSize(1550,975);
         setLocation(0,0);
     }
@@ -204,6 +206,10 @@ public class TrangChu extends javax.swing.JFrame {
         jTable6 = new javax.swing.JTable();
         jButton17 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jButton18 = new javax.swing.JButton();
+        jButton19 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -1790,15 +1796,56 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Mã trả hàng", "Người bán", "Thời gian", "Khách hàng", "Cần trả khách", "Đã trả khách", "Trạng thái"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable3);
+
+        jButton18.setBackground(new java.awt.Color(0, 204, 0));
+        jButton18.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jButton18.setForeground(new java.awt.Color(255, 255, 255));
+        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/exportFile.png"))); // NOI18N
+        jButton18.setText("Xuất file");
+
+        jButton19.setBackground(new java.awt.Color(0, 204, 0));
+        jButton19.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jButton19.setForeground(new java.awt.Color(255, 255, 255));
+        jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus2.png"))); // NOI18N
+        jButton19.setText("Trả hàng");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1520, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1508, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton19)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton18)))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton18)
+                    .addComponent(jButton19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
 
         jTabbedPane4.addTab("Trả hàng", jPanel5);
@@ -3885,9 +3932,9 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField29ActionPerformed
 
     private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
-//        frame_HoaDonChiTiet.setVisible(true);
-//        frame_HoaDonChiTiet.setSize(890, 672);
-//        frame_HoaDonChiTiet.setLocation(0,0);
+        frame_HoaDonChiTiet.setVisible(true);
+        frame_HoaDonChiTiet.setSize(890, 672);
+        frame_HoaDonChiTiet.setLocation(0,0);
     }//GEN-LAST:event_jButton30ActionPerformed
 
     /**
@@ -3934,6 +3981,8 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton jButton103;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
@@ -4261,6 +4310,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -4271,6 +4321,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane8;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable8;
