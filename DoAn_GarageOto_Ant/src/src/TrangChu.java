@@ -275,6 +275,17 @@ public class TrangChu extends javax.swing.JFrame {
         jButton25 = new javax.swing.JButton();
         jButton26 = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
+        jPanel73 = new javax.swing.JPanel();
+        jPanel94 = new javax.swing.JPanel();
+        jLabel116 = new javax.swing.JLabel();
+        jTextField33 = new javax.swing.JTextField();
+        jTextField48 = new javax.swing.JTextField();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        jTable10 = new javax.swing.JTable();
+        jPanel74 = new javax.swing.JPanel();
+        jButton27 = new javax.swing.JButton();
+        jButton28 = new javax.swing.JButton();
+        jButton29 = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
         jTabbedPane6 = new javax.swing.JTabbedPane();
         jPanel23 = new javax.swing.JPanel();
@@ -2423,15 +2434,104 @@ public class TrangChu extends javax.swing.JFrame {
 
         jTabbedPane5.addTab("Khách hàng", jPanel11);
 
+        jPanel73.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel94.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel94.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        jPanel94.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel116.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/find.jpg"))); // NOI18N
+        jPanel94.add(jLabel116, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 7, -1, -1));
+
+        jTextField33.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextField33.setText("Lọc tự động");
+        jTextField33.setBorder(null);
+        jPanel94.add(jTextField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 90, -1));
+
+        jTextField48.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jTextField48.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        jPanel94.add(jTextField48, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 270, -1));
+
+        jPanel73.add(jPanel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 420, 40));
+
+        jTable10.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Mã nhà cung cấp", "Tên nhà cung cấp", "Điện thoại", "Email", "Nợ cần trả", "Tổng mua"
+            }
+        ));
+        jScrollPane13.setViewportView(jTable10);
+
+        jPanel73.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1520, 500));
+
+        jButton27.setBackground(new java.awt.Color(0, 204, 0));
+        jButton27.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jButton27.setForeground(new java.awt.Color(255, 255, 255));
+        jButton27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus2.png"))); // NOI18N
+        jButton27.setText("Nhà cung cấp");
+
+        jButton28.setBackground(new java.awt.Color(102, 102, 102));
+        jButton28.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jButton28.setForeground(new java.awt.Color(255, 255, 255));
+        jButton28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/exportFile.png"))); // NOI18N
+        jButton28.setText("Xuất file");
+
+        jButton29.setBackground(new java.awt.Color(0, 204, 0));
+        jButton29.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jButton29.setForeground(new java.awt.Color(255, 255, 255));
+        jButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/import.png"))); // NOI18N
+        jButton29.setText("Import");
+
+        javax.swing.GroupLayout jPanel74Layout = new javax.swing.GroupLayout(jPanel74);
+        jPanel74.setLayout(jPanel74Layout);
+        jPanel74Layout.setHorizontalGroup(
+            jPanel74Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel74Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(jButton29)
+                .addGap(26, 26, 26)
+                .addComponent(jButton28)
+                .addContainerGap())
+        );
+        jPanel74Layout.setVerticalGroup(
+            jPanel74Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel74Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel74Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel73.add(jPanel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 10, 420, 40));
+
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1520, Short.MAX_VALUE)
+            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel12Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel73, javax.swing.GroupLayout.PREFERRED_SIZE, 1520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 630, Short.MAX_VALUE)
+            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel12Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel73, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         jTabbedPane5.addTab("Nhà cung cấp", jPanel12);
@@ -4023,6 +4123,9 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
+    private javax.swing.JButton jButton27;
+    private javax.swing.JButton jButton28;
+    private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton31;
@@ -4094,6 +4197,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel113;
     private javax.swing.JLabel jLabel114;
     private javax.swing.JLabel jLabel115;
+    private javax.swing.JLabel jLabel116;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -4330,6 +4434,8 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel70;
     private javax.swing.JPanel jPanel71;
     private javax.swing.JPanel jPanel72;
+    private javax.swing.JPanel jPanel73;
+    private javax.swing.JPanel jPanel74;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel84;
     private javax.swing.JPanel jPanel85;
@@ -4338,6 +4444,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel91;
     private javax.swing.JPanel jPanel92;
     private javax.swing.JPanel jPanel93;
+    private javax.swing.JPanel jPanel94;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton5;
@@ -4346,6 +4453,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -4359,6 +4467,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane6;
     private javax.swing.JTabbedPane jTabbedPane8;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable10;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
@@ -4385,10 +4494,12 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField30;
     private javax.swing.JTextField jTextField31;
     private javax.swing.JTextField jTextField32;
+    private javax.swing.JTextField jTextField33;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField45;
     private javax.swing.JTextField jTextField46;
     private javax.swing.JTextField jTextField47;
+    private javax.swing.JTextField jTextField48;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
