@@ -1,5 +1,5 @@
-drop database database_garage_oto;
-create database database_garage_oto;
+-- drop database database_garage_oto;
+-- create database database_garage_oto;
 use database_garage_oto;
 INSERT INTO bang_cham_cong (ma_bang_cham_cong, ngay_lam, trang_thai, gio_tang_ca)
 VALUES 
@@ -12,7 +12,7 @@ VALUES
 ('BC007', '2024-01-07 08:00:00', 'di tre', 0),
 ('BC008', '2024-01-08 08:00:00', 'vang', 0),
 ('BC009', '2024-01-09 08:00:00', 'tang ca', 2),
-('BC010', '2024-01-10 08:00:00', 'tang ca', 2);
+('BC010', '2024-01-10 08:00:00', 'tang bang_cham_congbang_cham_congca', 2);
 
 INSERT INTO bang_luong (ma_bang_luong, che_do_luong, tien_luong, phu_cap, tong_luong) 
 VALUES 
