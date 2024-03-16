@@ -3,6 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package src.UI.NhanVien;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import src.Model.BangChamCong;
+import src.Service.BangChamCongService;
 
 /**
  *
@@ -15,6 +25,11 @@ public class frame_BangChamCong extends javax.swing.JFrame {
      */
     public frame_BangChamCong() {
         initComponents();
+        try {
+            hienThiBangChamCong();
+        } catch (SQLException ex) {
+            Logger.getLogger(frame_BangChamCong.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -260,6 +275,26 @@ public class frame_BangChamCong extends javax.swing.JFrame {
                 new frame_BangChamCong().setVisible(true);
             }
         });
+    }
+    
+    public void hienThiBangChamCong() throws SQLException{
+        BangChamCongService bangChamCongService = new BangChamCongService();
+        DefaultTableModel recordTable = (DefaultTableModel)jTable1.getModel();
+        recordTable.setRowCount(0);
+        List<BangChamCong> danhSachBangChamCong = bangChamCongService.hienThiBangChamCong();
+        for (BangChamCong bangChamCong : danhSachBangChamCong){
+            Vector columnData = new Vector();
+            columnData.add(localDateParseMethod(bangChamCong.getNgayLam()));
+            columnData.add(bangChamCong.getMaCaLam());
+            columnData.add(bangChamCong.getTrangThai());
+            columnData.add(bangChamCong.getGioTangCa());
+            recordTable.addRow(columnData);
+        }
+    }
+    
+    public String localDateParseMethod(LocalDateTime ngayLam){
+        String formattedNgayLam = ngayLam.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        return formattedNgayLam;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
