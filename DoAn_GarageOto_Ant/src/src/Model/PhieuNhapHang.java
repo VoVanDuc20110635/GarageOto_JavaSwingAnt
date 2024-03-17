@@ -16,19 +16,17 @@ public class PhieuNhapHang {
     private double tong;
     private double no;
     private String trangThai;
-    private String maHangHoa;
     private String maNhaCungCap;
 
     public PhieuNhapHang() {
     }
 
-    public PhieuNhapHang(String phieuNhapHang, LocalDateTime thoiGian, double tong, double no, String trangThai, String maHangHoa, String maNhaCungCap) {
+    public PhieuNhapHang(String phieuNhapHang, LocalDateTime thoiGian, double tong, double no, String trangThai, String maNhaCungCap) {
         this.phieuNhapHang = phieuNhapHang;
         this.thoiGian = thoiGian;
         this.tong = tong;
         this.no = no;
         this.trangThai = trangThai;
-        this.maHangHoa = maHangHoa;
         this.maNhaCungCap = maNhaCungCap;
     }
 
@@ -72,13 +70,6 @@ public class PhieuNhapHang {
         this.trangThai = trangThai;
     }
 
-    public String getMaHangHoa() {
-        return maHangHoa;
-    }
-
-    public void setMaHangHoa(String maHangHoa) {
-        this.maHangHoa = maHangHoa;
-    }
 
     public String getMaNhaCungCap() {
         return maNhaCungCap;

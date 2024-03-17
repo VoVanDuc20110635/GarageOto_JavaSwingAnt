@@ -29,7 +29,18 @@ public class ConnectorDB {
             return rs;
         }
         catch(Exception ex){
-            throw new Error("Loi ket noi db hoac loi cu phap query: " + ex.getMessage());
+            throw new Error("Loi execute query: " + ex.getMessage());
+        }
+    }
+    public static void executeUpdateQueryConnectorDB(String query){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            sqlConn = DriverManager.getConnection(dataConn, username, password);
+            pst = sqlConn.prepareStatement(query);
+            pst.executeUpdate();
+        }
+        catch(Exception ex){
+            throw new Error("Loi update: " + ex.getMessage());
         }
     }
 }

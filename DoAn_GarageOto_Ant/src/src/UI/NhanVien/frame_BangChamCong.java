@@ -23,6 +23,7 @@ public class frame_BangChamCong extends javax.swing.JFrame {
     /**
      * Creates new form frame_BangChamCong
      */
+    BangChamCongService bangChamCongService = new BangChamCongService();
     public frame_BangChamCong() {
         initComponents();
         try {
@@ -185,6 +186,11 @@ public class frame_BangChamCong extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Thêm");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(255, 204, 153));
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -242,6 +248,22 @@ public class frame_BangChamCong extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            BangChamCong bangChamCong = new BangChamCong();
+            bangChamCong.setMaBangChamCong("BC010");
+            bangChamCong.setGioTangCa((short)0);
+            bangChamCong.setNgayLam(localDateParseMethod("2024-01-01 08:00:00"));
+            bangChamCong.setTrangThai("vang");
+            bangChamCong.setMaCaLam("CAL001");
+            bangChamCong.setMaNhanVien("NV005");
+            int i = bangChamCongService.updateBangChamCong(bangChamCong);
+            System.out.println(i);
+        } catch (SQLException ex) {
+            Logger.getLogger(frame_BangChamCong.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -278,10 +300,9 @@ public class frame_BangChamCong extends javax.swing.JFrame {
     }
     
     public void hienThiBangChamCong() throws SQLException{
-        BangChamCongService bangChamCongService = new BangChamCongService();
         DefaultTableModel recordTable = (DefaultTableModel)jTable1.getModel();
         recordTable.setRowCount(0);
-        List<BangChamCong> danhSachBangChamCong = bangChamCongService.hienThiBangChamCong();
+        List<BangChamCong> danhSachBangChamCong = bangChamCongService.hienThiBangChamCongTheoMaNhanVien();
         for (BangChamCong bangChamCong : danhSachBangChamCong){
             Vector columnData = new Vector();
             columnData.add(localDateParseMethod(bangChamCong.getNgayLam()));
@@ -295,6 +316,11 @@ public class frame_BangChamCong extends javax.swing.JFrame {
     public String localDateParseMethod(LocalDateTime ngayLam){
         String formattedNgayLam = ngayLam.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         return formattedNgayLam;
+    }
+    public LocalDateTime localDateParseMethod(String dateString){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime ngayLam = LocalDateTime.parse(dateString, formatter);
+        return ngayLam;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
