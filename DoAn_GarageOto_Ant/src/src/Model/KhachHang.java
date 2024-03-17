@@ -22,6 +22,7 @@ public class KhachHang {
     private double tongBan;
     private double tongNo;
     private String maNhanVien;
+    private NhanVien nhanVien;
 
     public KhachHang() {
     }
@@ -126,6 +127,14 @@ public class KhachHang {
 
     public void setMaNhanVien(String maNhanVien) {
         this.maNhanVien = maNhanVien;
+    }
+
+    public NhanVien getNhanVien() {
+        return nhanVien;
+    }
+
+    public void setNhanVien(NhanVien nhanVien) {
+        this.nhanVien = nhanVien;
     }
    
     

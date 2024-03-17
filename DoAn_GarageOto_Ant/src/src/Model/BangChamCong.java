@@ -17,6 +17,8 @@ public class BangChamCong {
     private short gioTangCa;
     private String maNhanVien;
     private String maCaLam;
+    private NhanVien nhanVien;
+    private CaLam caLam;
 
     public BangChamCong() {
     }
@@ -76,6 +78,22 @@ public class BangChamCong {
 
     public void setMaCaLam(String maCaLam) {
         this.maCaLam = maCaLam;
+    }
+
+    public NhanVien getNhanVien() {
+        return nhanVien;
+    }
+
+    public void setNhanVien(NhanVien nhanVien) {
+        this.nhanVien = nhanVien;
+    }
+
+    public CaLam getCaLam() {
+        return caLam;
+    }
+
+    public void setCaLam(CaLam caLam) {
+        this.caLam = caLam;
     }
     
     

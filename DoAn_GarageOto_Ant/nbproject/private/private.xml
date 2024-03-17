@@ -3,9 +3,30 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/UI/NhanVien/frame_ChiTietNhanVien.java</file>
-            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Service/BangLuongService.java</file>
-            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Service/BangChamCongService.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/NhaCungCap.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/PhieuTraHang.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/TheKho.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/LichLamViecCaLam.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/ChiTietPhieuNhapHang.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/NhanVien.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/NhomHang.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/UI/HangHoa/frame_ChiTietDonNhapHang.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/KhachHang.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/PhuCap.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/BangLuong.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/PhieuNhapHang.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/PhieuSuaChua.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/HinhAnh.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Service/ChiTietPhieuNhapHangService.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/LoaiXe.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/ChiNhanh.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/HoaDon.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/HoaDonChiTiet.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/CaLam.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/HangHoa.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/ChiTietPhieuTraHang.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/PhieuLuong.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/Git_GarageOtoAnt_DoAn/GarageOto_JavaSwingAnt/DoAn_GarageOto_Ant/src/src/Model/LichLamViec.java</file>
         </group>
     </open-files>
 </project-private>

@@ -17,6 +17,7 @@ public class PhieuNhapHang {
     private double no;
     private String trangThai;
     private String maNhaCungCap;
+    private NhaCungCap nhaCungCap;
 
     public PhieuNhapHang() {
     }
@@ -77,6 +78,14 @@ public class PhieuNhapHang {
 
     public void setMaNhaCungCap(String maNhaCungCap) {
         this.maNhaCungCap = maNhaCungCap;
+    }
+
+    public NhaCungCap getNhaCungCap() {
+        return nhaCungCap;
+    }
+
+    public void setNhaCungCap(NhaCungCap nhaCungCap) {
+        this.nhaCungCap = nhaCungCap;
     }
     
     

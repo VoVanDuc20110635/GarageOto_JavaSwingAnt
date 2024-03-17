@@ -18,6 +18,10 @@ public class PhieuTraHang {
     private String maHoaDon;
     private String maKhachHang;
     private String maNhanVien;
+    private HoaDon hoaDon;
+    private KhachHang khachHang;
+    private NhanVien nhanVien;
+          
 
     public PhieuTraHang(String maPhieuTraHang, LocalDateTime thoiGian, double canTraKhach, double daTraKhach, String maHoaDon, String maKhachHang, String maNhanVien) {
         this.maPhieuTraHang = maPhieuTraHang;
@@ -86,6 +90,30 @@ public class PhieuTraHang {
 
     public void setMaNhanVien(String maNhanVien) {
         this.maNhanVien = maNhanVien;
+    }
+
+    public HoaDon getHoaDon() {
+        return hoaDon;
+    }
+
+    public void setHoaDon(HoaDon hoaDon) {
+        this.hoaDon = hoaDon;
+    }
+
+    public KhachHang getKhachHang() {
+        return khachHang;
+    }
+
+    public void setKhachHang(KhachHang khachHang) {
+        this.khachHang = khachHang;
+    }
+
+    public NhanVien getNhanVien() {
+        return nhanVien;
+    }
+
+    public void setNhanVien(NhanVien nhanVien) {
+        this.nhanVien = nhanVien;
     }
     
     

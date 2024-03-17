@@ -23,6 +23,11 @@ public class NhanVien {
     private String maChiNhanh;
     private String taoBoiMaNhanVien;
     private String maLichLamViec;
+    
+    private BangLuong bangLuong;
+    private ChiNhanh chiNhanh;
+    private NhanVien taoBoiNhanVien;
+    private LichLamViec lichLamViec;
 
     public NhanVien(String maNhanVien, String tenNhanVien, LocalDateTime ngaySinh, String gioiTinh, String cccd, String chucDanh, String soDienThoai, LocalDateTime ngayBatDauLamViec, String maBangLuong, String maChiNhanh, String taoBoiMaNhanVien, String maLichLamViec) {
         this.maNhanVien = maNhanVien;
@@ -136,6 +141,38 @@ public class NhanVien {
 
     public void setMaLichLamViec(String maLichLamViec) {
         this.maLichLamViec = maLichLamViec;
+    }
+
+    public BangLuong getBangLuong() {
+        return bangLuong;
+    }
+
+    public void setBangLuong(BangLuong bangLuong) {
+        this.bangLuong = bangLuong;
+    }
+
+    public ChiNhanh getChiNhanh() {
+        return chiNhanh;
+    }
+
+    public void setChiNhanh(ChiNhanh chiNhanh) {
+        this.chiNhanh = chiNhanh;
+    }
+
+    public NhanVien getTaoBoiNhanVien() {
+        return taoBoiNhanVien;
+    }
+
+    public void setTaoBoiNhanVien(NhanVien taoBoiNhanVien) {
+        this.taoBoiNhanVien = taoBoiNhanVien;
+    }
+
+    public LichLamViec getLichLamViec() {
+        return lichLamViec;
+    }
+
+    public void setLichLamViec(LichLamViec lichLamViec) {
+        this.lichLamViec = lichLamViec;
     }
     
     

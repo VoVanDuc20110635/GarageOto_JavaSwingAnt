@@ -18,6 +18,12 @@ public class PhieuSuaChua {
     private String maLoaiXe;
     private String maNhanVien;
     private String maNhomHang;
+    
+    private HangHoa hangHoa;
+    private KhachHang khachHang;
+    private LoaiXe loaiXe;
+    private NhanVien nhanVien;
+    
 
     public PhieuSuaChua() {
     }
@@ -104,6 +110,38 @@ public class PhieuSuaChua {
 
     public void setMaNhomHang(String maNhomHang) {
         this.maNhomHang = maNhomHang;
+    }
+
+    public HangHoa getHangHoa() {
+        return hangHoa;
+    }
+
+    public void setHangHoa(HangHoa hangHoa) {
+        this.hangHoa = hangHoa;
+    }
+
+    public KhachHang getKhachHang() {
+        return khachHang;
+    }
+
+    public void setKhachHang(KhachHang khachHang) {
+        this.khachHang = khachHang;
+    }
+
+    public LoaiXe getLoaiXe() {
+        return loaiXe;
+    }
+
+    public void setLoaiXe(LoaiXe loaiXe) {
+        this.loaiXe = loaiXe;
+    }
+
+    public NhanVien getNhanVien() {
+        return nhanVien;
+    }
+
+    public void setNhanVien(NhanVien nhanVien) {
+        this.nhanVien = nhanVien;
     }
     
     

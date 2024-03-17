@@ -16,6 +16,7 @@ public class ChiTietPhieuNhapHang {
     private double tong;
     private double giam_gia;
     private double thanh_tien;
+    private HangHoa hangHoa;
 
     public ChiTietPhieuNhapHang() {
     }
@@ -84,6 +85,14 @@ public class ChiTietPhieuNhapHang {
 
     public void setThanh_tien(double thanh_tien) {
         this.thanh_tien = thanh_tien;
+    }
+
+    public HangHoa getHangHoa() {
+        return hangHoa;
+    }
+
+    public void setHangHoa(HangHoa hangHoa) {
+        this.hangHoa = hangHoa;
     }
     
 }

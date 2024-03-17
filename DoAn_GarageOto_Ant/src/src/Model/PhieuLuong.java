@@ -18,6 +18,7 @@ public class PhieuLuong {
     private double tongLuong;
     private String trangThai;
     private String maNhanVien;
+    private NhanVien nhanVien;
 
     public PhieuLuong(String maPhieu, String kyViecLam, double daTra, double luongCung, double giamLuong, double luongThuong, double tongLuong, String trangThai, String maNhanVien) {
         this.maPhieu = maPhieu;
@@ -104,6 +105,14 @@ public class PhieuLuong {
 
     public void setMaNhanVien(String maNhanVien) {
         this.maNhanVien = maNhanVien;
+    }
+
+    public NhanVien getNhanVien() {
+        return nhanVien;
+    }
+
+    public void setNhanVien(NhanVien nhanVien) {
+        this.nhanVien = nhanVien;
     }
     
 }

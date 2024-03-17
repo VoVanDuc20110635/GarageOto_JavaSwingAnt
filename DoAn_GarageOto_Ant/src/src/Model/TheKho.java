@@ -22,6 +22,10 @@ public class TheKho {
     private String maKhachHang;
     private String maNhanVien;
     private String maNhaCungCap;
+    private HangHoa hangHoa;
+    private KhachHang khachHang;
+    private NhanVien nhanVien;
+    private NhaCungCap nhaCungCap;
 
     public TheKho() {
     }
@@ -126,6 +130,38 @@ public class TheKho {
 
     public void setMaNhaCungCap(String maNhaCungCap) {
         this.maNhaCungCap = maNhaCungCap;
+    }
+
+    public HangHoa getHangHoa() {
+        return hangHoa;
+    }
+
+    public void setHangHoa(HangHoa hangHoa) {
+        this.hangHoa = hangHoa;
+    }
+
+    public KhachHang getKhachHang() {
+        return khachHang;
+    }
+
+    public void setKhachHang(KhachHang khachHang) {
+        this.khachHang = khachHang;
+    }
+
+    public NhanVien getNhanVien() {
+        return nhanVien;
+    }
+
+    public void setNhanVien(NhanVien nhanVien) {
+        this.nhanVien = nhanVien;
+    }
+
+    public NhaCungCap getNhaCungCap() {
+        return nhaCungCap;
+    }
+
+    public void setNhaCungCap(NhaCungCap nhaCungCap) {
+        this.nhaCungCap = nhaCungCap;
     }
     
 }

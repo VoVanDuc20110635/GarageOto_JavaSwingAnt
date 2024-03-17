@@ -14,6 +14,8 @@ public class HinhAnh {
     private String noiDung;
     private String maHangHoa;
     private String maNhanVien;
+    private HangHoa hangHoa;
+    private NhanVien nhanVien;
 
     public HinhAnh() {
     }
@@ -64,6 +66,22 @@ public class HinhAnh {
 
     public void setMaNhanVien(String maNhanVien) {
         this.maNhanVien = maNhanVien;
+    }
+
+    public HangHoa getHangHoa() {
+        return hangHoa;
+    }
+
+    public void setHangHoa(HangHoa hangHoa) {
+        this.hangHoa = hangHoa;
+    }
+
+    public NhanVien getNhanVien() {
+        return nhanVien;
+    }
+
+    public void setNhanVien(NhanVien nhanVien) {
+        this.nhanVien = nhanVien;
     }
     
     

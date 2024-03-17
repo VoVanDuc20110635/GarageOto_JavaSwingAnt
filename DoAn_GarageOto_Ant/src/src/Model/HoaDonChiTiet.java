@@ -16,7 +16,8 @@ public class HoaDonChiTiet {
     private double thanhTien;
     private String maHangHoa;
     private String maHoaDon;
-
+    private HangHoa hangHoa;
+    private HoaDon hoaDon;
     public HoaDonChiTiet() {
     }
 
@@ -84,6 +85,22 @@ public class HoaDonChiTiet {
 
     public void setMaHoaDon(String maHoaDon) {
         this.maHoaDon = maHoaDon;
+    }
+
+    public HangHoa getHangHoa() {
+        return hangHoa;
+    }
+
+    public void setHangHoa(HangHoa hangHoa) {
+        this.hangHoa = hangHoa;
+    }
+
+    public HoaDon getHoaDon() {
+        return hoaDon;
+    }
+
+    public void setHoaDon(HoaDon hoaDon) {
+        this.hoaDon = hoaDon;
     }
     
     

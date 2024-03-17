@@ -16,6 +16,7 @@ public class HangHoa {
     private short tonKho;
     private short khachDat;
     private String maNhomHang;
+    private NhomHang nhomHang;
 
     public HangHoa() {
     }
@@ -84,6 +85,14 @@ public class HangHoa {
 
     public void setMaNhomHang(String maNhomHang) {
         this.maNhomHang = maNhomHang;
+    }
+
+    public NhomHang getNhomHang() {
+        return nhomHang;
+    }
+
+    public void setNhomHang(NhomHang nhomHang) {
+        this.nhomHang = nhomHang;
     }
     
     

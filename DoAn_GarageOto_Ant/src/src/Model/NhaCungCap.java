@@ -19,6 +19,7 @@ public class NhaCungCap {
     private String maSoThue;
     private LocalDateTime ngayTao;
     private String maNhanVien;
+    private NhanVien nhanVien;
 
     public NhaCungCap(String maNhaCungCap, String tenNhaCungCap, String diaChi, String email, String soDienThoai, String maSoThue, LocalDateTime ngayTao, String maNhanVien) {
         this.maNhaCungCap = maNhaCungCap;
@@ -96,6 +97,14 @@ public class NhaCungCap {
 
     public void setMaNhanVien(String maNhanVien) {
         this.maNhanVien = maNhanVien;
+    }
+
+    public NhanVien getNhanVien() {
+        return nhanVien;
+    }
+
+    public void setNhanVien(NhanVien nhanVien) {
+        this.nhanVien = nhanVien;
     }
     
     
