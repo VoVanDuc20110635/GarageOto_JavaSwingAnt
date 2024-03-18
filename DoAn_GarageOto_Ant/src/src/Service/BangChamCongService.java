@@ -17,8 +17,10 @@ import src.Model.BangChamCong;
  * @author WINDOWS 10
  */
 public class BangChamCongService {
-    public List<BangChamCong> hienThiBangChamCongTheoMaNhanVien () throws SQLException{ //
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB("select * from bang_cham_cong where ma_nhan_vien='NV002'");
+    public List<BangChamCong> hienThiBangChamCongTheoMaNhanVien (String maNhanVien) throws SQLException{ //
+        String query = String.format("select * from bang_cham_cong where ma_nhan_vien='%s'",
+                             maNhanVien);
+        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -48,7 +50,6 @@ public class BangChamCongService {
                              bangChamCongMoi.getTrangThai(),
                              bangChamCongMoi.getMaCaLam(),
                              bangChamCongMoi.getMaNhanVien());
-            System.out.println(query);
             ConnectorDB.executeUpdateQueryConnectorDB(query);
             return 1;
         } catch (Exception err){

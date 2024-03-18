@@ -4,20 +4,44 @@
  */
 package src.UI.HangHoa;
 
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
+import src.Model.ChiTietPhieuNhapHang;
+import src.Model.PhieuNhapHang;
+import src.Service.ChiTietPhieuNhapHangService;
 
 /**
  *
  * @author WINDOWS 10
  */
 public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
+    private ChiTietPhieuNhapHangService chiTietPhieuNhapHangService = new ChiTietPhieuNhapHangService();
+    private PhieuNhapHang phieuNhapHang;
 
+    public PhieuNhapHang getPhieuNhapHang() {
+        return phieuNhapHang;
+    }
+
+    public void setPhieuNhapHang(PhieuNhapHang phieuNhapHang) {
+        this.phieuNhapHang = phieuNhapHang;
+    }
+    
     /**
      * Creates new form frame_HoaDonChiTiet
      */
     public frame_ChiTietDonNhapHang() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        try {
+            hienThiDanhSachChiTietPhieuNhapHangTheoMaPhieuNhapHang("PNH001");
+        } catch (SQLException ex) {
+            Logger.getLogger(frame_ChiTietDonNhapHang.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -53,7 +77,7 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
         jLabel295 = new javax.swing.JLabel();
         jLabel296 = new javax.swing.JLabel();
         jScrollPane15 = new javax.swing.JScrollPane();
-        jTable9 = new javax.swing.JTable();
+        tb_chiTietDonNhapHang = new javax.swing.JTable();
         jPanel246 = new javax.swing.JPanel();
         jLabel297 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -284,8 +308,8 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable9.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTable9.setModel(new javax.swing.table.DefaultTableModel(
+        tb_chiTietDonNhapHang.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tb_chiTietDonNhapHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -296,7 +320,7 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
                 "Mã hàng", "Tên hàng", "Số lượng", "Giá nhập", "Tổng", "Giảm giá", "Thành tiền"
             }
         ));
-        jScrollPane15.setViewportView(jTable9);
+        jScrollPane15.setViewportView(tb_chiTietDonNhapHang);
 
         jPanel246.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -648,6 +672,24 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void hienThiDanhSachChiTietPhieuNhapHangTheoMaPhieuNhapHang(String maPhieuNhapHang) throws SQLException{
+        DefaultTableModel recordTable = (DefaultTableModel)tb_chiTietDonNhapHang.getModel();
+        recordTable.setRowCount(0);
+        List<ChiTietPhieuNhapHang> danhChiTietPhieuNhapHang = chiTietPhieuNhapHangService.hienThiChiTietPhieuNhapHangTheoMaPhieuNhapHang(maPhieuNhapHang);
+        for (ChiTietPhieuNhapHang chiTietPhieuNhapHang : danhChiTietPhieuNhapHang) {
+            Vector columnData = new Vector();
+            columnData.add(chiTietPhieuNhapHang.getMaHangHoa());
+            columnData.add(chiTietPhieuNhapHang.getHangHoa().getTenHangHoa());
+            columnData.add(chiTietPhieuNhapHang.getSo_luong());
+            columnData.add(chiTietPhieuNhapHang.getGia_nhap());
+            columnData.add(chiTietPhieuNhapHang.getTong());
+            columnData.add(chiTietPhieuNhapHang.getGiam_gia());
+            columnData.add(chiTietPhieuNhapHang.getThanh_tien());
+            recordTable.addRow(columnData);
+        }
+    }
+            
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton33;
@@ -695,7 +737,7 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel252;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane16;
-    private javax.swing.JTable jTable9;
     private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JTable tb_chiTietDonNhapHang;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,7 +8,19 @@ import src.UI.HoaDon.frame_HoaDonChiTiet;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import src.Model.BangChamCong;
+import src.Model.PhieuNhapHang;
+import src.Service.PhieuNhapHangService;
+import src.UI.HangHoa.frame_ChiTietDonNhapHang;
+import src.Util.Util;
 
 /**
  *
@@ -19,14 +31,19 @@ public class TrangChu extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    private frame_HoaDonChiTiet frame_HoaDonChiTiet;
+    private PhieuNhapHangService phieuNhapHangService = new PhieuNhapHangService();
+    private Util util = new Util();
     public TrangChu() {
         
         getContentPane().setBackground(Color.white);
         initComponents();
-        frame_HoaDonChiTiet = new frame_HoaDonChiTiet();
         setSize(1550,975);
         setLocation(0,0);
+        try {
+            hienThiDanhSachPhieuNhapHang();
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -241,7 +258,7 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel160 = new javax.swing.JLabel();
         jDateChooser9 = new com.toedter.calendar.JDateChooser();
         jScrollPane11 = new javax.swing.JScrollPane();
-        jTable7 = new javax.swing.JTable();
+        tb_danhSachPhieuNhapHang = new javax.swing.JTable();
         jPanel128 = new javax.swing.JPanel();
         jLabel114 = new javax.swing.JLabel();
         jCheckBox11 = new javax.swing.JCheckBox();
@@ -2158,20 +2175,27 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel70.add(jPanel127, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 250, 120));
 
-        jTable7.setModel(new javax.swing.table.DefaultTableModel(
+        tb_danhSachPhieuNhapHang.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tb_danhSachPhieuNhapHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Mã nhập hàng", "Thời gian", "Nhà cung cấp", "Trạng thái"
+                "Mã nhập hàng", "Thời gian", "Nhà cung cấp", "Tổng", "Nợ", "Trạng thái"
             }
         ));
-        jScrollPane11.setViewportView(jTable7);
+        tb_danhSachPhieuNhapHang.setRowHeight(30);
+        tb_danhSachPhieuNhapHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_danhSachPhieuNhapHangMouseClicked(evt);
+            }
+        });
+        jScrollPane11.setViewportView(tb_danhSachPhieuNhapHang);
 
-        jPanel70.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 1230, 500));
+        jPanel70.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 1230, 560));
 
         jPanel128.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -4415,10 +4439,28 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField29ActionPerformed
 
     private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
+        frame_HoaDonChiTiet frame_HoaDonChiTiet= new frame_HoaDonChiTiet();;
         frame_HoaDonChiTiet.setVisible(true);
         frame_HoaDonChiTiet.setSize(890, 672);
         frame_HoaDonChiTiet.setLocation(0,0);
     }//GEN-LAST:event_jButton30ActionPerformed
+
+    private void tb_danhSachPhieuNhapHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_danhSachPhieuNhapHangMouseClicked
+        int index = tb_danhSachPhieuNhapHang.getSelectedRow();
+        TableModel model = tb_danhSachPhieuNhapHang.getModel();
+        PhieuNhapHang phieuNhapHang = new PhieuNhapHang();
+        phieuNhapHang.setPhieuNhapHang(model.getValueAt(index, 0).toString());
+        phieuNhapHang.setThoiGian( util.localDateParseMethodWithoutNanosecond(model.getValueAt(index, 1).toString()));
+        phieuNhapHang.setMaNhaCungCap(model.getValueAt(index, 2).toString());
+        phieuNhapHang.setTong(Double.parseDouble(model.getValueAt(index, 3).toString()));
+        phieuNhapHang.setNo(Double.parseDouble(model.getValueAt(index, 4).toString()));
+        phieuNhapHang.setTrangThai(model.getValueAt(index, 5).toString());
+        frame_ChiTietDonNhapHang frame_chiTietDonNhapHang = new frame_ChiTietDonNhapHang();
+        frame_chiTietDonNhapHang.setPhieuNhapHang(phieuNhapHang);
+        frame_chiTietDonNhapHang.setVisible(true);
+        frame_chiTietDonNhapHang.setSize(950, 645);
+        frame_chiTietDonNhapHang.setLocation(0,0);
+    }//GEN-LAST:event_tb_danhSachPhieuNhapHangMouseClicked
 
     /**
      * @param args the command line arguments
@@ -4454,6 +4496,22 @@ public class TrangChu extends javax.swing.JFrame {
                 new TrangChu().setVisible(true);
             }
         });
+    }
+    
+    public void hienThiDanhSachPhieuNhapHang() throws SQLException{
+        DefaultTableModel recordTable = (DefaultTableModel)tb_danhSachPhieuNhapHang.getModel();
+        recordTable.setRowCount(0);
+        List<PhieuNhapHang> danhSachPhieuNhapHang = phieuNhapHangService.hienThiTatCaPhieuNhapHang();
+        for (PhieuNhapHang phieuNhapHang : danhSachPhieuNhapHang){
+            Vector columnData = new Vector();
+            columnData.add(phieuNhapHang.getPhieuNhapHang());
+            columnData.add(util.localDateParseMethod(phieuNhapHang.getThoiGian()));
+            columnData.add(phieuNhapHang.getMaNhaCungCap());
+            columnData.add(phieuNhapHang.getTong());
+            columnData.add(phieuNhapHang.getNo());
+            columnData.add(phieuNhapHang.getTrangThai());
+            recordTable.addRow(columnData);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -4851,7 +4909,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
-    private javax.swing.JTable jTable7;
     private javax.swing.JTable jTable8;
     private javax.swing.JTable jTable9;
     private javax.swing.JTextArea jTextArea1;
@@ -4887,5 +4944,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField9;
     private com.toedter.calendar.JYearChooser jYearChooser1;
     private com.toedter.calendar.JYearChooser jYearChooser2;
+    private javax.swing.JTable tb_danhSachPhieuNhapHang;
     // End of variables declaration//GEN-END:variables
 }

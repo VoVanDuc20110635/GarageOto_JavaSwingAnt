@@ -3627,23 +3627,32 @@
                       </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="290" y="60" width="1230" height="500"/>
+                          <AbsoluteConstraints x="290" y="60" width="1230" height="560"/>
                         </Constraint>
                       </Constraints>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="jTable7">
+                        <Component class="javax.swing.JTable" name="tb_danhSachPhieuNhapHang">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="16" style="0"/>
+                            </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="4" rowCount="4">
+                              <Table columnCount="6" rowCount="4">
                                 <Column editable="true" title="M&#xe3; nh&#x1ead;p h&#xe0;ng" type="java.lang.Object"/>
                                 <Column editable="true" title="Th&#x1edd;i gian" type="java.lang.Object"/>
                                 <Column editable="true" title="Nh&#xe0; cung c&#x1ea5;p" type="java.lang.Object"/>
+                                <Column editable="true" title="T&#x1ed5;ng" type="java.lang.Object"/>
+                                <Column editable="true" title="N&#x1ee3;" type="java.lang.Object"/>
                                 <Column editable="true" title="Tr&#x1ea1;ng th&#xe1;i" type="java.lang.Object"/>
                               </Table>
                             </Property>
+                            <Property name="rowHeight" type="int" value="30"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tb_danhSachPhieuNhapHangMouseClicked"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>

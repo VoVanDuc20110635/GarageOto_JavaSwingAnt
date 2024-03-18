@@ -302,7 +302,7 @@ public class frame_BangChamCong extends javax.swing.JFrame {
     public void hienThiBangChamCong() throws SQLException{
         DefaultTableModel recordTable = (DefaultTableModel)jTable1.getModel();
         recordTable.setRowCount(0);
-        List<BangChamCong> danhSachBangChamCong = bangChamCongService.hienThiBangChamCongTheoMaNhanVien();
+        List<BangChamCong> danhSachBangChamCong = bangChamCongService.hienThiBangChamCongTheoMaNhanVien("NV001");
         for (BangChamCong bangChamCong : danhSachBangChamCong){
             Vector columnData = new Vector();
             columnData.add(localDateParseMethod(bangChamCong.getNgayLam()));

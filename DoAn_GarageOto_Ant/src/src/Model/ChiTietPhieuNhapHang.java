@@ -16,7 +16,9 @@ public class ChiTietPhieuNhapHang {
     private double tong;
     private double giam_gia;
     private double thanh_tien;
+    private String maPhieuNhapHang;
     private HangHoa hangHoa;
+    private PhieuNhapHang phieuNhapHang;
 
     public ChiTietPhieuNhapHang() {
     }
@@ -93,6 +95,22 @@ public class ChiTietPhieuNhapHang {
 
     public void setHangHoa(HangHoa hangHoa) {
         this.hangHoa = hangHoa;
+    }
+
+    public String getMaPhieuNhapHang() {
+        return maPhieuNhapHang;
+    }
+
+    public void setMaPhieuNhapHang(String maPhieuNhapHang) {
+        this.maPhieuNhapHang = maPhieuNhapHang;
+    }
+
+    public PhieuNhapHang getPhieuNhapHang() {
+        return phieuNhapHang;
+    }
+
+    public void setPhieuNhapHang(PhieuNhapHang phieuNhapHang) {
+        this.phieuNhapHang = phieuNhapHang;
     }
     
 }
