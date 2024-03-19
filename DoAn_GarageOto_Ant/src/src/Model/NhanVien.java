@@ -19,17 +19,15 @@ public class NhanVien {
     private String chucDanh;
     private String soDienThoai;
     private LocalDateTime ngayBatDauLamViec;
-    private String maBangLuong;
     private String maChiNhanh;
     private String taoBoiMaNhanVien;
     private String maLichLamViec;
     
-    private BangLuong bangLuong;
     private ChiNhanh chiNhanh;
     private NhanVien taoBoiNhanVien;
     private LichLamViec lichLamViec;
 
-    public NhanVien(String maNhanVien, String tenNhanVien, LocalDateTime ngaySinh, String gioiTinh, String cccd, String chucDanh, String soDienThoai, LocalDateTime ngayBatDauLamViec, String maBangLuong, String maChiNhanh, String taoBoiMaNhanVien, String maLichLamViec) {
+    public NhanVien(String maNhanVien, String tenNhanVien, LocalDateTime ngaySinh, String gioiTinh, String cccd, String chucDanh, String soDienThoai, LocalDateTime ngayBatDauLamViec, String maChiNhanh, String taoBoiMaNhanVien, String maLichLamViec) {
         this.maNhanVien = maNhanVien;
         this.tenNhanVien = tenNhanVien;
         this.ngaySinh = ngaySinh;
@@ -38,7 +36,6 @@ public class NhanVien {
         this.chucDanh = chucDanh;
         this.soDienThoai = soDienThoai;
         this.ngayBatDauLamViec = ngayBatDauLamViec;
-        this.maBangLuong = maBangLuong;
         this.maChiNhanh = maChiNhanh;
         this.taoBoiMaNhanVien = taoBoiMaNhanVien;
         this.maLichLamViec = maLichLamViec;
@@ -111,13 +108,6 @@ public class NhanVien {
         this.ngayBatDauLamViec = ngayBatDauLamViec;
     }
 
-    public String getMaBangLuong() {
-        return maBangLuong;
-    }
-
-    public void setMaBangLuong(String maBangLuong) {
-        this.maBangLuong = maBangLuong;
-    }
 
     public String getMaChiNhanh() {
         return maChiNhanh;
@@ -141,14 +131,6 @@ public class NhanVien {
 
     public void setMaLichLamViec(String maLichLamViec) {
         this.maLichLamViec = maLichLamViec;
-    }
-
-    public BangLuong getBangLuong() {
-        return bangLuong;
-    }
-
-    public void setBangLuong(BangLuong bangLuong) {
-        this.bangLuong = bangLuong;
     }
 
     public ChiNhanh getChiNhanh() {
