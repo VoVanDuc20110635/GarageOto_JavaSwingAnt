@@ -64,6 +64,7 @@ public class PhieuNhapHangService {
                 phieuNhapHang.setMaNhaCungCap(resultTable.getString("ma_nha_cung_cap"));
                 phieuNhapHang.setMaChiNhanh(resultTable.getString("ma_chi_nhanh"));
                 phieuNhapHang.setMaNhanVienTao(resultTable.getString("ma_nhan_vien"));
+                phieuNhapHang.setTienDaTra(resultTable.getShort("tien_da_tra"));
             }
         }
         return phieuNhapHang;

@@ -19,6 +19,7 @@ public class PhieuNhapHang {
     private String maNhaCungCap;
     private String maChiNhanh;
     private String maNhanVienTao;
+    private double tienDaTra;
     private NhaCungCap nhaCungCap;
     private ChiNhanh chiNhanh;
     private NhanVien nhanVienTao;
@@ -122,6 +123,14 @@ public class PhieuNhapHang {
 
     public void setNhanVienTao(NhanVien nhanVienTao) {
         this.nhanVienTao = nhanVienTao;
+    }
+
+    public double getTienDaTra() {
+        return tienDaTra;
+    }
+
+    public void setTienDaTra(double tienDaTra) {
+        this.tienDaTra = tienDaTra;
     }
     
     

@@ -4462,7 +4462,7 @@ public class TrangChu extends javax.swing.JFrame {
 //        phieuNhapHang.setTrangThai(model.getValueAt(index, 5).toString());
         frame_ChiTietDonNhapHang frame_chiTietDonNhapHang = new frame_ChiTietDonNhapHang(phieuNhapHang);
         frame_chiTietDonNhapHang.setVisible(true);
-        frame_chiTietDonNhapHang.setSize(950, 645);
+        frame_chiTietDonNhapHang.setSize(950, 630);
         frame_chiTietDonNhapHang.setLocation(0,0);
     }//GEN-LAST:event_tb_danhSachPhieuNhapHangMouseClicked
 
