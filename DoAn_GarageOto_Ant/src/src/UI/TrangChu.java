@@ -4449,14 +4449,18 @@ public class TrangChu extends javax.swing.JFrame {
         int index = tb_danhSachPhieuNhapHang.getSelectedRow();
         TableModel model = tb_danhSachPhieuNhapHang.getModel();
         PhieuNhapHang phieuNhapHang = new PhieuNhapHang();
-        phieuNhapHang.setPhieuNhapHang(model.getValueAt(index, 0).toString());
-        phieuNhapHang.setThoiGian( util.localDateParseMethodWithoutNanosecond(model.getValueAt(index, 1).toString()));
-        phieuNhapHang.setMaNhaCungCap(model.getValueAt(index, 2).toString());
-        phieuNhapHang.setTong(Double.parseDouble(model.getValueAt(index, 3).toString()));
-        phieuNhapHang.setNo(Double.parseDouble(model.getValueAt(index, 4).toString()));
-        phieuNhapHang.setTrangThai(model.getValueAt(index, 5).toString());
-        frame_ChiTietDonNhapHang frame_chiTietDonNhapHang = new frame_ChiTietDonNhapHang();
-        frame_chiTietDonNhapHang.setPhieuNhapHang(phieuNhapHang);
+        try {
+            phieuNhapHang = phieuNhapHangService.layPhieuNhapHangDuaTrenMaPhieuNhapHang(model.getValueAt(index, 0).toString());
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+//        phieuNhapHang.setPhieuNhapHang(model.getValueAt(index, 0).toString());
+//        phieuNhapHang.setThoiGian( util.localDateParseMethodWithoutNanosecond(model.getValueAt(index, 1).toString()));
+//        phieuNhapHang.setMaNhaCungCap(model.getValueAt(index, 2).toString());
+//        phieuNhapHang.setTong(Double.parseDouble(model.getValueAt(index, 3).toString()));
+//        phieuNhapHang.setNo(Double.parseDouble(model.getValueAt(index, 4).toString()));
+//        phieuNhapHang.setTrangThai(model.getValueAt(index, 5).toString());
+        frame_ChiTietDonNhapHang frame_chiTietDonNhapHang = new frame_ChiTietDonNhapHang(phieuNhapHang);
         frame_chiTietDonNhapHang.setVisible(true);
         frame_chiTietDonNhapHang.setSize(950, 645);
         frame_chiTietDonNhapHang.setLocation(0,0);

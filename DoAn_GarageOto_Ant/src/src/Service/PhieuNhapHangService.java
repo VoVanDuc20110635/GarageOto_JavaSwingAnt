@@ -39,9 +39,33 @@ public class PhieuNhapHangService {
                 phieuNhapHang.setTong(resultTable.getDouble("tong"));
                 phieuNhapHang.setTrangThai(resultTable.getString("trang_thai"));
                 phieuNhapHang.setMaNhaCungCap(resultTable.getString("ma_nha_cung_cap"));
+                phieuNhapHang.setMaChiNhanh(resultTable.getString("ma_chi_nhanh"));
+                phieuNhapHang.setMaNhanVienTao(resultTable.getString("ma_nhan_vien"));
             }
             danhSachPhieuNhapHang.add(phieuNhapHang);
         }
         return danhSachPhieuNhapHang;
+    }
+    
+    public PhieuNhapHang layPhieuNhapHangDuaTrenMaPhieuNhapHang (String maPhieuNhapHang) throws SQLException{ //
+        String query = String.format("select * from phieu_nhap_hang where phieu_nhap_hang = '%s'", maPhieuNhapHang);
+        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int q = resultSetMetaData.getColumnCount();
+        int i;
+        PhieuNhapHang phieuNhapHang = new PhieuNhapHang();
+        while(resultTable.next()){
+            for (i= 1; i <= q; i++){
+                phieuNhapHang.setPhieuNhapHang(resultTable.getString("phieu_nhap_hang"));
+                phieuNhapHang.setNo(resultTable.getDouble("no"));
+                phieuNhapHang.setThoiGian( util.localDateParseMethod(resultTable.getString("thoi_gian")));
+                phieuNhapHang.setTong(resultTable.getDouble("tong"));
+                phieuNhapHang.setTrangThai(resultTable.getString("trang_thai"));
+                phieuNhapHang.setMaNhaCungCap(resultTable.getString("ma_nha_cung_cap"));
+                phieuNhapHang.setMaChiNhanh(resultTable.getString("ma_chi_nhanh"));
+                phieuNhapHang.setMaNhanVienTao(resultTable.getString("ma_nhan_vien"));
+            }
+        }
+        return phieuNhapHang;
     }
 }

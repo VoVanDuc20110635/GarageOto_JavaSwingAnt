@@ -296,7 +296,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel287" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabel288" max="32767" attributes="0"/>
+                      <Component id="lb_maNhapHang" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -307,7 +307,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel287" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel288" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lb_maNhapHang" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -323,13 +323,13 @@
                 <Property name="text" type="java.lang.String" value="M&#xe3; nh&#x1ead;p h&#xe0;ng:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel288">
+            <Component class="javax.swing.JLabel" name="lb_maNhapHang">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="16" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="HD000046"/>
+                <Property name="text" type="java.lang.String" value="lb_maNhapHang"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -400,7 +400,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel291" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                      <Component id="jLabel1" max="32767" attributes="0"/>
+                      <Component id="lb_tenNguoiTao" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -411,7 +411,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel291" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lb_tenNguoiTao" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
@@ -427,7 +427,7 @@
                 <Property name="text" type="java.lang.String" value="Ng&#x1b0;&#x1edd;i t&#x1ea1;o:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel1">
+            <Component class="javax.swing.JLabel" name="lb_tenNguoiTao">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="16" style="0"/>
@@ -503,7 +503,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel295" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabel296" max="32767" attributes="0"/>
+                      <Component id="lb_tenNhaCungCap" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -514,7 +514,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel295" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel296" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lb_tenNhaCungCap" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -530,7 +530,7 @@
                 <Property name="text" type="java.lang.String" value="Nh&#xe0; cung c&#x1ea5;p:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel296">
+            <Component class="javax.swing.JLabel" name="lb_tenNhaCungCap">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="16" style="0"/>
@@ -582,7 +582,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel297" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                      <Component id="jLabel3" max="32767" attributes="0"/>
+                      <Component id="lb_tenChiNhanh" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -593,7 +593,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel297" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lb_tenChiNhanh" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="9" max="32767" attributes="0"/>
                   </Group>
@@ -610,7 +610,7 @@
                 <Property name="text" type="java.lang.String" value="Chi nh&#xe1;nh:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel3">
+            <Component class="javax.swing.JLabel" name="lb_tenChiNhanh">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="16" style="0"/>
@@ -686,7 +686,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel301" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabel302" max="32767" attributes="0"/>
+                      <Component id="lb_thoiGian" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -697,7 +697,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel301" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel302" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lb_thoiGian" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -713,7 +713,7 @@
                 <Property name="text" type="java.lang.String" value="Th&#x1edd;i gian:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel302">
+            <Component class="javax.swing.JLabel" name="lb_thoiGian">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="16" style="0"/>
@@ -738,7 +738,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel303" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                      <Component id="jLabel2" pref="175" max="32767" attributes="0"/>
+                      <Component id="lb_trangThai" pref="175" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -749,7 +749,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel303" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lb_trangThai" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="9" max="32767" attributes="0"/>
                   </Group>
@@ -765,7 +765,7 @@
                 <Property name="text" type="java.lang.String" value="Tr&#x1ea1;ng th&#xe1;i:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel2">
+            <Component class="javax.swing.JLabel" name="lb_trangThai">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="16" style="0"/>

@@ -17,7 +17,11 @@ public class PhieuNhapHang {
     private double no;
     private String trangThai;
     private String maNhaCungCap;
+    private String maChiNhanh;
+    private String maNhanVienTao;
     private NhaCungCap nhaCungCap;
+    private ChiNhanh chiNhanh;
+    private NhanVien nhanVienTao;
 
     public PhieuNhapHang() {
     }
@@ -86,6 +90,38 @@ public class PhieuNhapHang {
 
     public void setNhaCungCap(NhaCungCap nhaCungCap) {
         this.nhaCungCap = nhaCungCap;
+    }
+
+    public String getMaChiNhanh() {
+        return maChiNhanh;
+    }
+
+    public void setMaChiNhanh(String maChiNhanh) {
+        this.maChiNhanh = maChiNhanh;
+    }
+
+    public ChiNhanh getChiNhanh() {
+        return chiNhanh;
+    }
+
+    public void setChiNhanh(ChiNhanh chiNhanh) {
+        this.chiNhanh = chiNhanh;
+    }
+
+    public String getMaNhanVienTao() {
+        return maNhanVienTao;
+    }
+
+    public void setMaNhanVienTao(String maNhanVienTao) {
+        this.maNhanVienTao = maNhanVienTao;
+    }
+
+    public NhanVien getNhanVienTao() {
+        return nhanVienTao;
+    }
+
+    public void setNhanVienTao(NhanVien nhanVienTao) {
+        this.nhanVienTao = nhanVienTao;
     }
     
     

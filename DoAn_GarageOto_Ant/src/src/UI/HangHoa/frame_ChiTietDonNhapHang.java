@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import src.Model.ChiTietPhieuNhapHang;
 import src.Model.PhieuNhapHang;
 import src.Service.ChiTietPhieuNhapHangService;
+import src.Util.Util;
 
 /**
  *
@@ -22,6 +23,7 @@ import src.Service.ChiTietPhieuNhapHangService;
 public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
     private ChiTietPhieuNhapHangService chiTietPhieuNhapHangService = new ChiTietPhieuNhapHangService();
     private PhieuNhapHang phieuNhapHang;
+    private Util util = new Util();
 
     public PhieuNhapHang getPhieuNhapHang() {
         return phieuNhapHang;
@@ -37,8 +39,21 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
     public frame_ChiTietDonNhapHang() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        hienThiThongTinPhieuNhapHang();
         try {
-            hienThiDanhSachChiTietPhieuNhapHangTheoMaPhieuNhapHang("PNH001");
+            hienThiDanhSachChiTietPhieuNhapHangTheoMaPhieuNhapHang(this.phieuNhapHang.getPhieuNhapHang());
+        } catch (SQLException ex) {
+            Logger.getLogger(frame_ChiTietDonNhapHang.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public frame_ChiTietDonNhapHang(PhieuNhapHang phieuNhapHang) {
+        this.phieuNhapHang = phieuNhapHang;
+        initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        hienThiThongTinPhieuNhapHang();
+        try {
+            hienThiDanhSachChiTietPhieuNhapHangTheoMaPhieuNhapHang(this.phieuNhapHang.getPhieuNhapHang());
         } catch (SQLException ex) {
             Logger.getLogger(frame_ChiTietDonNhapHang.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -63,33 +78,33 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
         jButton36 = new javax.swing.JButton();
         jPanel241 = new javax.swing.JPanel();
         jLabel287 = new javax.swing.JLabel();
-        jLabel288 = new javax.swing.JLabel();
+        lb_maNhapHang = new javax.swing.JLabel();
         jPanel242 = new javax.swing.JPanel();
         jLabel289 = new javax.swing.JLabel();
         jLabel290 = new javax.swing.JLabel();
         jPanel243 = new javax.swing.JPanel();
         jLabel291 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lb_tenNguoiTao = new javax.swing.JLabel();
         jPanel244 = new javax.swing.JPanel();
         jLabel293 = new javax.swing.JLabel();
         jLabel294 = new javax.swing.JLabel();
         jPanel245 = new javax.swing.JPanel();
         jLabel295 = new javax.swing.JLabel();
-        jLabel296 = new javax.swing.JLabel();
+        lb_tenNhaCungCap = new javax.swing.JLabel();
         jScrollPane15 = new javax.swing.JScrollPane();
         tb_chiTietDonNhapHang = new javax.swing.JTable();
         jPanel246 = new javax.swing.JPanel();
         jLabel297 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lb_tenChiNhanh = new javax.swing.JLabel();
         jPanel247 = new javax.swing.JPanel();
         jLabel299 = new javax.swing.JLabel();
         jLabel300 = new javax.swing.JLabel();
         jPanel248 = new javax.swing.JPanel();
         jLabel301 = new javax.swing.JLabel();
-        jLabel302 = new javax.swing.JLabel();
+        lb_thoiGian = new javax.swing.JLabel();
         jPanel249 = new javax.swing.JPanel();
         jLabel303 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lb_trangThai = new javax.swing.JLabel();
         jPanel250 = new javax.swing.JPanel();
         jLabel305 = new javax.swing.JLabel();
         jLabel306 = new javax.swing.JLabel();
@@ -164,9 +179,9 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
         jLabel287.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel287.setText("Mã nhập hàng:");
 
-        jLabel288.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel288.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel288.setText("HD000046");
+        lb_maNhapHang.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        lb_maNhapHang.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_maNhapHang.setText("lb_maNhapHang");
 
         javax.swing.GroupLayout jPanel241Layout = new javax.swing.GroupLayout(jPanel241);
         jPanel241.setLayout(jPanel241Layout);
@@ -176,7 +191,7 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel287)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel288, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lb_maNhapHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel241Layout.setVerticalGroup(
@@ -185,7 +200,7 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel241Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel287)
-                    .addComponent(jLabel288))
+                    .addComponent(lb_maNhapHang))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -224,8 +239,8 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
         jLabel291.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel291.setText("Người tạo:");
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel1.setText("Nguyễn Thị Thúy Hòa");
+        lb_tenNguoiTao.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lb_tenNguoiTao.setText("Nguyễn Thị Thúy Hòa");
 
         javax.swing.GroupLayout jPanel243Layout = new javax.swing.GroupLayout(jPanel243);
         jPanel243.setLayout(jPanel243Layout);
@@ -235,7 +250,7 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel291)
                 .addGap(60, 60, 60)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lb_tenNguoiTao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel243Layout.setVerticalGroup(
@@ -244,7 +259,7 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel243Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel291)
-                    .addComponent(jLabel1))
+                    .addComponent(lb_tenNguoiTao))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -283,9 +298,9 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
         jLabel295.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel295.setText("Nhà cung cấp:");
 
-        jLabel296.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel296.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel296.setText("Công ty thời trang Việt");
+        lb_tenNhaCungCap.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lb_tenNhaCungCap.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_tenNhaCungCap.setText("Công ty thời trang Việt");
 
         javax.swing.GroupLayout jPanel245Layout = new javax.swing.GroupLayout(jPanel245);
         jPanel245.setLayout(jPanel245Layout);
@@ -295,7 +310,7 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel295)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel296, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lb_tenNhaCungCap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel245Layout.setVerticalGroup(
@@ -304,7 +319,7 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel245Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel295)
-                    .addComponent(jLabel296))
+                    .addComponent(lb_tenNhaCungCap))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -328,8 +343,8 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
         jLabel297.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel297.setText("Chi nhánh:");
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel3.setText("Chi nhánh trung tâm");
+        lb_tenChiNhanh.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lb_tenChiNhanh.setText("Chi nhánh trung tâm");
 
         javax.swing.GroupLayout jPanel246Layout = new javax.swing.GroupLayout(jPanel246);
         jPanel246.setLayout(jPanel246Layout);
@@ -339,7 +354,7 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel297)
                 .addGap(62, 62, 62)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lb_tenChiNhanh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel246Layout.setVerticalGroup(
@@ -348,7 +363,7 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel246Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel297)
-                    .addComponent(jLabel3))
+                    .addComponent(lb_tenChiNhanh))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
@@ -387,9 +402,9 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
         jLabel301.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel301.setText("Thời gian:");
 
-        jLabel302.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel302.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel302.setText("03/03/2024 10:29");
+        lb_thoiGian.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lb_thoiGian.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_thoiGian.setText("03/03/2024 10:29");
 
         javax.swing.GroupLayout jPanel248Layout = new javax.swing.GroupLayout(jPanel248);
         jPanel248.setLayout(jPanel248Layout);
@@ -399,7 +414,7 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel301)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel302, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lb_thoiGian, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel248Layout.setVerticalGroup(
@@ -408,7 +423,7 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel248Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel301)
-                    .addComponent(jLabel302))
+                    .addComponent(lb_thoiGian))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -417,8 +432,8 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
         jLabel303.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel303.setText("Trạng thái:");
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel2.setText("Đã nhập hàng");
+        lb_trangThai.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lb_trangThai.setText("Đã nhập hàng");
 
         javax.swing.GroupLayout jPanel249Layout = new javax.swing.GroupLayout(jPanel249);
         jPanel249.setLayout(jPanel249Layout);
@@ -428,7 +443,7 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel303)
                 .addGap(60, 60, 60)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                .addComponent(lb_trangThai, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel249Layout.setVerticalGroup(
@@ -437,7 +452,7 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel249Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel303)
-                    .addComponent(jLabel2))
+                    .addComponent(lb_trangThai))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
@@ -689,32 +704,34 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
             recordTable.addRow(columnData);
         }
     }
-            
+    public void hienThiThongTinPhieuNhapHang(){
+        lb_maNhapHang.setText(this.phieuNhapHang.getPhieuNhapHang());
+        lb_tenChiNhanh.setText(this.phieuNhapHang.getMaChiNhanh());
+        lb_tenNguoiTao.setText(this.phieuNhapHang.getMaNhanVienTao());
+        lb_tenNhaCungCap.setText(this.phieuNhapHang.getMaNhaCungCap());
+        lb_thoiGian.setText(util.localDateParseMethod(this.phieuNhapHang.getThoiGian()));
+        lb_trangThai.setText(this.phieuNhapHang.getTrangThai());
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;
     private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton36;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel285;
     private javax.swing.JLabel jLabel286;
     private javax.swing.JLabel jLabel287;
-    private javax.swing.JLabel jLabel288;
     private javax.swing.JLabel jLabel289;
     private javax.swing.JLabel jLabel290;
     private javax.swing.JLabel jLabel291;
     private javax.swing.JLabel jLabel293;
     private javax.swing.JLabel jLabel294;
     private javax.swing.JLabel jLabel295;
-    private javax.swing.JLabel jLabel296;
     private javax.swing.JLabel jLabel297;
     private javax.swing.JLabel jLabel299;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel300;
     private javax.swing.JLabel jLabel301;
-    private javax.swing.JLabel jLabel302;
     private javax.swing.JLabel jLabel303;
     private javax.swing.JLabel jLabel304;
     private javax.swing.JLabel jLabel305;
@@ -738,6 +755,12 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JLabel lb_maNhapHang;
+    private javax.swing.JLabel lb_tenChiNhanh;
+    private javax.swing.JLabel lb_tenNguoiTao;
+    private javax.swing.JLabel lb_tenNhaCungCap;
+    private javax.swing.JLabel lb_thoiGian;
+    private javax.swing.JLabel lb_trangThai;
     private javax.swing.JTable tb_chiTietDonNhapHang;
     // End of variables declaration//GEN-END:variables
 }
