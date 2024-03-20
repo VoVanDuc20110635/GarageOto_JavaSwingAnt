@@ -6,18 +6,32 @@ package src.UI;
 
 import src.UI.HoaDon.frame_HoaDonChiTiet;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import src.Model.BangChamCong;
+import src.Model.HangHoa;
+import src.Model.HinhAnh;
 import src.Model.PhieuNhapHang;
+import src.Service.HangHoaService;
+import src.Service.HinhAnhService;
 import src.Service.PhieuNhapHangService;
 import src.UI.HangHoa.frame_ChiTietDonNhapHang;
 import src.Util.Util;
@@ -32,6 +46,9 @@ public class TrangChu extends javax.swing.JFrame {
      * Creates new form Login
      */
     private PhieuNhapHangService phieuNhapHangService = new PhieuNhapHangService();
+    private HangHoaService hangHoaService = new HangHoaService();
+    private HinhAnhService hinhAnhService = new HinhAnhService();
+    
     private Util util = new Util();
     public TrangChu() {
         
@@ -42,6 +59,13 @@ public class TrangChu extends javax.swing.JFrame {
         try {
             hienThiDanhSachPhieuNhapHang();
         } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            hienThiDanhSachHangHoa();
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -91,7 +115,7 @@ public class TrangChu extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tb_danhSachHangHoa = new javax.swing.JTable();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel9 = new javax.swing.JPanel();
         jPanel65 = new javax.swing.JPanel();
@@ -749,7 +773,8 @@ public class TrangChu extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(51, 204, 0));
         jButton2.setText("Import");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb_danhSachHangHoa.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tb_danhSachHangHoa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -757,10 +782,11 @@ public class TrangChu extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Chọn tất cả", "Mã hàng", "Tên hàng", "Giá bán", "Giá vốn", "Tồn kho", "Khách đặt"
+                "Mã hàng", "Hình ảnh", "Tên hàng", "Giá bán", "Giá vốn", "Tồn kho", "Khách đặt"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tb_danhSachHangHoa.setRowHeight(100);
+        jScrollPane1.setViewportView(tb_danhSachHangHoa);
 
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
         jPanel26.setLayout(jPanel26Layout);
@@ -4531,6 +4557,52 @@ public class TrangChu extends javax.swing.JFrame {
             recordTable.addRow(columnData);
         }
     }
+    
+    public void hienThiDanhSachHangHoa() throws SQLException, IOException{
+        DefaultTableModel recordTable = (DefaultTableModel)tb_danhSachHangHoa.getModel();
+        recordTable.setRowCount(0);
+        List<HangHoa> danhSachHangHoa = hangHoaService.hienThiTatCaHangHoa();
+        tb_danhSachHangHoa.getColumnModel().getColumn(1)
+        .setCellRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value,
+                    boolean isSelected, boolean hasFocus, int row, int column) {
+                // Ensure the value is an ImageIcon
+                if (value instanceof ImageIcon) {
+                    // Render the ImageIcon in a JLabel
+                    JLabel label = new JLabel((ImageIcon) value);
+                    label.setHorizontalAlignment(JLabel.CENTER); // Center the image
+                    return label;
+                } else {
+                    // Return default renderer for other types
+                    return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                }
+            }
+        });
+        
+        for (HangHoa hangHoa : danhSachHangHoa){
+            Vector columnData = new Vector();
+            columnData.add(hangHoa.getMaHangHoa());
+            try{
+                String imageFolder = "D:\\tai_lieu_tren_lop\\LapTrinhTienTien\\Workspace\\Git_GarageOtoAnt_DoAn\\GarageOto_JavaSwingAnt\\DoAn_GarageOto_Ant\\src\\image\\";
+                File file = new File(imageFolder + hinhAnhService.hienThiHinhAnhTheoMaHangHoa(hangHoa.getMaHangHoa()).getTenHinh());
+                BufferedImage originalImage = ImageIO.read(file);
+                Image scaledImage = originalImage.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+                ImageIcon icon = new ImageIcon(scaledImage);
+                columnData.add(icon);
+            } catch(Exception err){
+                columnData.add("No Image");
+            }
+            
+            columnData.add(hangHoa.getTenHangHoa());
+            columnData.add(hangHoa.getGiaBan());
+            columnData.add(hangHoa.getGiaVon());
+            columnData.add(hangHoa.getTonKho());
+            columnData.add(hangHoa.getKhachDat());
+            recordTable.addRow(columnData);
+        }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -4920,7 +4992,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTabbedPane jTabbedPane6;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable10;
     private javax.swing.JTable jTable11;
     private javax.swing.JTable jTable2;
@@ -4963,6 +5034,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField9;
     private com.toedter.calendar.JYearChooser jYearChooser1;
     private com.toedter.calendar.JYearChooser jYearChooser2;
+    private javax.swing.JTable tb_danhSachHangHoa;
     private javax.swing.JTable tb_danhSachPhieuNhapHang;
     // End of variables declaration//GEN-END:variables
 }

@@ -145,7 +145,6 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
         jLabel295 = new javax.swing.JLabel();
         cb_nhaCungCap = new javax.swing.JComboBox<>();
         jLabel20 = new javax.swing.JLabel();
-        jLabel91 = new javax.swing.JLabel();
         jLabel92 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -613,10 +612,6 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
         jLabel20.setToolTipText("");
         panel_ChiTietDonNhapHang.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
 
-        jLabel91.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel91.setText("Thời gian in phiếu:");
-        panel_ChiTietDonNhapHang.add(jLabel91, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 270, -1));
-
         jLabel92.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel92.setText("Garage oto Lâm Vinh");
         panel_ChiTietDonNhapHang.add(jLabel92, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
@@ -859,7 +854,6 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel304;
     private javax.swing.JLabel jLabel305;
     private javax.swing.JLabel jLabel307;
-    private javax.swing.JLabel jLabel91;
     private javax.swing.JLabel jLabel92;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel241;

@@ -43,7 +43,7 @@ CREATE TABLE `bang_cham_cong` (
 
 LOCK TABLES `bang_cham_cong` WRITE;
 /*!40000 ALTER TABLE `bang_cham_cong` DISABLE KEYS */;
-INSERT INTO `bang_cham_cong` VALUES ('BC001',0,'2024-01-01 08:00:00.000000','day du','CAL001','NV001'),('BC002',0,'2024-01-02 08:00:00.000000','vang','CAL001','NV002'),('BC003',0,'2024-01-03 08:00:00.000000','di tre','CAL001','NV003'),('BC004',3,'2024-01-04 08:00:00.000000','tang ca','CAL002','NV004'),('BC005',0,'2024-01-05 08:00:00.000000','day du','CAL002','NV005'),('BC006',0,'2024-01-06 08:00:00.000000','day du','CAL002','NV006'),('BC007',0,'2024-01-07 08:00:00.000000','di tre','CAL003','NV007'),('BC008',0,'2024-01-08 08:00:00.000000','vang','CAL003','NV008'),('BC009',2,'2024-01-09 08:00:00.000000','tang ca','CAL003','NV009'),('BC010',2,'2024-01-10 08:00:00.000000','tang ca','CAL003','NV010');
+INSERT INTO `bang_cham_cong` VALUES ('BC001',0,'2024-01-01 08:00:00.000000','day du','CAL001','NV001'),('BC002',0,'2024-01-02 08:00:00.000000','vang','CAL001','NV002'),('BC003',0,'2024-01-03 08:00:00.000000','di tre','CAL001','NV003'),('BC004',3,'2024-01-04 08:00:00.000000','tang ca','CAL002','NV004'),('BC005',0,'2024-01-05 08:00:00.000000','day du','CAL002','NV005'),('BC006',0,'2024-01-06 08:00:00.000000','day du','CAL002','NV006'),('BC007',0,'2024-01-07 08:00:00.000000','di tre','CAL003','NV007'),('BC008',0,'2024-01-08 08:00:00.000000','vang','CAL003','NV008'),('BC009',2,'2024-01-09 08:00:00.000000','tang ca','CAL003','NV009'),('BC010',0,'2024-01-01 08:00:00.000000','vang','CAL001','NV005');
 /*!40000 ALTER TABLE `bang_cham_cong` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,9 +57,7 @@ DROP TABLE IF EXISTS `bang_luong`;
 CREATE TABLE `bang_luong` (
   `ma_bang_luong` varchar(255) NOT NULL,
   `che_do_luong` varchar(255) DEFAULT NULL,
-  `phu_cap` double DEFAULT NULL,
   `tien_luong` double DEFAULT NULL,
-  `tong_luong` double DEFAULT NULL,
   PRIMARY KEY (`ma_bang_luong`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -70,8 +68,37 @@ CREATE TABLE `bang_luong` (
 
 LOCK TABLES `bang_luong` WRITE;
 /*!40000 ALTER TABLE `bang_luong` DISABLE KEYS */;
-INSERT INTO `bang_luong` VALUES ('BL001','gio',0,23000,0),('BL002','ca',100000,100000,0),('BL003','thang',100000,8000000,0);
+INSERT INTO `bang_luong` VALUES ('BL001','gio',23000),('BL002','ca',100000),('BL003','thang',8000000);
 /*!40000 ALTER TABLE `bang_luong` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bang_luong_nhan_vien`
+--
+
+DROP TABLE IF EXISTS `bang_luong_nhan_vien`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `bang_luong_nhan_vien` (
+  `ma_bang_luong` varchar(50) NOT NULL,
+  `ma_nhan_vien` varchar(50) NOT NULL,
+  `ngay_bat_dau` datetime DEFAULT NULL,
+  `ngay_ket_thuc` datetime DEFAULT NULL,
+  PRIMARY KEY (`ma_bang_luong`,`ma_nhan_vien`),
+  KEY `ma_nhan_vien` (`ma_nhan_vien`),
+  CONSTRAINT `bang_luong_nhan_vien_ibfk_1` FOREIGN KEY (`ma_bang_luong`) REFERENCES `bang_luong` (`ma_bang_luong`),
+  CONSTRAINT `bang_luong_nhan_vien_ibfk_2` FOREIGN KEY (`ma_nhan_vien`) REFERENCES `nhan_vien` (`ma_nhan_vien`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bang_luong_nhan_vien`
+--
+
+LOCK TABLES `bang_luong_nhan_vien` WRITE;
+/*!40000 ALTER TABLE `bang_luong_nhan_vien` DISABLE KEYS */;
+INSERT INTO `bang_luong_nhan_vien` VALUES ('BL003','NV001','2024-01-01 08:00:00','2024-12-31 23:00:00'),('BL003','NV002','2024-01-01 08:00:00','2024-12-31 23:00:00'),('BL003','NV003','2024-01-01 08:00:00','2024-12-31 23:00:00'),('BL003','NV004','2024-01-01 08:00:00','2024-12-31 23:00:00'),('BL003','NV005','2024-01-01 08:00:00','2024-12-31 23:00:00'),('BL003','NV006','2024-01-01 08:00:00','2024-12-31 23:00:00'),('BL003','NV007','2024-01-01 08:00:00','2024-12-31 23:00:00'),('BL003','NV008','2024-01-01 08:00:00','2024-12-31 23:00:00'),('BL003','NV009','2024-01-01 08:00:00','2024-12-31 23:00:00'),('BL003','NV010','2024-01-01 08:00:00','2024-12-31 23:00:00');
+/*!40000 ALTER TABLE `bang_luong_nhan_vien` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -124,6 +151,40 @@ LOCK TABLES `chi_nhanh` WRITE;
 /*!40000 ALTER TABLE `chi_nhanh` DISABLE KEYS */;
 INSERT INTO `chi_nhanh` VALUES ('CN001','123 ABC Street, District 1, Ho Chi Minh City','Chi Nhánh A','Hoạt động'),('CN002','456 XYZ Street, District 2, Ho Chi Minh City','Chi Nhánh B','Ngừng hoạt động'),('CN003','789 DEF Street, District 3, Ho Chi Minh City','Chi Nhánh C','Ngừng hoạt động');
 /*!40000 ALTER TABLE `chi_nhanh` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `chi_tiet_phieu_nhap_hang`
+--
+
+DROP TABLE IF EXISTS `chi_tiet_phieu_nhap_hang`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `chi_tiet_phieu_nhap_hang` (
+  `ma_chi_tiet_phieu_nhap_hang` varchar(50) NOT NULL,
+  `ma_hang_hoa` varchar(50) DEFAULT NULL,
+  `so_luong` smallint(6) DEFAULT NULL,
+  `gia_nhap` double DEFAULT NULL,
+  `tong` double DEFAULT NULL,
+  `giam_gia` double DEFAULT NULL,
+  `thanh_tien` double DEFAULT NULL,
+  `ma_phieu_nhap_hang` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ma_chi_tiet_phieu_nhap_hang`),
+  KEY `ma_hang_hoa` (`ma_hang_hoa`),
+  KEY `fk_ma_phieu_nhap_hang` (`ma_phieu_nhap_hang`),
+  CONSTRAINT `chi_tiet_phieu_nhap_hang_ibfk_1` FOREIGN KEY (`ma_hang_hoa`) REFERENCES `hang_hoa` (`ma_hang_hoa`),
+  CONSTRAINT `fk_ma_phieu_nhap_hang` FOREIGN KEY (`ma_phieu_nhap_hang`) REFERENCES `phieu_nhap_hang` (`phieu_nhap_hang`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `chi_tiet_phieu_nhap_hang`
+--
+
+LOCK TABLES `chi_tiet_phieu_nhap_hang` WRITE;
+/*!40000 ALTER TABLE `chi_tiet_phieu_nhap_hang` DISABLE KEYS */;
+INSERT INTO `chi_tiet_phieu_nhap_hang` VALUES ('CTPNH001','HH001',8,50000,500000,0,0,'PNH001'),('CTPNH002','HH002',10,50000,500000,0,500000,'PNH002'),('CTPNH003','HH003',10,50000,500000,0,500000,'PNH003'),('CTPNH004','HH004',10,50000,500000,0,500000,'PNH004'),('CTPNH005','HH005',10,50000,500000,0,500000,'PNH005'),('CTPNH006','HH006',10,50000,500000,0,500000,'PNH006'),('CTPNH007','HH007',10,50000,500000,0,500000,'PNH007'),('CTPNH008','HH008',10,50000,500000,0,500000,'PNH008'),('CTPNH009','HH009',10,50000,500000,0,500000,'PNH009'),('CTPNH010','HH010',10,50000,500000,0,500000,'PNH010'),('CTPNH011','HH011',10,50000,500000,0,500000,'PNH059'),('CTPNH012','HH012',10,50000,500000,0,500000,'PNH060'),('CTPNH013','HH013',10,50000,500000,0,500000,'PNH011'),('CTPNH014','HH014',10,50000,500000,0,500000,'PNH012'),('CTPNH015','HH015',10,50000,500000,0,500000,'PNH013'),('CTPNH016','HH016',10,50000,500000,0,500000,'PNH014'),('CTPNH017','HH017',10,50000,500000,0,500000,'PNH015'),('CTPNH018','HH018',10,50000,500000,0,500000,'PNH016'),('CTPNH019','HH019',10,50000,500000,0,500000,'PNH017'),('CTPNH020','HH020',10,50000,500000,0,500000,'PNH018'),('CTPNH021','HH021',10,50000,500000,0,500000,'PNH019'),('CTPNH022','HH022',10,50000,500000,0,500000,'PNH020'),('CTPNH023','HH023',10,50000,500000,0,500000,'PNH057'),('CTPNH024','HH024',10,50000,500000,0,500000,'PNH058'),('CTPNH025','HH025',10,50000,500000,0,500000,'PNH021'),('CTPNH026','HH026',10,50000,500000,0,500000,'PNH022'),('CTPNH027','HH027',10,50000,500000,0,500000,'PNH023'),('CTPNH028','HH028',10,50000,500000,0,500000,'PNH024'),('CTPNH029','HH029',10,50000,500000,0,500000,'PNH025'),('CTPNH030','HH030',10,50000,500000,0,500000,'PNH026'),('CTPNH031','HH031',10,50000,500000,0,500000,'PNH027'),('CTPNH032','HH032',10,50000,500000,0,500000,'PNH028'),('CTPNH033','HH033',10,50000,500000,0,500000,'PNH029'),('CTPNH034','HH034',10,50000,500000,0,500000,'PNH030'),('CTPNH035','HH035',10,50000,500000,0,500000,'PNH055'),('CTPNH036','HH036',10,50000,500000,0,500000,'PNH056'),('CTPNH037','HH037',10,50000,500000,0,500000,'PNH031'),('CTPNH038','HH038',10,50000,500000,0,500000,'PNH032'),('CTPNH039','HH039',10,50000,500000,0,500000,'PNH033'),('CTPNH040','HH040',10,50000,500000,0,500000,'PNH034'),('CTPNH041','HH041',10,50000,500000,0,500000,'PNH035'),('CTPNH042','HH042',10,50000,500000,0,500000,'PNH036'),('CTPNH043','HH043',10,50000,500000,0,500000,'PNH037'),('CTPNH044','HH044',10,50000,500000,0,500000,'PNH038'),('CTPNH045','HH045',10,50000,500000,0,500000,'PNH039'),('CTPNH046','HH046',10,50000,500000,0,500000,'PNH040'),('CTPNH047','HH047',10,50000,500000,0,500000,'PNH053'),('CTPNH048','HH048',10,50000,500000,0,500000,'PNH054'),('CTPNH049','HH049',10,50000,500000,0,500000,'PNH041'),('CTPNH050','HH050',10,50000,500000,0,500000,'PNH042'),('CTPNH051','HH051',10,50000,500000,0,500000,'PNH043'),('CTPNH052','HH052',10,50000,500000,0,500000,'PNH044'),('CTPNH053','HH053',10,50000,500000,0,500000,'PNH045'),('CTPNH054','HH054',10,50000,500000,0,500000,'PNH046'),('CTPNH055','HH055',10,50000,500000,0,500000,'PNH047'),('CTPNH056','HH056',10,50000,500000,0,500000,'PNH048'),('CTPNH057','HH057',10,50000,500000,0,500000,'PNH049'),('CTPNH058','HH058',10,50000,500000,0,500000,'PNH050'),('CTPNH059','HH059',10,50000,500000,0,500000,'PNH051'),('CTPNH060','HH060',10,50000,500000,0,500000,'PNH052'),('CTPNH061','HH015',6,130000,600000,0,0,'PNH001');
+/*!40000 ALTER TABLE `chi_tiet_phieu_nhap_hang` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -216,7 +277,7 @@ CREATE TABLE `hinh_anh` (
 
 LOCK TABLES `hinh_anh` WRITE;
 /*!40000 ALTER TABLE `hinh_anh` DISABLE KEYS */;
-INSERT INTO `hinh_anh` VALUES ('HA001','Nội dung hình ảnh 1','Hình ảnh 1',NULL,'NV001'),('HA002','Nội dung hình ảnh 2','Hình ảnh 2',NULL,'NV002'),('HA003','Nội dung hình ảnh 3','Hình ảnh 3',NULL,'NV003'),('HA004','Nội dung hình ảnh 4','Hình ảnh 4',NULL,'NV004'),('HA005','Nội dung hình ảnh 5','Hình ảnh 5',NULL,'NV005'),('HA006','Nội dung hình ảnh 6','Hình ảnh 6',NULL,'NV006'),('HA007','Nội dung hình ảnh 7','Hình ảnh 7',NULL,'NV007'),('HA008','Nội dung hình ảnh 8','Hình ảnh 8',NULL,'NV008'),('HA009','Nội dung hình ảnh 9','Hình ảnh 9',NULL,'NV009'),('HA010','Nội dung hình ảnh 10','Hình ảnh 10',NULL,'NV010');
+INSERT INTO `hinh_anh` VALUES ('HA001','Nhớt mobil','nhot_mobil.jpg','HH001','NV001'),('HA002','Nội dung hình ảnh 2','Hình ảnh 2',NULL,'NV002'),('HA003','Nội dung hình ảnh 3','Hình ảnh 3',NULL,'NV003'),('HA004','Nội dung hình ảnh 4','Hình ảnh 4',NULL,'NV004'),('HA005','Nội dung hình ảnh 5','Hình ảnh 5',NULL,'NV005'),('HA006','Nội dung hình ảnh 6','Hình ảnh 6',NULL,'NV006'),('HA007','Nội dung hình ảnh 7','Hình ảnh 7',NULL,'NV007'),('HA008','Nội dung hình ảnh 8','Hình ảnh 8',NULL,'NV008'),('HA009','Nội dung hình ảnh 9','Hình ảnh 9',NULL,'NV009'),('HA010','Nội dung hình ảnh 10','Hình ảnh 10',NULL,'NV010');
 /*!40000 ALTER TABLE `hinh_anh` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -363,8 +424,8 @@ DROP TABLE IF EXISTS `lich_lam_viec_ca_lam`;
 CREATE TABLE `lich_lam_viec_ca_lam` (
   `ma_lich_lam_viec` varchar(255) NOT NULL,
   `ma_ca_lam` varchar(255) NOT NULL,
+  PRIMARY KEY (`ma_lich_lam_viec`,`ma_ca_lam`),
   KEY `FKn0hwxvo702xah44p9wb3fx4ub` (`ma_ca_lam`),
-  KEY `FK7g7qi4fgb4ma6nuy5djaoxbls` (`ma_lich_lam_viec`),
   CONSTRAINT `FK7g7qi4fgb4ma6nuy5djaoxbls` FOREIGN KEY (`ma_lich_lam_viec`) REFERENCES `lich_lam_viec` (`ma_lich_lam_viec`),
   CONSTRAINT `FKn0hwxvo702xah44p9wb3fx4ub` FOREIGN KEY (`ma_ca_lam`) REFERENCES `ca_lam` (`ma_ca_lam`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -376,6 +437,7 @@ CREATE TABLE `lich_lam_viec_ca_lam` (
 
 LOCK TABLES `lich_lam_viec_ca_lam` WRITE;
 /*!40000 ALTER TABLE `lich_lam_viec_ca_lam` DISABLE KEYS */;
+INSERT INTO `lich_lam_viec_ca_lam` VALUES ('LLV001','CAL001'),('LLV002','CAL001'),('LLV003','CAL001'),('LLV004','CAL001'),('LLV005','CAL001'),('LLV006','CAL001'),('LLV007','CAL001'),('LLV008','CAL001'),('LLV001','CAL002'),('LLV002','CAL002'),('LLV003','CAL002'),('LLV004','CAL002'),('LLV005','CAL002'),('LLV006','CAL002'),('LLV007','CAL002'),('LLV008','CAL002'),('LLV009','CAL003'),('LLV010','CAL003');
 /*!40000 ALTER TABLE `lich_lam_viec_ca_lam` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -451,16 +513,13 @@ CREATE TABLE `nhan_vien` (
   `ngay_sinh` datetime(6) DEFAULT NULL,
   `so_dien_thoai` varchar(255) DEFAULT NULL,
   `ten_nhan_vien` varchar(255) DEFAULT NULL,
-  `bang_luong` varchar(255) DEFAULT NULL,
   `ma_chi_nhanh` varchar(255) DEFAULT NULL,
   `tao_boi_ma_nhan_vien` varchar(255) DEFAULT NULL,
   `ma_lich_lam_viec` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ma_nhan_vien`),
   UNIQUE KEY `UK_ie7b5kt6wc752x7tvm3sj1ja2` (`ma_lich_lam_viec`),
-  KEY `FK5acvn0lfom235o8od014jlstk` (`bang_luong`),
   KEY `FKb11u6kme9duvp5351r3b1d809` (`ma_chi_nhanh`),
   KEY `FK890nxbbbytqoal27svt7biq4b` (`tao_boi_ma_nhan_vien`),
-  CONSTRAINT `FK5acvn0lfom235o8od014jlstk` FOREIGN KEY (`bang_luong`) REFERENCES `bang_luong` (`ma_bang_luong`),
   CONSTRAINT `FK890nxbbbytqoal27svt7biq4b` FOREIGN KEY (`tao_boi_ma_nhan_vien`) REFERENCES `nhan_vien` (`ma_nhan_vien`),
   CONSTRAINT `FKb11u6kme9duvp5351r3b1d809` FOREIGN KEY (`ma_chi_nhanh`) REFERENCES `chi_nhanh` (`ma_chi_nhanh`),
   CONSTRAINT `FKrh75p9tnv7nhdyb6hp7y1u07g` FOREIGN KEY (`ma_lich_lam_viec`) REFERENCES `lich_lam_viec` (`ma_lich_lam_viec`)
@@ -473,7 +532,7 @@ CREATE TABLE `nhan_vien` (
 
 LOCK TABLES `nhan_vien` WRITE;
 /*!40000 ALTER TABLE `nhan_vien` DISABLE KEYS */;
-INSERT INTO `nhan_vien` VALUES ('NV000','068202006801','admin','Nam','2020-01-01 08:00:00.000000','2002-11-02 00:00:00.000000','0869990187','Võ Văn Đức',NULL,NULL,NULL,NULL),('NV001','123456789','Nhân viên sữa chữa','Nam','2020-01-01 08:00:00.000000','1990-01-01 00:00:00.000000','0123456789','Nguyễn Văn Anh','BL001','CN001','NV004','LLV001'),('NV002','234567890','Nhân viên kỹ thuật','Nam','2019-12-15 09:00:00.000000','1992-02-02 00:00:00.000000','0987654321','Trần Luyện','BL002','CN001','NV004','LLV002'),('NV003','345678901','Bảo vệ','Nam','2021-03-10 10:00:00.000000','1995-03-03 00:00:00.000000','0369852147','Phạm Văn Chiêu','BL003','CN001','NV004','LLV003'),('NV004','456789012','Kế toán viên','Nữ','2020-06-20 11:00:00.000000','1988-04-04 00:00:00.000000','0246857319','Hoàng Thị D','BL003','CN001','NV000','LLV004'),('NV005','567890123','Kế toán viên','Nữ','2018-09-05 12:00:00.000000','1993-05-05 00:00:00.000000','0379514682','Tuyết Tuyết Nhi','BL003','CN001','NV000','LLV005'),('NV006','678901234','Nhân viên sữa chữa','Nam','2019-11-30 08:30:00.000000','1997-06-06 00:00:00.000000','0987654321','Lê Điển Tịch','BL003','CN001','NV005','LLV006'),('NV007','789012345','Nhân viên sữa chữa','Nam','2021-01-15 10:45:00.000000','1991-07-07 00:00:00.000000','0369852147','Nguyễn Văn Giang','BL003','CN001','NV004','LLV007'),('NV008','890123456','Nhân viên sữa chữa','Nam','2019-07-05 11:15:00.000000','1994-08-08 00:00:00.000000','0246857319','Trần Trúc Huyên','BL003','CN001','NV004','LLV008'),('NV009','901234567','Nhân viên sữa chữa','Nam','2022-04-18 13:20:00.000000','1989-09-09 00:00:00.000000','0379514682','Phạm Văn Linh','BL003','CN001','NV005','LLV009'),('NV010','012345678','Nhân viên sữa chữa','Nam','2018-11-25 14:30:00.000000','1996-10-10 00:00:00.000000','0987654321','Võ Tòng','BL003','CN001','NV005','LLV010');
+INSERT INTO `nhan_vien` VALUES ('NV000','068202006801','admin','Nam','2020-01-01 08:00:00.000000','2002-11-02 00:00:00.000000','0869990187','Võ Văn Đức',NULL,NULL,NULL),('NV001','123456789','Nhân viên sữa chữa','Nam','2020-01-01 08:00:00.000000','1990-01-01 00:00:00.000000','0123456789','Nguyễn Văn Anh','CN001','NV004','LLV001'),('NV002','234567890','Nhân viên kỹ thuật','Nam','2019-12-15 09:00:00.000000','1992-02-02 00:00:00.000000','0987654321','Trần Luyện','CN001','NV004','LLV002'),('NV003','345678901','Bảo vệ','Nam','2021-03-10 10:00:00.000000','1995-03-03 00:00:00.000000','0369852147','Phạm Văn Chiêu','CN001','NV004','LLV003'),('NV004','456789012','Kế toán viên','Nữ','2020-06-20 11:00:00.000000','1988-04-04 00:00:00.000000','0246857319','Hoàng Thị D','CN001','NV000','LLV004'),('NV005','567890123','Kế toán viên','Nữ','2018-09-05 12:00:00.000000','1993-05-05 00:00:00.000000','0379514682','Tuyết Tuyết Nhi','CN001','NV000','LLV005'),('NV006','678901234','Nhân viên sữa chữa','Nam','2019-11-30 08:30:00.000000','1997-06-06 00:00:00.000000','0987654321','Lê Điển Tịch','CN001','NV005','LLV006'),('NV007','789012345','Nhân viên sữa chữa','Nam','2021-01-15 10:45:00.000000','1991-07-07 00:00:00.000000','0369852147','Nguyễn Văn Giang','CN001','NV004','LLV007'),('NV008','890123456','Nhân viên sữa chữa','Nam','2019-07-05 11:15:00.000000','1994-08-08 00:00:00.000000','0246857319','Trần Trúc Huyên','CN001','NV004','LLV008'),('NV009','901234567','Nhân viên sữa chữa','Nam','2022-04-18 13:20:00.000000','1989-09-09 00:00:00.000000','0379514682','Phạm Văn Linh','CN001','NV005','LLV009'),('NV010','012345678','Nhân viên sữa chữa','Nam','2018-11-25 14:30:00.000000','1996-10-10 00:00:00.000000','0987654321','Võ Tòng','CN001','NV005','LLV010');
 /*!40000 ALTER TABLE `nhan_vien` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -547,13 +606,17 @@ CREATE TABLE `phieu_nhap_hang` (
   `thoi_gian` datetime(6) DEFAULT NULL,
   `tong` double DEFAULT NULL,
   `trang_thai` varchar(255) DEFAULT NULL,
-  `ma_hang_hoa` varchar(255) DEFAULT NULL,
   `ma_nha_cung_cap` varchar(255) DEFAULT NULL,
+  `ma_chi_nhanh` varchar(50) DEFAULT NULL,
+  `ma_nhan_vien` varchar(50) DEFAULT NULL,
+  `tien_da_tra` double DEFAULT NULL,
   PRIMARY KEY (`phieu_nhap_hang`),
-  KEY `FKi7gdrduv9lm993vywctoc145t` (`ma_hang_hoa`),
   KEY `FK4t3f4mnp77xa20a7kfjtpyoep` (`ma_nha_cung_cap`),
+  KEY `fk_ma_chi_nhanh` (`ma_chi_nhanh`),
+  KEY `fk_ma_nhan_vien` (`ma_nhan_vien`),
   CONSTRAINT `FK4t3f4mnp77xa20a7kfjtpyoep` FOREIGN KEY (`ma_nha_cung_cap`) REFERENCES `nha_cung_cap` (`ma_nha_cung_cap`),
-  CONSTRAINT `FKi7gdrduv9lm993vywctoc145t` FOREIGN KEY (`ma_hang_hoa`) REFERENCES `hang_hoa` (`ma_hang_hoa`)
+  CONSTRAINT `fk_ma_chi_nhanh` FOREIGN KEY (`ma_chi_nhanh`) REFERENCES `chi_nhanh` (`ma_chi_nhanh`),
+  CONSTRAINT `fk_ma_nhan_vien` FOREIGN KEY (`ma_nhan_vien`) REFERENCES `nhan_vien` (`ma_nhan_vien`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -563,7 +626,7 @@ CREATE TABLE `phieu_nhap_hang` (
 
 LOCK TABLES `phieu_nhap_hang` WRITE;
 /*!40000 ALTER TABLE `phieu_nhap_hang` DISABLE KEYS */;
-INSERT INTO `phieu_nhap_hang` VALUES ('PNH001',0,'2024-01-01 08:00:00.000000',5000000,'Hoàn thành','HH001','NCC001'),('PNH002',0,'2024-01-02 10:30:00.000000',7000000,'Hoàn thành','HH002','NCC001'),('PNH003',0,'2024-01-03 09:15:00.000000',5500000,'Hoàn thành','HH003','NCC001'),('PNH004',0,'2024-01-04 11:20:00.000000',6000000,'Hoàn thành','HH004','NCC001'),('PNH005',0,'2024-01-05 08:45:00.000000',8000000,'Hoàn thành','HH005','NCC001'),('PNH006',0,'2024-01-06 10:00:00.000000',7500000,'Hoàn thành','HH006','NCC001'),('PNH007',0,'2024-01-07 09:30:00.000000',5300000,'Hoàn thành','HH007','NCC001'),('PNH008',0,'2024-01-08 10:45:00.000000',6800000,'Hoàn thành','HH008','NCC001'),('PNH009',0,'2024-01-09 08:20:00.000000',6200000,'Hoàn thành','HH009','NCC001'),('PNH010',0,'2024-01-10 11:10:00.000000',5800000,'Hoàn thành','HH010','NCC001'),('PNH011',0,'2024-01-11 09:50:00.000000',7300000,'Hoàn thành','HH011','NCC002'),('PNH012',0,'2024-01-12 10:15:00.000000',5400000,'Hoàn thành','HH012','NCC002'),('PNH013',0,'2024-01-13 08:30:00.000000',6700000,'Hoàn thành','HH013','NCC002'),('PNH014',0,'2024-01-14 11:25:00.000000',5900000,'Hoàn thành','HH014','NCC002'),('PNH015',0,'2024-01-15 09:40:00.000000',7200000,'Hoàn thành','HH015','NCC002'),('PNH016',0,'2024-01-16 10:05:00.000000',5600000,'Hoàn thành','HH016','NCC002'),('PNH017',0,'2024-01-17 08:15:00.000000',6900000,'Hoàn thành','HH017','NCC002'),('PNH018',0,'2024-01-18 11:30:00.000000',5700000,'Hoàn thành','HH018','NCC002'),('PNH019',0,'2024-01-19 09:35:00.000000',7400000,'Hoàn thành','HH019','NCC002'),('PNH020',0,'2024-01-20 10:20:00.000000',5500000,'Hoàn thành','HH020','NCC002'),('PNH021',0,'2024-01-21 08:40:00.000000',7100000,'Hoàn thành','HH021','NCC003'),('PNH022',0,'2024-01-22 11:15:00.000000',5600000,'Hoàn thành','HH022','NCC003'),('PNH023',0,'2024-01-23 09:25:00.000000',6900000,'Hoàn thành','HH023','NCC003'),('PNH024',0,'2024-01-24 10:50:00.000000',5300000,'Hoàn thành','HH024','NCC003'),('PNH025',0,'2024-01-25 08:10:00.000000',7200000,'Hoàn thành','HH025','NCC003'),('PNH026',0,'2024-01-26 11:00:00.000000',5800000,'Hoàn thành','HH026','NCC003'),('PNH027',0,'2024-01-27 09:45:00.000000',7100000,'Hoàn thành','HH027','NCC003'),('PNH028',0,'2024-01-28 10:35:00.000000',5400000,'Hoàn thành','HH028','NCC003'),('PNH029',0,'2024-01-29 08:55:00.000000',6800000,'Hoàn thành','HH029','NCC003'),('PNH030',0,'2024-01-30 11:20:00.000000',5900000,'Hoàn thành','HH030','NCC003'),('PNH031',0,'2024-01-31 09:30:00.000000',7300000,'Hoàn thành','HH031','NCC004'),('PNH032',0,'2024-02-01 08:00:00.000000',6000000,'Hoàn thành','HH032','NCC004'),('PNH033',0,'2024-02-02 10:30:00.000000',7500000,'Hoàn thành','HH033','NCC004'),('PNH034',0,'2024-02-03 09:15:00.000000',5400000,'Hoàn thành','HH034','NCC004'),('PNH035',0,'2024-02-04 11:20:00.000000',6900000,'Hoàn thành','HH035','NCC004'),('PNH036',0,'2024-02-05 08:45:00.000000',5700000,'Hoàn thành','HH036','NCC004'),('PNH037',0,'2024-02-06 10:00:00.000000',7200000,'Hoàn thành','HH037','NCC004'),('PNH038',0,'2024-02-07 09:30:00.000000',5600000,'Hoàn thành','HH038','NCC004'),('PNH039',0,'2024-02-08 10:45:00.000000',6900000,'Hoàn thành','HH039','NCC004'),('PNH040',0,'2024-02-09 08:20:00.000000',5300000,'Hoàn thành','HH040','NCC004'),('PNH041',0,'2024-02-10 11:10:00.000000',7100000,'Hoàn thành','HH041','NCC005'),('PNH042',0,'2024-02-11 09:50:00.000000',5500000,'Hoàn thành','HH042','NCC005'),('PNH043',0,'2024-02-12 10:15:00.000000',6900000,'Hoàn thành','HH043','NCC005'),('PNH044',0,'2024-02-13 08:30:00.000000',5800000,'Hoàn thành','HH044','NCC005'),('PNH045',0,'2024-02-14 11:25:00.000000',7000000,'Hoàn thành','HH045','NCC005'),('PNH046',0,'2024-02-15 09:40:00.000000',5400000,'Hoàn thành','HH046','NCC005'),('PNH047',0,'2024-02-16 10:05:00.000000',7200000,'Hoàn thành','HH047','NCC005'),('PNH048',0,'2024-02-17 08:15:00.000000',5600000,'Hoàn thành','HH048','NCC005'),('PNH049',0,'2024-02-18 11:30:00.000000',6900000,'Hoàn thành','HH049','NCC005'),('PNH050',0,'2024-02-19 09:35:00.000000',5500000,'Hoàn thành','HH050','NCC005'),('PNH051',0,'2024-02-20 10:20:00.000000',7100000,'Hoàn thành','HH051','NCC005'),('PNH052',0,'2024-02-21 08:40:00.000000',5600000,'Hoàn thành','HH052','NCC005'),('PNH053',0,'2024-02-22 11:15:00.000000',6900000,'Hoàn thành','HH053','NCC004'),('PNH054',0,'2024-02-23 09:25:00.000000',5300000,'Hoàn thành','HH054','NCC004'),('PNH055',0,'2024-02-24 10:50:00.000000',7200000,'Hoàn thành','HH055','NCC003'),('PNH056',0,'2024-02-25 08:10:00.000000',5900000,'Hoàn thành','HH056','NCC003'),('PNH057',0,'2024-02-26 11:00:00.000000',7100000,'Hoàn thành','HH057','NCC002'),('PNH058',0,'2024-02-27 09:45:00.000000',5400000,'Hoàn thành','HH058','NCC002'),('PNH059',0,'2024-02-28 10:35:00.000000',6800000,'Hoàn thành','HH059','NCC001'),('PNH060',0,'2024-02-29 08:55:00.000000',5700000,'Hoàn thành','HH060','NCC001');
+INSERT INTO `phieu_nhap_hang` VALUES ('PNH001',0,'2024-01-01 08:00:00.000000',5000000,'Đã nhập hàng','NCC001','CN001','NV004',0),('PNH002',0,'2024-01-02 10:30:00.000000',7000000,'Chưa nhập hàng','NCC001','CN001','NV004',0),('PNH003',0,'2024-01-03 09:15:00.000000',5500000,'Chưa nhập hàng','NCC001','CN001','NV004',0),('PNH004',0,'2024-01-04 11:20:00.000000',6000000,'Đã nhập hàng','NCC001','CN001','NV004',0),('PNH005',0,'2024-01-05 08:45:00.000000',8000000,'Đã nhập hàng','NCC001','CN001','NV004',0),('PNH006',0,'2024-01-06 10:00:00.000000',7500000,'Đã nhập hàng','NCC001','CN001','NV004',0),('PNH007',0,'2024-01-07 09:30:00.000000',5300000,'Chưa nhập hàng','NCC001','CN001','NV004',0),('PNH008',0,'2024-01-08 10:45:00.000000',6800000,'Chưa nhập hàng','NCC001','CN001','NV004',0),('PNH009',0,'2024-01-09 08:20:00.000000',6200000,'Đã nhập hàng','NCC001','CN001','NV004',0),('PNH010',0,'2024-01-10 11:10:00.000000',5800000,'Đã thanh toán','NCC001','CN001','NV004',0),('PNH011',0,'2024-01-11 09:50:00.000000',7300000,'Đã thanh toán','NCC002','CN001','NV004',0),('PNH012',0,'2024-01-12 10:15:00.000000',5400000,'Đã nhập hàng','NCC002','CN001','NV004',0),('PNH013',0,'2024-01-13 08:30:00.000000',6700000,'Đã thanh toán','NCC002','CN001','NV004',0),('PNH014',0,'2024-01-14 11:25:00.000000',5900000,'Đã nhập hàng','NCC002','CN001','NV004',0),('PNH015',0,'2024-01-15 09:40:00.000000',7200000,'Chưa nhập hàng','NCC002','CN001','NV004',0),('PNH016',0,'2024-01-16 10:05:00.000000',5600000,'Đã nhập hàng','NCC002','CN001','NV004',0),('PNH017',0,'2024-01-17 08:15:00.000000',6900000,'Đã nhập hàng','NCC002','CN001','NV004',0),('PNH018',0,'2024-01-18 11:30:00.000000',5700000,'Đã nhập hàng','NCC002','CN001','NV004',0),('PNH019',0,'2024-01-19 09:35:00.000000',7400000,'Đã nhập hàng','NCC002','CN001','NV004',0),('PNH020',0,'2024-01-20 10:20:00.000000',5500000,'Đã thanh toán','NCC002','CN001','NV004',0),('PNH021',0,'2024-01-21 08:40:00.000000',7100000,'Đã nhập hàng','NCC003','CN001','NV004',0),('PNH022',0,'2024-01-22 11:15:00.000000',5600000,'Đã nhập hàng','NCC003','CN001','NV004',0),('PNH023',0,'2024-01-23 09:25:00.000000',6900000,'Chưa nhập hàng','NCC003','CN001','NV004',0),('PNH024',0,'2024-01-24 10:50:00.000000',5300000,'Đã thanh toán','NCC003','CN001','NV004',0),('PNH025',0,'2024-01-25 08:10:00.000000',7200000,'Đã thanh toán','NCC003','CN001','NV004',0),('PNH026',0,'2024-01-26 11:00:00.000000',5800000,'Chưa nhập hàng','NCC003','CN001','NV004',0),('PNH027',0,'2024-01-27 09:45:00.000000',7100000,'Chưa nhập hàng','NCC003','CN001','NV004',0),('PNH028',0,'2024-01-28 10:35:00.000000',5400000,'Đã nhập hàng','NCC003','CN001','NV004',0),('PNH029',0,'2024-01-29 08:55:00.000000',6800000,'Chưa nhập hàng','NCC003','CN001','NV004',0),('PNH030',0,'2024-01-30 11:20:00.000000',5900000,'Đã nhập hàng','NCC003','CN001','NV004',0),('PNH031',0,'2024-01-31 09:30:00.000000',7300000,'Đã nhập hàng','NCC004','CN001','NV005',0),('PNH032',0,'2024-02-01 08:00:00.000000',6000000,'Đã nhập hàng','NCC004','CN001','NV005',0),('PNH033',0,'2024-02-02 10:30:00.000000',7500000,'Đã nhập hàng','NCC004','CN001','NV005',0),('PNH034',0,'2024-02-03 09:15:00.000000',5400000,'Chưa nhập hàng','NCC004','CN001','NV005',0),('PNH035',0,'2024-02-04 11:20:00.000000',6900000,'Đã nhập hàng','NCC004','CN001','NV005',0),('PNH036',0,'2024-02-05 08:45:00.000000',5700000,'Chưa nhập hàng','NCC004','CN001','NV005',0),('PNH037',0,'2024-02-06 10:00:00.000000',7200000,'Đã nhập hàng','NCC004','CN001','NV005',0),('PNH038',0,'2024-02-07 09:30:00.000000',5600000,'Đã nhập hàng','NCC004','CN001','NV005',0),('PNH039',0,'2024-02-08 10:45:00.000000',6900000,'Chưa nhập hàng','NCC004','CN001','NV005',0),('PNH040',0,'2024-02-09 08:20:00.000000',5300000,'Đã nhập hàng','NCC004','CN001','NV005',0),('PNH041',0,'2024-02-10 11:10:00.000000',7100000,'Chưa nhập hàng','NCC005','CN001','NV005',0),('PNH042',0,'2024-02-11 09:50:00.000000',5500000,'Đã thanh toán','NCC005','CN001','NV005',0),('PNH043',0,'2024-02-12 10:15:00.000000',6900000,'Đã thanh toán','NCC005','CN001','NV005',0),('PNH044',0,'2024-02-13 08:30:00.000000',5800000,'Đã nhập hàng','NCC005','CN001','NV005',0),('PNH045',0,'2024-02-14 11:25:00.000000',7000000,'Chưa nhập hàng','NCC005','CN001','NV005',0),('PNH046',0,'2024-02-15 09:40:00.000000',5400000,'Chưa nhập hàng','NCC005','CN001','NV005',0),('PNH047',0,'2024-02-16 10:05:00.000000',7200000,'Chưa nhập hàng','NCC005','CN001','NV005',0),('PNH048',0,'2024-02-17 08:15:00.000000',5600000,'Đã thanh toán','NCC005','CN001','NV005',0),('PNH049',0,'2024-02-18 11:30:00.000000',6900000,'Chưa nhập hàng','NCC005','CN001','NV005',0),('PNH050',0,'2024-02-19 09:35:00.000000',5500000,'Đã nhập hàng','NCC005','CN001','NV005',0),('PNH051',0,'2024-02-20 10:20:00.000000',7100000,'Đã thanh toán','NCC005','CN001','NV005',0),('PNH052',0,'2024-02-21 08:40:00.000000',5600000,'Đã thanh toán','NCC005','CN001','NV005',0),('PNH053',0,'2024-02-22 11:15:00.000000',6900000,'Đã nhập hàng','NCC004','CN001','NV005',0),('PNH054',0,'2024-02-23 09:25:00.000000',5300000,'Đã nhập hàng','NCC004','CN001','NV005',0),('PNH055',0,'2024-02-24 10:50:00.000000',7200000,'Chưa nhập hàng','NCC003','CN001','NV005',0),('PNH056',0,'2024-02-25 08:10:00.000000',5900000,'Đã nhập hàng','NCC003','CN001','NV005',0),('PNH057',0,'2024-02-26 11:00:00.000000',7100000,'Chưa nhập hàng','NCC002','CN001','NV005',0),('PNH058',0,'2024-02-27 09:45:00.000000',5400000,'Chưa nhập hàng','NCC002','CN001','NV005',0),('PNH059',0,'2024-02-28 10:35:00.000000',6800000,'Đã nhập hàng','NCC001','CN001','NV005',0),('PNH060',0,'2024-02-29 08:55:00.000000',5700000,'Đã nhập hàng','NCC001','CN001','NV005',0);
 /*!40000 ALTER TABLE `phieu_nhap_hang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -644,6 +707,31 @@ INSERT INTO `phieu_tra_hang` VALUES ('PTH001',1500000,1000000,'2024-01-18 08:00:
 UNLOCK TABLES;
 
 --
+-- Table structure for table `phu_cap`
+--
+
+DROP TABLE IF EXISTS `phu_cap`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `phu_cap` (
+  `ma_phu_cap` varchar(50) NOT NULL,
+  `noi_dung` varchar(255) DEFAULT NULL,
+  `tien_phu_cap` double DEFAULT NULL,
+  PRIMARY KEY (`ma_phu_cap`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `phu_cap`
+--
+
+LOCK TABLES `phu_cap` WRITE;
+/*!40000 ALTER TABLE `phu_cap` DISABLE KEYS */;
+INSERT INTO `phu_cap` VALUES ('PC001','Tiền xăng',200000),('PC002','Tết',2000000);
+/*!40000 ALTER TABLE `phu_cap` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `the_kho`
 --
 
@@ -693,4 +781,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-16 13:05:26
+-- Dump completed on 2024-03-20 20:57:00
