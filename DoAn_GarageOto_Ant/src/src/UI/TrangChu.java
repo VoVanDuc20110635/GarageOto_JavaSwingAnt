@@ -484,6 +484,7 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel19 = new javax.swing.JPanel();
         jYearChooser2 = new com.toedter.calendar.JYearChooser();
         jRadioButton12 = new javax.swing.JRadioButton();
+        jPanel44 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -4388,6 +4389,19 @@ public class TrangChu extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Doanh thu", jPanel27);
 
+        javax.swing.GroupLayout jPanel44Layout = new javax.swing.GroupLayout(jPanel44);
+        jPanel44.setLayout(jPanel44Layout);
+        jPanel44Layout.setHorizontalGroup(
+            jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1540, Short.MAX_VALUE)
+        );
+        jPanel44Layout.setVerticalGroup(
+            jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 665, Short.MAX_VALUE)
+        );
+
+        jTabbedPane2.addTab("tab7", jPanel44);
+
         getContentPane().add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 1540, 700));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Screenshot 2024-02-26 152859.jpg"))); // NOI18N
@@ -4462,7 +4476,7 @@ public class TrangChu extends javax.swing.JFrame {
 //        phieuNhapHang.setTrangThai(model.getValueAt(index, 5).toString());
         frame_ChiTietDonNhapHang frame_chiTietDonNhapHang = new frame_ChiTietDonNhapHang(phieuNhapHang);
         frame_chiTietDonNhapHang.setVisible(true);
-        frame_chiTietDonNhapHang.setSize(1000, 630);
+        frame_chiTietDonNhapHang.setSize(1000, 720);
         frame_chiTietDonNhapHang.setLocation(0,0);
     }//GEN-LAST:event_tb_danhSachPhieuNhapHangMouseClicked
 
@@ -4822,6 +4836,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel41;
     private javax.swing.JPanel jPanel42;
     private javax.swing.JPanel jPanel43;
+    private javax.swing.JPanel jPanel44;
     private javax.swing.JPanel jPanel45;
     private javax.swing.JPanel jPanel46;
     private javax.swing.JPanel jPanel47;
