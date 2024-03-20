@@ -39,7 +39,7 @@ public class ChiNhanhServive {
     }
     
     public ChiNhanh hienThiChiNhanhTheoMaChiNhanh (String maChiNhanh) throws SQLException{ //
-        String query = String.format("select * from chi_nhanh where ma_chi_nhanh = '%s'", maChiNhanh);
+        String query = String.format("select * from chi_nhanh where ma_chi_nhanh = '%s'", maChiNhanh);        
         ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();

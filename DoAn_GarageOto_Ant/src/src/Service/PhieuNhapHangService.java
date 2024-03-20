@@ -23,6 +23,10 @@ import src.Util.Util;
  */
 public class PhieuNhapHangService {
     private Util util = new Util();
+    private NhaCungCapService nhaCungCapService = new NhaCungCapService();
+    private ChiNhanhServive chiNhanhServive = new ChiNhanhServive();
+    private NhanVienService nhanVienService = new NhanVienService();
+    
     public List<PhieuNhapHang> hienThiTatCaPhieuNhapHang () throws SQLException{ //
         String query = String.format("select * from phieu_nhap_hang");
         ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
@@ -64,9 +68,21 @@ public class PhieuNhapHangService {
                 phieuNhapHang.setMaNhaCungCap(resultTable.getString("ma_nha_cung_cap"));
                 phieuNhapHang.setMaChiNhanh(resultTable.getString("ma_chi_nhanh"));
                 phieuNhapHang.setMaNhanVienTao(resultTable.getString("ma_nhan_vien"));
-                phieuNhapHang.setTienDaTra(resultTable.getShort("tien_da_tra"));
-            }
+                phieuNhapHang.setTienDaTra(resultTable.getShort("tien_da_tra"));            }
         }
         return phieuNhapHang;
+    }
+    
+    public int updatePhieuNhapHang (PhieuNhapHang phieuNhapHang) throws SQLException{ //   
+        try{
+           String query = String.format("update phieu_nhap_hang set trang_thai='%s', ma_nha_cung_cap='%s' where phieu_nhap_hang='%s'",
+                             String.valueOf(phieuNhapHang.getTrangThai()),
+                             String.valueOf(phieuNhapHang.getMaNhaCungCap()),
+                             String.valueOf(phieuNhapHang.getPhieuNhapHang()));
+            ConnectorDB.executeUpdateQueryConnectorDB(query);
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
     }
 }

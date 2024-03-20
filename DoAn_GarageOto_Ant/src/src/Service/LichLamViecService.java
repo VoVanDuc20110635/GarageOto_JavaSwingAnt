@@ -30,8 +30,8 @@ public class LichLamViecService {
                 lichLamViec.setMaLichLamViec(resultTable.getString("ma_lich_lam_viec"));
                 lichLamViec.setGhiChu(resultTable.getString("ghi_chu"));
                 lichLamViec.setLapLai(Boolean.parseBoolean(resultTable.getString("lap_lai")));
-                lichLamViec.setNgayBatDau(util.localDateParseMethodWithoutNanosecond(resultTable.getString("ngay_bat_dau")));
-                lichLamViec.setNgayKetThuc(util.localDateParseMethodWithoutNanosecond(resultTable.getString("ngay_ket_thuc")));
+                lichLamViec.setNgayBatDau(util.localDateParseMethod(resultTable.getString("ngay_bat_dau")));
+                lichLamViec.setNgayKetThuc(util.localDateParseMethod(resultTable.getString("ngay_ket_thuc")));
             }
         }
         return lichLamViec;

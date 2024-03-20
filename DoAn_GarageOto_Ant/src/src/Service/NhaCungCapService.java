@@ -35,11 +35,10 @@ public class NhaCungCapService {
                 nhaCungCap.setDiaChi(resultTable.getString("dia_chi"));
                 nhaCungCap.setEmail(resultTable.getString("email"));
                 nhaCungCap.setMaSoThue(resultTable.getString("ma_so_thue"));
-                nhaCungCap.setNgayTao(util.localDateParseMethodWithoutNanosecond("ngay_tao"));
+                nhaCungCap.setNgayTao(util.localDateParseMethod(resultTable.getString("ngay_tao")));
                 nhaCungCap.setSoDienThoai(resultTable.getString("so_dien_thoai"));
                 nhaCungCap.setTenNhaCungCap(resultTable.getString("ten_nha_cung_cap"));
                 nhaCungCap.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
-                nhaCungCap.setNhanVien(nhanVienService.hienThiNhanVienTheoMaNhanVien(nhaCungCap.getMaNhanVien()));
             }
             danhSachNhaCungCap.add(nhaCungCap);
         }
@@ -59,13 +58,14 @@ public class NhaCungCapService {
                 nhaCungCap.setDiaChi(resultTable.getString("dia_chi"));
                 nhaCungCap.setEmail(resultTable.getString("email"));
                 nhaCungCap.setMaSoThue(resultTable.getString("ma_so_thue"));
-                nhaCungCap.setNgayTao(util.localDateParseMethodWithoutNanosecond("ngay_tao"));
+                nhaCungCap.setNgayTao(util.localDateParseMethod(resultTable.getString("ngay_tao")));
                 nhaCungCap.setSoDienThoai(resultTable.getString("so_dien_thoai"));
                 nhaCungCap.setTenNhaCungCap(resultTable.getString("ten_nha_cung_cap"));
                 nhaCungCap.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
-                nhaCungCap.setNhanVien(nhanVienService.hienThiNhanVienTheoMaNhanVien(nhaCungCap.getMaNhanVien()));
             }
         }
         return nhaCungCap;
     }
+    
+    
 }
