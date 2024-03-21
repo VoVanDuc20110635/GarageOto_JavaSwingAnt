@@ -29,9 +29,15 @@ import javax.swing.table.TableModel;
 import src.Model.BangChamCong;
 import src.Model.HangHoa;
 import src.Model.HinhAnh;
+import src.Model.HoaDon;
+import src.Model.KhachHang;
 import src.Model.PhieuNhapHang;
 import src.Service.HangHoaService;
 import src.Service.HinhAnhService;
+import src.Service.HoaDonService;
+import src.Service.KhachHangService;
+import src.Service.NhaCungCapService;
+import src.Service.NhanVienService;
 import src.Service.PhieuNhapHangService;
 import src.UI.HangHoa.frame_ChiTietDonNhapHang;
 import src.Util.Util;
@@ -48,6 +54,10 @@ public class TrangChu extends javax.swing.JFrame {
     private PhieuNhapHangService phieuNhapHangService = new PhieuNhapHangService();
     private HangHoaService hangHoaService = new HangHoaService();
     private HinhAnhService hinhAnhService = new HinhAnhService();
+    private HoaDonService hoaDonService = new HoaDonService();
+    private NhanVienService nhanVienService = new NhanVienService();
+    private NhaCungCapService nhaCungCapService = new NhaCungCapService();
+    private KhachHangService khachHangService = new KhachHangService();
     
     private Util util = new Util();
     public TrangChu() {
@@ -116,7 +126,7 @@ public class TrangChu extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_danhSachHangHoa = new javax.swing.JTable();
-        jTabbedPane4 = new javax.swing.JTabbedPane();
+        tabPane_giaoDich = new javax.swing.JTabbedPane();
         jPanel9 = new javax.swing.JPanel();
         jPanel65 = new javax.swing.JPanel();
         jPanel84 = new javax.swing.JPanel();
@@ -231,7 +241,7 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel157 = new javax.swing.JLabel();
         jDateChooser7 = new com.toedter.calendar.JDateChooser();
         jScrollPane10 = new javax.swing.JScrollPane();
-        jTable6 = new javax.swing.JTable();
+        tb_danhSachHoaDon = new javax.swing.JTable();
         jButton17 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -837,6 +847,12 @@ public class TrangChu extends javax.swing.JFrame {
         jButton1.getAccessibleContext().setAccessibleName("btn_ThemHangHoa");
 
         jTabbedPane2.addTab("Hàng hóa", jPanel26);
+
+        tabPane_giaoDich.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                tabPane_giaoDichStateChanged(evt);
+            }
+        });
 
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1650,7 +1666,7 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel9.add(jPanel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 70, 710, 550));
 
-        jTabbedPane4.addTab("Đặt hàng", jPanel9);
+        tabPane_giaoDich.addTab("Đặt hàng", jPanel9);
 
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1766,7 +1782,8 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel8.add(jPanel126, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 250, 120));
 
-        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+        tb_danhSachHoaDon.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tb_danhSachHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
@@ -1777,7 +1794,8 @@ public class TrangChu extends javax.swing.JFrame {
                 "Mã hóa đơn", "Thời gian", "Mã trả hàng", "Nhân viên", "Người nộp/ nhận", "Loại thu chi", "Trạng thái", "Tổng tiền", "Giảm giá", "Tiền đã trả"
             }
         ));
-        jScrollPane10.setViewportView(jTable6);
+        tb_danhSachHoaDon.setRowHeight(30);
+        jScrollPane10.setViewportView(tb_danhSachHoaDon);
 
         jPanel8.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 1230, 500));
 
@@ -1788,7 +1806,7 @@ public class TrangChu extends javax.swing.JFrame {
         jButton17.setText("Xuất file");
         jPanel8.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1410, 590, -1, -1));
 
-        jTabbedPane4.addTab("Hóa đơn", jPanel8);
+        tabPane_giaoDich.addTab("Hóa đơn", jPanel8);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1844,7 +1862,7 @@ public class TrangChu extends javax.swing.JFrame {
                 .addGap(33, 33, 33))
         );
 
-        jTabbedPane4.addTab("Trả hàng", jPanel5);
+        tabPane_giaoDich.addTab("Trả hàng", jPanel5);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -2084,7 +2102,7 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel6.add(jPanel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 390, 40));
 
-        jTabbedPane4.addTab("Yêu cầu sữa chửa", jPanel6);
+        tabPane_giaoDich.addTab("Yêu cầu sữa chửa", jPanel6);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -2317,9 +2335,9 @@ public class TrangChu extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jTabbedPane4.addTab("Nhập hàng", jPanel4);
+        tabPane_giaoDich.addTab("Nhập hàng", jPanel4);
 
-        jTabbedPane2.addTab("Giao dịch", jTabbedPane4);
+        jTabbedPane2.addTab("Giao dịch", tabPane_giaoDich);
 
         jPanel71.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -4506,6 +4524,50 @@ public class TrangChu extends javax.swing.JFrame {
         frame_chiTietDonNhapHang.setLocation(0,0);
     }//GEN-LAST:event_tb_danhSachPhieuNhapHangMouseClicked
 
+    private void tabPane_giaoDichStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabPane_giaoDichStateChanged
+        int selectedIndex = tabPane_giaoDich.getSelectedIndex();
+        if (selectedIndex == 1) { // Change 1 to the index of your specific tab
+            hienThiDanhSachHoaDon();
+        }
+    }//GEN-LAST:event_tabPane_giaoDichStateChanged
+    
+    private void hienThiDanhSachHoaDon(){
+        try {
+            List<HoaDon> danhSachHoaDon = hoaDonService.hienThiTatCaHoaDon();
+            DefaultTableModel recordTable = (DefaultTableModel)tb_danhSachHoaDon.getModel();
+        recordTable.setRowCount(0);
+        for (HoaDon hoaDon : danhSachHoaDon) {
+            Vector columnData = new Vector();
+            columnData.add(hoaDon.getMaHoaDon());
+            columnData.add(util.localDateParseMethod(hoaDon.getThoiGian()));
+            try{
+                columnData.add(hoaDon.getMaPhieuTraHang());
+            } catch (Exception err){
+                columnData.add("");
+            }
+            
+            columnData.add(nhanVienService.hienThiNhanVienTheoMaNhanVien(hoaDon.getMaNhanVien()).getTenNhanVien());
+            if (hoaDon.getMaKhachHang() == null){
+                columnData.add(nhaCungCapService.hienThiNhaCungCapTheoMaNhaCungCap(hoaDon.getMaNhaCungCap()).getTenNhaCungCap());    
+            } else {
+                columnData.add(khachHangService.hienThiKhachHangTheoMaKhachHang(hoaDon.getMaKhachHang()).getTenKhachHang());
+            }
+            
+            
+            columnData.add(hoaDon.getLoaiThuChi());
+            columnData.add(hoaDon.getTrangThai());
+            columnData.add(hoaDon.getTongTien());
+            columnData.add(hoaDon.getGiamGia());
+            columnData.add(hoaDon.getTienDaTra());
+            recordTable.addRow(columnData);
+        }
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -4989,7 +5051,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTabbedPane jTabbedPane6;
     private javax.swing.JTable jTable10;
@@ -4998,7 +5059,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
-    private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable8;
     private javax.swing.JTable jTable9;
     private javax.swing.JTextArea jTextArea1;
@@ -5034,7 +5094,9 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField9;
     private com.toedter.calendar.JYearChooser jYearChooser1;
     private com.toedter.calendar.JYearChooser jYearChooser2;
+    private javax.swing.JTabbedPane tabPane_giaoDich;
     private javax.swing.JTable tb_danhSachHangHoa;
+    private javax.swing.JTable tb_danhSachHoaDon;
     private javax.swing.JTable tb_danhSachPhieuNhapHang;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,9 +21,11 @@ public class HoaDon {
     private String maKhachHang;
     private String maNhaCungCap;
     private String maNhanVien;
+    private String maPhieuTraHang;
     private KhachHang khachHang;
     private NhaCungCap nhaCungCap;
     private NhanVien nhanVien;
+    private PhieuTraHang phieuTraHang;
 
     public HoaDon(String maHoaDon, LocalDateTime thoiGian, String loaiThuChi, String trangThai, double tongTien, double giamGia, double tienDaTra, String maKhachHang, String maNhaCungCap, String maNhanVien) {
         this.maHoaDon = maHoaDon;
@@ -143,6 +145,22 @@ public class HoaDon {
 
     public void setNhanVien(NhanVien nhanVien) {
         this.nhanVien = nhanVien;
+    }
+
+    public String getMaPhieuTraHang() {
+        return maPhieuTraHang;
+    }
+
+    public void setMaPhieuTraHang(String maPhieuTraHang) {
+        this.maPhieuTraHang = maPhieuTraHang;
+    }
+
+    public PhieuTraHang getPhieuTraHang() {
+        return phieuTraHang;
+    }
+
+    public void setPhieuTraHang(PhieuTraHang phieuTraHang) {
+        this.phieuTraHang = phieuTraHang;
     }
     
 }
