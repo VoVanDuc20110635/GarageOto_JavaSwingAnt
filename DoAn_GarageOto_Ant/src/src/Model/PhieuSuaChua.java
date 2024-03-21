@@ -4,6 +4,8 @@
  */
 package src.Model;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author WINDOWS 10
@@ -13,6 +15,7 @@ public class PhieuSuaChua {
     private String noiDungSuaChua;
     private double tongTien;
     private String trangThai;
+    private LocalDateTime thoiGian;
     private String maHangHoa;
     private String maKhachHang;
     private String maLoaiXe;
@@ -142,6 +145,14 @@ public class PhieuSuaChua {
 
     public void setNhanVien(NhanVien nhanVien) {
         this.nhanVien = nhanVien;
+    }
+
+    public LocalDateTime getThoiGian() {
+        return thoiGian;
+    }
+
+    public void setThoiGian(LocalDateTime thoiGian) {
+        this.thoiGian = thoiGian;
     }
     
     
