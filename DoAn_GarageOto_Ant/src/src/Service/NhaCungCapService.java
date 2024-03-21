@@ -39,6 +39,8 @@ public class NhaCungCapService {
                 nhaCungCap.setSoDienThoai(resultTable.getString("so_dien_thoai"));
                 nhaCungCap.setTenNhaCungCap(resultTable.getString("ten_nha_cung_cap"));
                 nhaCungCap.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
+                nhaCungCap.setTongMua(Double.parseDouble(resultTable.getString("tong_mua")));
+                nhaCungCap.setNoCanTra(Double.parseDouble(resultTable.getString("no_can_tra")));
             }
             danhSachNhaCungCap.add(nhaCungCap);
         }
@@ -62,6 +64,8 @@ public class NhaCungCapService {
                 nhaCungCap.setSoDienThoai(resultTable.getString("so_dien_thoai"));
                 nhaCungCap.setTenNhaCungCap(resultTable.getString("ten_nha_cung_cap"));
                 nhaCungCap.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
+                nhaCungCap.setTongMua(Double.parseDouble(resultTable.getString("tong_mua")));
+                nhaCungCap.setNoCanTra(Double.parseDouble(resultTable.getString("no_can_tra")));
             }
         }
         return nhaCungCap;

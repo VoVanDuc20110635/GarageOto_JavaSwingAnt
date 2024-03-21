@@ -28,7 +28,7 @@ public class PhieuTraHangService {
         List<PhieuTraHang> danhSachPhieuTraHang = new ArrayList<>();
         while(resultTable.next()){
             PhieuTraHang phieuTraHang = new PhieuTraHang();
-            for (i= 1; i <= q; i++){
+            
                 phieuTraHang.setMaPhieuTraHang(resultTable.getString("ma_phieu_tra_hang"));
                 phieuTraHang.setCanTra(resultTable.getDouble("can_tra"));
                 phieuTraHang.setDaTra(resultTable.getDouble("da_tra"));
@@ -38,7 +38,7 @@ public class PhieuTraHangService {
                 phieuTraHang.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
                 phieuTraHang.setMaNhaCungCap(resultTable.getString("ma_nha_cung_cap"));
                 phieuTraHang.setTrangThai(resultTable.getString("trang_thai"));
-            }
+            
             danhSachPhieuTraHang.add(phieuTraHang);
         }
         return danhSachPhieuTraHang;
@@ -65,5 +65,20 @@ public class PhieuTraHangService {
             }
         }
         return phieuTraHang;
+    }
+    
+    public double tinhTongTienThuDuocSauKhiTraHang(String maKhachHang) throws SQLException{
+        String query = String.format("select * from phieu_tra_hang where ma_khach_hang = '%s'", maKhachHang);
+        double tongTien = 0;
+        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int q = resultSetMetaData.getColumnCount();
+        int i;
+        PhieuTraHang phieuTraHang = new PhieuTraHang();
+        while(resultTable.next()){
+            tongTien += resultTable.getDouble("can_tra");
+            
+        }
+        return tongTien;
     }
 }

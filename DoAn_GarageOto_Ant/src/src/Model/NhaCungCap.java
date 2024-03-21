@@ -17,6 +17,8 @@ public class NhaCungCap {
     private String email;
     private String soDienThoai;
     private String maSoThue;
+    private double noCanTra;
+    private double tongMua;
     private LocalDateTime ngayTao;
     private String maNhanVien;
     private NhanVien nhanVien;
@@ -105,6 +107,22 @@ public class NhaCungCap {
 
     public void setNhanVien(NhanVien nhanVien) {
         this.nhanVien = nhanVien;
+    }
+
+    public double getNoCanTra() {
+        return noCanTra;
+    }
+
+    public void setNoCanTra(double noCanTra) {
+        this.noCanTra = noCanTra;
+    }
+
+    public double getTongMua() {
+        return tongMua;
+    }
+
+    public void setTongMua(double tongMua) {
+        this.tongMua = tongMua;
     }
     
     
