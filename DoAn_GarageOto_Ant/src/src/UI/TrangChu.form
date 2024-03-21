@@ -2760,20 +2760,24 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable3">
+                    <Component class="javax.swing.JTable" name="tb_danhSachPhieuTraHang">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Times New Roman" size="16" style="0"/>
+                        </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="8" rowCount="4">
                             <Column editable="true" title="M&#xe3; tr&#x1ea3; h&#xe0;ng" type="java.lang.Object"/>
-                            <Column editable="true" title="Ng&#x1b0;&#x1edd;i b&#xe1;n" type="java.lang.Object"/>
-                            <Column editable="true" title="Th&#x1edd;i gian" type="java.lang.Object"/>
                             <Column editable="true" title="M&#xe3; h&#xf3;a &#x111;&#x1a1;n" type="java.lang.Object"/>
-                            <Column editable="true" title="Kh&#xe1;ch h&#xe0;ng" type="java.lang.Object"/>
-                            <Column editable="true" title="C&#x1ea7;n tr&#x1ea3; kh&#xe1;ch" type="java.lang.Object"/>
-                            <Column editable="true" title="&#x110;&#xe3; tr&#x1ea3; kh&#xe1;ch" type="java.lang.Object"/>
+                            <Column editable="true" title="Nh&#xe2;n Vi&#xea;n" type="java.lang.Object"/>
+                            <Column editable="true" title="Th&#x1edd;i gian" type="java.lang.Object"/>
+                            <Column editable="true" title="Kh&#xe1;ch h&#xe0;ng/ Nh&#xe0; cung c&#x1ea5;p" type="java.lang.Object"/>
+                            <Column editable="true" title="C&#x1ea7;n tr&#x1ea3; " type="java.lang.Object"/>
+                            <Column editable="true" title="&#x110;&#xe3; tr&#x1ea3;" type="java.lang.Object"/>
                             <Column editable="true" title="Tr&#x1ea1;ng th&#xe1;i" type="java.lang.Object"/>
                           </Table>
                         </Property>
+                        <Property name="rowHeight" type="int" value="30"/>
                       </Properties>
                     </Component>
                   </SubComponents>

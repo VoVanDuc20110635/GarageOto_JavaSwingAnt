@@ -13,21 +13,24 @@ import java.time.LocalDateTime;
 public class PhieuTraHang {
     private String maPhieuTraHang;
     private LocalDateTime thoiGian;
-    private double canTraKhach;
-    private double daTraKhach;
+    private double canTra;
+    private double daTra;
+    private String trangThai;
+    private String maNhaCungCap;
     private String maHoaDon;
     private String maKhachHang;
     private String maNhanVien;
     private HoaDon hoaDon;
     private KhachHang khachHang;
     private NhanVien nhanVien;
+    private NhaCungCap nhaCungCap;
           
 
-    public PhieuTraHang(String maPhieuTraHang, LocalDateTime thoiGian, double canTraKhach, double daTraKhach, String maHoaDon, String maKhachHang, String maNhanVien) {
+    public PhieuTraHang(String maPhieuTraHang, LocalDateTime thoiGian, double canTra, double daTra, String maHoaDon, String maKhachHang, String maNhanVien) {
         this.maPhieuTraHang = maPhieuTraHang;
         this.thoiGian = thoiGian;
-        this.canTraKhach = canTraKhach;
-        this.daTraKhach = daTraKhach;
+        this.canTra = canTra;
+        this.daTra = daTra;
         this.maHoaDon = maHoaDon;
         this.maKhachHang = maKhachHang;
         this.maNhanVien = maNhanVien;
@@ -52,20 +55,20 @@ public class PhieuTraHang {
         this.thoiGian = thoiGian;
     }
 
-    public double getCanTraKhach() {
-        return canTraKhach;
+    public double getCanTra() {
+        return canTra;
     }
 
-    public void setCanTraKhach(double canTraKhach) {
-        this.canTraKhach = canTraKhach;
+    public void setCanTra(double canTra) {
+        this.canTra = canTra;
     }
 
-    public double getDaTraKhach() {
-        return daTraKhach;
+    public double getDaTra() {
+        return daTra;
     }
 
-    public void setDaTraKhach(double daTraKhach) {
-        this.daTraKhach = daTraKhach;
+    public void setDaTra(double daTra) {
+        this.daTra = daTra;
     }
 
     public String getMaHoaDon() {
@@ -114,6 +117,30 @@ public class PhieuTraHang {
 
     public void setNhanVien(NhanVien nhanVien) {
         this.nhanVien = nhanVien;
+    }
+
+    public String getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(String trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public String getMaNhaCungCap() {
+        return maNhaCungCap;
+    }
+
+    public void setMaNhaCungCap(String maNhaCungCap) {
+        this.maNhaCungCap = maNhaCungCap;
+    }
+
+    public NhaCungCap getNhaCungCap() {
+        return nhaCungCap;
+    }
+
+    public void setNhaCungCap(NhaCungCap nhaCungCap) {
+        this.nhaCungCap = nhaCungCap;
     }
     
     

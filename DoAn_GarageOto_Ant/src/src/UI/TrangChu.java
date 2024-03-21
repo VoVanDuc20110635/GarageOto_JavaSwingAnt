@@ -32,6 +32,7 @@ import src.Model.HinhAnh;
 import src.Model.HoaDon;
 import src.Model.KhachHang;
 import src.Model.PhieuNhapHang;
+import src.Model.PhieuTraHang;
 import src.Service.HangHoaService;
 import src.Service.HinhAnhService;
 import src.Service.HoaDonService;
@@ -39,6 +40,7 @@ import src.Service.KhachHangService;
 import src.Service.NhaCungCapService;
 import src.Service.NhanVienService;
 import src.Service.PhieuNhapHangService;
+import src.Service.PhieuTraHangService;
 import src.UI.HangHoa.frame_ChiTietDonNhapHang;
 import src.Util.Util;
 
@@ -58,6 +60,7 @@ public class TrangChu extends javax.swing.JFrame {
     private NhanVienService nhanVienService = new NhanVienService();
     private NhaCungCapService nhaCungCapService = new NhaCungCapService();
     private KhachHangService khachHangService = new KhachHangService();
+    private PhieuTraHangService phieuTraHangService = new PhieuTraHangService();
     
     private Util util = new Util();
     public TrangChu() {
@@ -245,7 +248,7 @@ public class TrangChu extends javax.swing.JFrame {
         jButton17 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tb_danhSachPhieuTraHang = new javax.swing.JTable();
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
@@ -1810,7 +1813,8 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tb_danhSachPhieuTraHang.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tb_danhSachPhieuTraHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -1818,10 +1822,11 @@ public class TrangChu extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã trả hàng", "Người bán", "Thời gian", "Mã hóa đơn", "Khách hàng", "Cần trả khách", "Đã trả khách", "Trạng thái"
+                "Mã trả hàng", "Mã hóa đơn", "Nhân Viên", "Thời gian", "Khách hàng/ Nhà cung cấp", "Cần trả ", "Đã trả", "Trạng thái"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        tb_danhSachPhieuTraHang.setRowHeight(30);
+        jScrollPane3.setViewportView(tb_danhSachPhieuTraHang);
 
         jButton18.setBackground(new java.awt.Color(0, 204, 0));
         jButton18.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -4528,6 +4533,9 @@ public class TrangChu extends javax.swing.JFrame {
         int selectedIndex = tabPane_giaoDich.getSelectedIndex();
         if (selectedIndex == 1) { // Change 1 to the index of your specific tab
             hienThiDanhSachHoaDon();
+        } 
+        if (selectedIndex == 2){
+            hienThiDanhSachPhieuTraHang();
         }
     }//GEN-LAST:event_tabPane_giaoDichStateChanged
     
@@ -4559,6 +4567,39 @@ public class TrangChu extends javax.swing.JFrame {
             columnData.add(hoaDon.getTongTien());
             columnData.add(hoaDon.getGiamGia());
             columnData.add(hoaDon.getTienDaTra());
+            recordTable.addRow(columnData);
+        }
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    private void hienThiDanhSachPhieuTraHang(){
+        try {
+            List<PhieuTraHang> danhSachPhieuTraHang = phieuTraHangService.hienThiTatCaPhieuTraHang();
+            DefaultTableModel recordTable = (DefaultTableModel)tb_danhSachPhieuTraHang.getModel();
+            recordTable.setRowCount(0);
+        for (PhieuTraHang phieuTraHang : danhSachPhieuTraHang) {
+            Vector columnData = new Vector();
+            columnData.add(phieuTraHang.getMaPhieuTraHang());
+            columnData.add(phieuTraHang.getMaHoaDon());
+            columnData.add(nhanVienService.hienThiNhanVienTheoMaNhanVien(phieuTraHang.getMaNhanVien()).getTenNhanVien());
+            columnData.add(util.localDateParseMethod(phieuTraHang.getThoiGian()));
+            
+            
+            
+            if (phieuTraHang.getMaKhachHang() == null){
+                columnData.add(nhaCungCapService.hienThiNhaCungCapTheoMaNhaCungCap(phieuTraHang.getMaNhaCungCap()).getTenNhaCungCap());    
+            } else {
+                columnData.add(khachHangService.hienThiKhachHangTheoMaKhachHang(phieuTraHang.getMaKhachHang()).getTenKhachHang());
+            }
+            
+            
+            columnData.add(phieuTraHang.getCanTra());
+            columnData.add(phieuTraHang.getDaTra());
+            columnData.add(phieuTraHang.getTrangThai());
             recordTable.addRow(columnData);
         }
         
@@ -5056,7 +5097,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTable jTable10;
     private javax.swing.JTable jTable11;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable8;
@@ -5098,5 +5138,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTable tb_danhSachHangHoa;
     private javax.swing.JTable tb_danhSachHoaDon;
     private javax.swing.JTable tb_danhSachPhieuNhapHang;
+    private javax.swing.JTable tb_danhSachPhieuTraHang;
     // End of variables declaration//GEN-END:variables
 }
