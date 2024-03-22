@@ -22,6 +22,7 @@ public class NhanVien {
     private String maChiNhanh;
     private String taoBoiMaNhanVien;
     private String maLichLamViec;
+    private double noLuong;
     
     private ChiNhanh chiNhanh;
     private NhanVien taoBoiNhanVien;
@@ -155,6 +156,14 @@ public class NhanVien {
 
     public void setLichLamViec(LichLamViec lichLamViec) {
         this.lichLamViec = lichLamViec;
+    }
+
+    public double getNoLuong() {
+        return noLuong;
+    }
+
+    public void setNoLuong(double noLuong) {
+        this.noLuong = noLuong;
     }
     
     

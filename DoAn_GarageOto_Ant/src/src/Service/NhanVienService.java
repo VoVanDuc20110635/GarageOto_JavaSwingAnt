@@ -39,6 +39,7 @@ public class NhanVienService {
                 nhanVien.setNgaySinh(util.localDateParseMethod(resultTable.getString("ngay_sinh")));
                 nhanVien.setSoDienThoai(resultTable.getString("so_dien_thoai"));
                 nhanVien.setTenNhanVien(resultTable.getString("ten_nhan_vien"));
+                nhanVien.setNoLuong(resultTable.getDouble("no_luong"));
                 
                 nhanVien.setMaChiNhanh(resultTable.getString("ma_chi_nhanh"));
                 nhanVien.setTaoBoiMaNhanVien(resultTable.getString("tao_boi_ma_nhan_vien"));
@@ -67,6 +68,7 @@ public class NhanVienService {
                 nhanVien.setNgaySinh(util.localDateParseMethod(resultTable.getString("ngay_sinh")));
                 nhanVien.setSoDienThoai(resultTable.getString("so_dien_thoai"));
                 nhanVien.setTenNhanVien(resultTable.getString("ten_nhan_vien"));
+                nhanVien.setNoLuong(Double.parseDouble(resultTable.getString("no_luong")));
                 
                 nhanVien.setMaChiNhanh(resultTable.getString("ma_chi_nhanh"));
                 // vi nhan vien lai la 1-1 voi nhan vien nen lay ma duoc roi, keo bi lap vo hang
