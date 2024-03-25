@@ -11,12 +11,12 @@ import javax.swing.JFrame;
  *
  * @author WINDOWS 10
  */
-public class frame_HoaDonChiTiet extends javax.swing.JFrame {
+public class frame_ChiTietPhieuTraHang extends javax.swing.JFrame {
 
     /**
      * Creates new form frame_HoaDonChiTiet
      */
-    public frame_HoaDonChiTiet() {
+    public frame_ChiTietPhieuTraHang() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
@@ -627,21 +627,23 @@ public class frame_HoaDonChiTiet extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frame_HoaDonChiTiet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frame_ChiTietPhieuTraHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frame_HoaDonChiTiet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frame_ChiTietPhieuTraHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frame_HoaDonChiTiet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frame_ChiTietPhieuTraHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frame_HoaDonChiTiet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frame_ChiTietPhieuTraHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frame_HoaDonChiTiet().setVisible(true);
+                new frame_ChiTietPhieuTraHang().setVisible(true);
             }
         });
     }

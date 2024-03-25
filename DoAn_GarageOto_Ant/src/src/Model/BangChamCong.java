@@ -4,6 +4,7 @@
  */
 package src.Model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
  */
 public class BangChamCong {
     private String maBangChamCong;
-    private LocalDateTime ngayLam;
+    private LocalDate ngayLam;
     private String trangThai;
     private short gioTangCa;
     private String maNhanVien;
@@ -23,7 +24,7 @@ public class BangChamCong {
     public BangChamCong() {
     }
 
-    public BangChamCong(String maBangChamCong, LocalDateTime ngayLam, String trangThai, short gioTangCa, String maNhanVien, String maCaLam) {
+    public BangChamCong(String maBangChamCong, LocalDate ngayLam, String trangThai, short gioTangCa, String maNhanVien, String maCaLam) {
         this.maBangChamCong = maBangChamCong;
         this.ngayLam = ngayLam;
         this.trangThai = trangThai;
@@ -40,11 +41,11 @@ public class BangChamCong {
         this.maBangChamCong = maBangChamCong;
     }
 
-    public LocalDateTime getNgayLam() {
+    public LocalDate getNgayLam() {
         return ngayLam;
     }
 
-    public void setNgayLam(LocalDateTime ngayLam) {
+    public void setNgayLam(LocalDate ngayLam) {
         this.ngayLam = ngayLam;
     }
 

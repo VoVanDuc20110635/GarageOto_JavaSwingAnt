@@ -12,11 +12,34 @@ import src.ConnectDB.ConnectorDB;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import src.Model.BangChamCong;
+import src.Util.Util;
 /**
  *
  * @author WINDOWS 10
  */
 public class BangChamCongService {
+    private Util util = new Util();
+    public List<BangChamCong> hienThiTatCaBangChamCong () throws SQLException{ //
+        String query = String.format("select * from bang_cham_cong");
+        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int q = resultSetMetaData.getColumnCount();
+        int i;
+        List<BangChamCong> danhSachBangChamCong = new ArrayList<>();
+        while(resultTable.next()){
+            BangChamCong bangChamCong = new BangChamCong();
+            for (i= 1; i <= q; i++){
+                bangChamCong.setMaBangChamCong(resultTable.getString("ma_bang_cham_cong"));
+                bangChamCong.setGioTangCa(resultTable.getShort("gio_tang_ca"));
+                bangChamCong.setNgayLam(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_lam")));
+                bangChamCong.setTrangThai(resultTable.getString("trang_thai"));
+                bangChamCong.setMaCaLam(resultTable.getString("ma_ca_lam"));
+                bangChamCong.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
+            }
+            danhSachBangChamCong.add(bangChamCong);
+        }
+        return danhSachBangChamCong;
+    }
     public List<BangChamCong> hienThiBangChamCongTheoMaNhanVien (String maNhanVien) throws SQLException{ //
         String query = String.format("select * from bang_cham_cong where ma_nhan_vien='%s'",
                              maNhanVien);
@@ -30,7 +53,7 @@ public class BangChamCongService {
             for (i= 1; i <= q; i++){
                 bangChamCong.setMaBangChamCong(resultTable.getString("ma_bang_cham_cong"));
                 bangChamCong.setGioTangCa(resultTable.getShort("gio_tang_ca"));
-                bangChamCong.setNgayLam(localDateParseMethod(resultTable.getString("ngay_lam")));
+                bangChamCong.setNgayLam(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_lam")));
                 bangChamCong.setTrangThai(resultTable.getString("trang_thai"));
                 bangChamCong.setMaCaLam(resultTable.getString("ma_ca_lam"));
                 bangChamCong.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
@@ -46,7 +69,7 @@ public class BangChamCongService {
                              "values ('%s', %s, '%s', '%s', '%s', '%s')",
                              bangChamCongMoi.getMaBangChamCong(),
                              String.valueOf(bangChamCongMoi.getGioTangCa()) ,
-                             localDateParseMethod(bangChamCongMoi.getNgayLam()),
+//                             localDateParseMethod(bangChamCongMoi.getNgayLam()),
                              bangChamCongMoi.getTrangThai(),
                              bangChamCongMoi.getMaCaLam(),
                              bangChamCongMoi.getMaNhanVien());
@@ -59,9 +82,9 @@ public class BangChamCongService {
     
     public int updateBangChamCong (BangChamCong bangChamCongMoi) throws SQLException{ //   
         try{
-           String query = String.format("update bang_cham_cong set gio_tang_ca=%s, ngay_lam='%s', trang_thai='%s', ma_ca_lam='%s', ma_nhan_vien='%s' where ma_bang_cham_cong='%s'",
+           String query = String.format("update bang_cham_cong set gio_tang_ca=%s, trang_thai='%s', ma_ca_lam='%s', ma_nhan_vien='%s' where ma_bang_cham_cong='%s'",
                              String.valueOf(bangChamCongMoi.getGioTangCa()) ,
-                             localDateParseMethod(bangChamCongMoi.getNgayLam()),
+//                             localDateParseMethod(bangChamCongMoi.getNgayLam()),
                              bangChamCongMoi.getTrangThai(),
                              bangChamCongMoi.getMaCaLam(),
                              bangChamCongMoi.getMaNhanVien(),

@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import src.Model.BangChamCong;
 import src.Service.BangChamCongService;
+import src.Util.Util;
 
 /**
  *
@@ -23,6 +24,7 @@ public class frame_BangChamCong extends javax.swing.JFrame {
     /**
      * Creates new form frame_BangChamCong
      */
+    private Util util = new Util();
     BangChamCongService bangChamCongService = new BangChamCongService();
     public frame_BangChamCong() {
         initComponents();
@@ -253,7 +255,7 @@ public class frame_BangChamCong extends javax.swing.JFrame {
             BangChamCong bangChamCong = new BangChamCong();
             bangChamCong.setMaBangChamCong("BC010");
             bangChamCong.setGioTangCa((short)0);
-            bangChamCong.setNgayLam(localDateParseMethod("2024-01-01 08:00:00"));
+            bangChamCong.setNgayLam(util.localDateParseMethodToLocalDate("2024-01-01 08:00:00"));
             bangChamCong.setTrangThai("vang");
             bangChamCong.setMaCaLam("CAL001");
             bangChamCong.setMaNhanVien("NV005");
@@ -305,7 +307,7 @@ public class frame_BangChamCong extends javax.swing.JFrame {
         List<BangChamCong> danhSachBangChamCong = bangChamCongService.hienThiBangChamCongTheoMaNhanVien("NV001");
         for (BangChamCong bangChamCong : danhSachBangChamCong){
             Vector columnData = new Vector();
-            columnData.add(localDateParseMethod(bangChamCong.getNgayLam()));
+            columnData.add(bangChamCong.getNgayLam());
             columnData.add(bangChamCong.getMaCaLam());
             columnData.add(bangChamCong.getTrangThai());
             columnData.add(bangChamCong.getGioTangCa());

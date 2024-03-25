@@ -4,7 +4,9 @@
  */
 package src.Util;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -27,7 +29,17 @@ public class Util {
         LocalDateTime ngayLam = LocalDateTime.parse(dateString, formatter);
         return ngayLam.withNano(0);
     }
-    public LocalDateTime localDateParseMethodWithoutNanosecond(String dateString){
+    public LocalTime localDateParseMethodToLocalTime(String dateString){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        LocalTime ngayLam = LocalTime.parse(dateString, formatter);
+        return ngayLam.withNano(0);
+    }
+    public LocalDate localDateParseMethodToLocalDate(String dateString){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate ngayLam = LocalDate.parse(dateString, formatter);
+        return ngayLam;
+    }
+    public LocalDateTime localDateParseMethodFromTableSwing(String dateString){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime ngayLam = LocalDateTime.parse(dateString, formatter);
         return ngayLam.withNano(0);
