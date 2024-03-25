@@ -3114,6 +3114,8 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel91.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel91.setText("Ngày làm");
 
+        dateChoose_bangCongNgayLam.setDateFormatString("yyyy-MM-dd");
+
         javax.swing.GroupLayout jPanel88Layout = new javax.swing.GroupLayout(jPanel88);
         jPanel88.setLayout(jPanel88Layout);
         jPanel88Layout.setHorizontalGroup(
@@ -3234,6 +3236,11 @@ public class TrangChu extends javax.swing.JFrame {
         btn_bangCongThem.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btn_bangCongThem.setForeground(new java.awt.Color(255, 255, 255));
         btn_bangCongThem.setText("Thêm");
+        btn_bangCongThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_bangCongThemActionPerformed(evt);
+            }
+        });
         jPanel24.add(btn_bangCongThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(1271, 27, 116, 39));
 
         btn_bangCongCapNhat.setBackground(new java.awt.Color(255, 153, 153));
@@ -4927,7 +4934,7 @@ public class TrangChu extends javax.swing.JFrame {
         int index = tb_danhSachBangChamCong.getSelectedRow();
         TableModel model = tb_danhSachBangChamCong.getModel();
         cb_bangCongNhanVien.setSelectedItem(model.getValueAt(index, 2).toString()+ " " + model.getValueAt(index, 3).toString());
-        dateChoose_bangCongNgayLam.setDateFormatString(model.getValueAt(index, 1).toString());
+        dateChoose_bangCongNgayLam.setDate(util.layNgayDate(model.getValueAt(index, 1).toString()));
         for (int i=0; i < cb_bangCongCaLam.getItemCount(); i++){
             if (cb_bangCongCaLam.getItemAt(i).toString().contains(model.getValueAt(index, 4).toString())){
                 cb_bangCongCaLam.setSelectedIndex(i);
@@ -4937,26 +4944,41 @@ public class TrangChu extends javax.swing.JFrame {
         lb_maBangChamCong.setText(model.getValueAt(index, 0).toString());
     }//GEN-LAST:event_tb_danhSachBangChamCongMouseClicked
 
+    private void btn_bangCongResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bangCongResetActionPerformed
+        cb_bangCongNhanVien.setSelectedItem("");
+        cb_bangCongTrangThai.setSelectedItem("Đầy đủ");
+        cb_bangCongCaLam.setSelectedItem("Ca Sáng");
+        lb_maBangChamCong.setText("");
+    }//GEN-LAST:event_btn_bangCongResetActionPerformed
+
     private void btn_bangCongCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bangCongCapNhatActionPerformed
+
         BangChamCong bangChamCongNew = new BangChamCong();
-        bangChamCongNew.setMaBangChamCong(lb_maBangChamCong.getText().toString());
         bangChamCongNew.setMaCaLam(cb_bangCongCaLam.getSelectedItem().toString().split(" ")[0]);
+        bangChamCongNew.setMaBangChamCong(lb_maBangChamCong.getText());
+        bangChamCongNew.setNgayLam(util.localDateParseMethodToLocalDate(util.layNgayString(dateChoose_bangCongNgayLam.getDate())));
         bangChamCongNew.setMaNhanVien(cb_bangCongNhanVien.getSelectedItem().toString().split(" ")[0]);
-//        bangChamCongNew.setNgayLam(dateChoose_bangCongNgayLam.getDate());
         bangChamCongNew.setTrangThai(cb_bangCongTrangThai.getSelectedItem().toString());
         try {
             bangChamCongService.updateBangChamCong(bangChamCongNew);
             hienThiDanhSachBangChamCong();
         } catch (SQLException ex) {
-            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_bangCongCapNhatActionPerformed
 
-    private void btn_bangCongResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bangCongResetActionPerformed
-        cb_bangCongNhanVien.setSelectedItem("");
-        cb_bangCongTrangThai.setSelectedItem("Đầy đủ");
-        cb_bangCongCaLam.setSelectedItem("Ca Sáng");
-    }//GEN-LAST:event_btn_bangCongResetActionPerformed
+    private void btn_bangCongThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bangCongThemActionPerformed
+        BangChamCong bangChamCongNew = new BangChamCong();
+        bangChamCongNew.setMaCaLam(cb_bangCongCaLam.getSelectedItem().toString().split(" ")[0]);
+        bangChamCongNew.setMaBangChamCong("BC0" + String.valueOf(tongSoBangChamCong + 1));
+        bangChamCongNew.setNgayLam(util.localDateParseMethodToLocalDate(util.layNgayString(dateChoose_bangCongNgayLam.getDate())));
+        bangChamCongNew.setMaNhanVien(cb_bangCongNhanVien.getSelectedItem().toString().split(" ")[0]);
+        bangChamCongNew.setTrangThai(cb_bangCongTrangThai.getSelectedItem().toString());
+        try {   
+            bangChamCongService.themBangChamCong(bangChamCongNew);
+            hienThiDanhSachBangChamCong();
+        } catch (SQLException ex) {
+        }
+    }//GEN-LAST:event_btn_bangCongThemActionPerformed
     
 
     
@@ -5200,8 +5222,9 @@ public class TrangChu extends javax.swing.JFrame {
             recordTable.addRow(columnData);
         }
     }
-    
+    int tongSoBangChamCong = 0;
     private void hienThiDanhSachBangChamCong(){
+        System.out.println("da den day 2");
         try {
             List<BangChamCong> danhSachBangChamCong = bangChamCongService.hienThiTatCaBangChamCong();
             DefaultTableModel recordTable = (DefaultTableModel)tb_danhSachBangChamCong.getModel();
@@ -5216,6 +5239,7 @@ public class TrangChu extends javax.swing.JFrame {
                 columnData.add(bangChamCong.getTrangThai());
                 recordTable.addRow(columnData);
             }
+            tongSoBangChamCong = danhSachBangChamCong.size();
         
         } catch (SQLException ex) {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);

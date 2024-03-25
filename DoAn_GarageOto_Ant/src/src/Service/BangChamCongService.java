@@ -65,11 +65,10 @@ public class BangChamCongService {
     
     public int themBangChamCong (BangChamCong bangChamCongMoi) throws SQLException{ //   
         try{
-           String query = String.format("insert into bang_cham_cong(ma_bang_cham_cong, gio_tang_ca, ngay_lam, trang_thai, ma_ca_lam, ma_nhan_vien) " +
-                             "values ('%s', %s, '%s', '%s', '%s', '%s')",
+           String query = String.format("insert into bang_cham_cong(ma_bang_cham_cong, ngay_lam, trang_thai, ma_ca_lam, ma_nhan_vien) " +
+                             "values ('%s', '%s', '%s', '%s', '%s')",
                              bangChamCongMoi.getMaBangChamCong(),
-                             String.valueOf(bangChamCongMoi.getGioTangCa()) ,
-//                             localDateParseMethod(bangChamCongMoi.getNgayLam()),
+                             String.valueOf(bangChamCongMoi.getNgayLam()),
                              bangChamCongMoi.getTrangThai(),
                              bangChamCongMoi.getMaCaLam(),
                              bangChamCongMoi.getMaNhanVien());
@@ -82,14 +81,12 @@ public class BangChamCongService {
     
     public int updateBangChamCong (BangChamCong bangChamCongMoi) throws SQLException{ //   
         try{
-           String query = String.format("update bang_cham_cong set gio_tang_ca=%s, trang_thai='%s', ma_ca_lam='%s', ma_nhan_vien='%s' where ma_bang_cham_cong='%s'",
-                             String.valueOf(bangChamCongMoi.getGioTangCa()) ,
-//                             localDateParseMethod(bangChamCongMoi.getNgayLam()),
+           String query = String.format("update bang_cham_cong set ngay_lam='%s', trang_thai='%s', ma_ca_lam='%s', ma_nhan_vien='%s' where ma_bang_cham_cong='%s'",
+                             String.valueOf(bangChamCongMoi.getNgayLam()),
                              bangChamCongMoi.getTrangThai(),
                              bangChamCongMoi.getMaCaLam(),
                              bangChamCongMoi.getMaNhanVien(),
                              bangChamCongMoi.getMaBangChamCong());
-            System.out.println(query);
             ConnectorDB.executeUpdateQueryConnectorDB(query);
             return 1;
         } catch (Exception err){

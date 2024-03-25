@@ -4,17 +4,21 @@
  */
 package src.Util;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  *
  * @author WINDOWS 10
  */
 public class Util {
-
+    private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     public Util() {
     }
     // database là localdatetime có s
@@ -43,6 +47,18 @@ public class Util {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime ngayLam = LocalDateTime.parse(dateString, formatter);
         return ngayLam.withNano(0);
+    }
+    
+    public String layNgayString(Date date){
+        return dateFormat.format(date);
+    }
+    public Date layNgayDate(String ngay){
+        try{
+            return dateFormat.parse(ngay);
+        } catch (ParseException ex){
+            System.out.println("Loi chuyen ngay");
+            return null;
+        }
     }
     
     // format localdatime từ có s sang không có s
