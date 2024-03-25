@@ -574,8 +574,36 @@ VALUES
 ('HA008', 'Hình ảnh 8', 'Nội dung hình ảnh 8'),
 ('HA009', 'Hình ảnh 9', 'Nội dung hình ảnh 9'),
 ('HA010', 'Hình ảnh 10', 'Nội dung hình ảnh 10');
+use database_garage_oto;
+CREATE TABLE chi_tiet_phieu_nhap_hang (
+    ma_chi_tiet_phieu_nhap_hang VARCHAR(50),
+    ma_hang_hoa VARCHAR(50),
+    so_luong SMALLINT,
+    gia_nhap DOUBLE,
+    tong DOUBLE,
+    giam_gia DOUBLE,
+    thanh_tien DOUBLE,
+    PRIMARY KEY (ma_chi_tiet_phieu_nhap_hang),
+    FOREIGN KEY (ma_hang_hoa) REFERENCES hang_hoa(ma_hang_hoa)
+);
 
+INSERT INTO chi_tiet_phieu_nhap_hang  (ma_chi_tiet_phieu_nhap_hang, ma_hang_hoa, so_luong, gia_nhap, tong, giam_gia, thanh_tien)
+SELECT 
+    CONCAT('CTPNH', LPAD(ROW_NUMBER() OVER(), 3, '0')) AS ma_chi_tiet_phieu_nhap_hang, 
+    ph.ma_hang_hoa, 
+    10 AS so_luong, -- Example value for "so_luong"
+    50000 AS gia_nhap, -- Example value for "gia_nhap"
+    500000 AS tong, -- Example value for "tong"
+    0 AS giam_gia, -- Example value for "giam_gia"
+    500000 AS thanh_tien -- Example value for "thanh_tien"
+FROM 
+    phieu_nhap_hang ph;
 
+-- First, drop the foreign key constraint that references the 'ma_hang_hoa' column
+ALTER TABLE phieu_nhap_hang DROP FOREIGN KEY FKi7gdrduv9lm993vywctoc145t;
+
+-- Now, drop the 'ma_hang_hoa' column from the 'phieu_nhap_hang' table
+ALTER TABLE phieu_nhap_hang DROP COLUMN ma_hang_hoa;
 select * from bang_cham_cong;
 
 select * from ca_lam;
@@ -593,3 +621,11 @@ select * from hoa_don;
 select * from khach_hang;
 select * from nhan_vien;
 select * from nha_cung_cap;
+
+SELECT *
+FROM bang_cham_cong
+WHERE ngay_lam BETWEEN '2023-01-25' AND '2024-01-30';
+
+SELECT *
+FROM bang_cham_cong
+WHERE MONTH(ngay_lam) = 1;

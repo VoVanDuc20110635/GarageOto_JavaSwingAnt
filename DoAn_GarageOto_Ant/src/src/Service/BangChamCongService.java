@@ -11,6 +11,7 @@ import java.util.List;
 import src.ConnectDB.ConnectorDB;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import src.Model.BangChamCong;
 import src.Util.Util;
 /**
@@ -92,6 +93,98 @@ public class BangChamCongService {
         } catch (Exception err){
             return 0;
         }
+    }
+    
+    public List<BangChamCong> hienThiBangChamCongTheoTheoNgayBatDauVaNgayKetThuc (Date ngayBatDau, Date ngayKetThuc) throws SQLException{ //
+        String query = String.format("select * from bang_cham_cong where ngay_lam between '%s' and '%s'",
+                             util.layNgayString(ngayBatDau), util.layNgayString(ngayKetThuc));
+        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int q = resultSetMetaData.getColumnCount();
+        int i;
+        List<BangChamCong> danhSachBangChamCong = new ArrayList<>();
+        while(resultTable.next()){
+            BangChamCong bangChamCong = new BangChamCong();
+            for (i= 1; i <= q; i++){
+                bangChamCong.setMaBangChamCong(resultTable.getString("ma_bang_cham_cong"));
+                bangChamCong.setGioTangCa(resultTable.getShort("gio_tang_ca"));
+                bangChamCong.setNgayLam(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_lam")));
+                bangChamCong.setTrangThai(resultTable.getString("trang_thai"));
+                bangChamCong.setMaCaLam(resultTable.getString("ma_ca_lam"));
+                bangChamCong.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
+            }
+            danhSachBangChamCong.add(bangChamCong);
+        }
+        return danhSachBangChamCong;
+    }
+    
+    public List<BangChamCong> hienThiBangChamCongTheoTheoNgay (Date date) throws SQLException{ //
+        String query = String.format("select * from bang_cham_cong where DATE(ngay_lam) = '%s'",
+                             util.layNgayString(date));
+        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int q = resultSetMetaData.getColumnCount();
+        int i;
+        List<BangChamCong> danhSachBangChamCong = new ArrayList<>();
+        while(resultTable.next()){
+            BangChamCong bangChamCong = new BangChamCong();
+            for (i= 1; i <= q; i++){
+                bangChamCong.setMaBangChamCong(resultTable.getString("ma_bang_cham_cong"));
+                bangChamCong.setGioTangCa(resultTable.getShort("gio_tang_ca"));
+                bangChamCong.setNgayLam(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_lam")));
+                bangChamCong.setTrangThai(resultTable.getString("trang_thai"));
+                bangChamCong.setMaCaLam(resultTable.getString("ma_ca_lam"));
+                bangChamCong.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
+            }
+            danhSachBangChamCong.add(bangChamCong);
+        }
+        return danhSachBangChamCong;
+    }
+    
+    public List<BangChamCong> hienThiBangChamCongTheoTheoThang (String thang, String nam) throws SQLException{ //
+        String query = String.format("select * from bang_cham_cong where MONTH(ngay_lam) = %s and YEAR(ngay_lam) = %s",
+                             thang, nam);
+        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int q = resultSetMetaData.getColumnCount();
+        int i;
+        List<BangChamCong> danhSachBangChamCong = new ArrayList<>();
+        while(resultTable.next()){
+            BangChamCong bangChamCong = new BangChamCong();
+            for (i= 1; i <= q; i++){
+                bangChamCong.setMaBangChamCong(resultTable.getString("ma_bang_cham_cong"));
+                bangChamCong.setGioTangCa(resultTable.getShort("gio_tang_ca"));
+                bangChamCong.setNgayLam(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_lam")));
+                bangChamCong.setTrangThai(resultTable.getString("trang_thai"));
+                bangChamCong.setMaCaLam(resultTable.getString("ma_ca_lam"));
+                bangChamCong.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
+            }
+            danhSachBangChamCong.add(bangChamCong);
+        }
+        return danhSachBangChamCong;
+    }
+    
+    public List<BangChamCong> hienThiBangChamCongTheoTheoNam ( String nam) throws SQLException{ //
+        String query = String.format("select * from bang_cham_cong where YEAR(ngay_lam) = %s",
+                             nam);
+        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int q = resultSetMetaData.getColumnCount();
+        int i;
+        List<BangChamCong> danhSachBangChamCong = new ArrayList<>();
+        while(resultTable.next()){
+            BangChamCong bangChamCong = new BangChamCong();
+            for (i= 1; i <= q; i++){
+                bangChamCong.setMaBangChamCong(resultTable.getString("ma_bang_cham_cong"));
+                bangChamCong.setGioTangCa(resultTable.getShort("gio_tang_ca"));
+                bangChamCong.setNgayLam(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_lam")));
+                bangChamCong.setTrangThai(resultTable.getString("trang_thai"));
+                bangChamCong.setMaCaLam(resultTable.getString("ma_ca_lam"));
+                bangChamCong.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
+            }
+            danhSachBangChamCong.add(bangChamCong);
+        }
+        return danhSachBangChamCong;
     }
     
     public LocalDateTime localDateParseMethod(String dateString){

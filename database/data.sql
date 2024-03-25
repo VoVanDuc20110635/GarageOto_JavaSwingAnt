@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `bang_cham_cong`;
 CREATE TABLE `bang_cham_cong` (
   `ma_bang_cham_cong` varchar(255) NOT NULL,
   `gio_tang_ca` smallint(6) DEFAULT NULL,
-  `ngay_lam` datetime(6) DEFAULT NULL,
+  `ngay_lam` date DEFAULT NULL,
   `trang_thai` varchar(255) DEFAULT NULL,
   `ma_ca_lam` varchar(255) DEFAULT NULL,
   `ma_nhan_vien` varchar(255) DEFAULT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `bang_cham_cong` (
 
 LOCK TABLES `bang_cham_cong` WRITE;
 /*!40000 ALTER TABLE `bang_cham_cong` DISABLE KEYS */;
-INSERT INTO `bang_cham_cong` VALUES ('BC001',0,'2024-01-01 08:00:00.000000','day du','CAL001','NV001'),('BC002',0,'2024-01-02 08:00:00.000000','vang','CAL001','NV002'),('BC003',0,'2024-01-03 08:00:00.000000','di tre','CAL001','NV003'),('BC004',3,'2024-01-04 08:00:00.000000','tang ca','CAL002','NV004'),('BC005',0,'2024-01-05 08:00:00.000000','day du','CAL002','NV005'),('BC006',0,'2024-01-06 08:00:00.000000','day du','CAL002','NV006'),('BC007',0,'2024-01-07 08:00:00.000000','di tre','CAL003','NV007'),('BC008',0,'2024-01-08 08:00:00.000000','vang','CAL003','NV008'),('BC009',2,'2024-01-09 08:00:00.000000','tang ca','CAL003','NV009'),('BC010',0,'2024-01-01 08:00:00.000000','vang','CAL001','NV005');
+INSERT INTO `bang_cham_cong` VALUES ('BC001',0,'2024-01-01','Đầy đủ','CAL001','NV001'),('BC002',0,'2024-01-02','Vắng','CAL001','NV002'),('BC003',0,'2024-01-27','Đi trễ','CAL001','NV003'),('BC004',0,'2024-01-04','Đầy đủ','CAL002','NV004'),('BC005',0,'2023-01-18','Đầy đủ','CAL001','NV005'),('BC006',0,'2024-02-06','Đầy đủ','CAL002','NV006'),('BC007',0,'2024-03-19','Đi trễ','CAL003','NV007'),('BC008',0,'2023-05-08','Vắng','CAL003','NV008'),('BC009',2,'2024-01-09','Tăng ca','CAL001','NV009'),('BC010',0,'2024-01-31','Vắng','CAL001','NV005'),('BCC011',NULL,'2024-03-25','Vắng','CAL002','NV005');
 /*!40000 ALTER TABLE `bang_cham_cong` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -299,13 +299,16 @@ CREATE TABLE `hoa_don` (
   `ma_khach_hang` varchar(255) DEFAULT NULL,
   `ma_nha_cung_cap` varchar(255) DEFAULT NULL,
   `ma_nhan_vien` varchar(255) DEFAULT NULL,
+  `ma_phieu_tra_hang` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ma_hoa_don`),
   KEY `FKnuqkgajew2traqcy7umgm7i1g` (`ma_khach_hang`),
   KEY `FKpu3pgvm4uiwlce2obab169949` (`ma_nha_cung_cap`),
   KEY `FKsh87ilak874fkwk9pw28pafx7` (`ma_nhan_vien`),
+  KEY `fk_ma_phieu_tra_hang_hoa_don` (`ma_phieu_tra_hang`),
   CONSTRAINT `FKnuqkgajew2traqcy7umgm7i1g` FOREIGN KEY (`ma_khach_hang`) REFERENCES `khach_hang` (`ma_khach_hang`),
   CONSTRAINT `FKpu3pgvm4uiwlce2obab169949` FOREIGN KEY (`ma_nha_cung_cap`) REFERENCES `nha_cung_cap` (`ma_nha_cung_cap`),
-  CONSTRAINT `FKsh87ilak874fkwk9pw28pafx7` FOREIGN KEY (`ma_nhan_vien`) REFERENCES `nhan_vien` (`ma_nhan_vien`)
+  CONSTRAINT `FKsh87ilak874fkwk9pw28pafx7` FOREIGN KEY (`ma_nhan_vien`) REFERENCES `nhan_vien` (`ma_nhan_vien`),
+  CONSTRAINT `fk_ma_phieu_tra_hang_hoa_don` FOREIGN KEY (`ma_phieu_tra_hang`) REFERENCES `phieu_tra_hang` (`ma_phieu_tra_hang`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -315,7 +318,7 @@ CREATE TABLE `hoa_don` (
 
 LOCK TABLES `hoa_don` WRITE;
 /*!40000 ALTER TABLE `hoa_don` DISABLE KEYS */;
-INSERT INTO `hoa_don` VALUES ('HD001',0,'Thu','2023-01-01 10:00:00.000000',1500000,1500000,'Hoàn thành','KH001',NULL,'NV004'),('HD002',0,'Chi','2023-01-02 11:30:00.000000',0,800000,'Hoàn thành',NULL,'NCC004','NV004'),('HD003',200000,'Thu','2023-01-03 14:45:00.000000',1800000,2000000,'Chưa thanh toán','KH002',NULL,'NV004'),('HD004',0,'Thu','2023-01-04 09:15:00.000000',500000,500000,'Hoàn thành','KH003',NULL,'NV005'),('HD005',300000,'Chi','2023-01-05 13:20:00.000000',2700000,3000000,'Chưa thanh toán',NULL,'NCC002','NV005'),('HD006',0,'Chi','2023-01-06 08:30:00.000000',0,1000000,'Hoàn thành',NULL,'NCC001','NV005'),('HD007',0,'Thu','2023-01-07 10:45:00.000000',1200000,1200000,'Hoàn thành','KH004',NULL,'NV004'),('HD008',150000,'Thu','2023-01-08 12:00:00.000000',1650000,1800000,'Chưa thanh toán','KH005',NULL,'NV004'),('HD009',0,'Chi','2023-01-09 15:10:00.000000',0,600000,'Hoàn thành',NULL,'NCC005','NV005'),('HD010',0,'Chi','2023-01-10 09:30:00.000000',0,900000,'Hoàn thành',NULL,'NCC001','NV005'),('HD011',200000,'Thu','2023-01-11 14:00:00.000000',2300000,2500000,'Chưa thanh toán','KH006',NULL,'NV004'),('HD012',0,'Thu','2023-01-12 11:20:00.000000',700000,700000,'Hoàn thành','KH007',NULL,'NV004'),('HD013',300000,'Chi','2023-01-13 10:05:00.000000',3200000,3500000,'Chưa thanh toán',NULL,'NCC004','NV005'),('HD014',0,'Thu','2023-01-14 08:40:00.000000',800000,800000,'Hoàn thành','KH008',NULL,'NV004'),('HD015',0,'Chi','2023-01-15 12:50:00.000000',0,2000000,'Hoàn thành',NULL,'NCC003','NV005'),('HD016',100000,'Chi','2023-01-16 09:55:00.000000',1000000,1100000,'Chưa thanh toán',NULL,'NCC001','NV004'),('HD017',0,'Thu','2023-01-17 14:25:00.000000',900000,900000,'Hoàn thành','KH009',NULL,'NV005'),('HD018',250000,'Thu','2023-01-18 10:35:00.000000',2750000,3000000,'Chưa thanh toán','KH010',NULL,'NV005'),('HD019',0,'Chi','2023-01-19 11:15:00.000000',0,400000,'Hoàn thành',NULL,'NCC002','NV004'),('HD020',100000,'Thu','2023-01-20 13:40:00.000000',1400000,1500000,'Chưa thanh toán','KH011',NULL,'NV004');
+INSERT INTO `hoa_don` VALUES ('HD001',0,'Thu','2023-01-01 10:00:00.000000',1500000,1500000,'Hoàn thành','KH001',NULL,'NV004',NULL),('HD002',0,'Chi','2023-01-02 11:30:00.000000',0,800000,'Hoàn thành',NULL,'NCC004','NV004',NULL),('HD003',200000,'Thu','2023-01-03 14:45:00.000000',1800000,2000000,'Chưa thanh toán','KH002',NULL,'NV004',NULL),('HD004',0,'Thu','2023-01-04 09:15:00.000000',500000,500000,'Hoàn thành','KH003',NULL,'NV005',NULL),('HD005',300000,'Chi','2023-01-05 13:20:00.000000',2700000,3000000,'Chưa thanh toán',NULL,'NCC002','NV005',NULL),('HD006',0,'Chi','2023-01-06 08:30:00.000000',0,1000000,'Hoàn thành',NULL,'NCC001','NV005',NULL),('HD007',0,'Thu','2023-01-07 10:45:00.000000',1200000,1200000,'Hoàn thành','KH004',NULL,'NV004',NULL),('HD008',150000,'Thu','2023-01-08 12:00:00.000000',1650000,1800000,'Chưa thanh toán','KH005',NULL,'NV004',NULL),('HD009',0,'Chi','2023-01-09 15:10:00.000000',0,600000,'Hoàn thành',NULL,'NCC005','NV005',NULL),('HD010',0,'Chi','2023-01-10 09:30:00.000000',0,900000,'Hoàn thành',NULL,'NCC001','NV005',NULL),('HD011',200000,'Thu','2023-01-11 14:00:00.000000',2300000,2500000,'Chưa thanh toán','KH006',NULL,'NV004',NULL),('HD012',0,'Thu','2023-01-12 11:20:00.000000',700000,700000,'Hoàn thành','KH007',NULL,'NV004',NULL),('HD013',300000,'Chi','2023-01-13 10:05:00.000000',3200000,3500000,'Chưa thanh toán',NULL,'NCC004','NV005',NULL),('HD014',0,'Thu','2023-01-14 08:40:00.000000',800000,800000,'Hoàn thành','KH008',NULL,'NV004',NULL),('HD015',0,'Chi','2023-01-15 12:50:00.000000',0,2000000,'Hoàn thành',NULL,'NCC003','NV005',NULL),('HD016',100000,'Chi','2023-01-16 09:55:00.000000',1000000,1100000,'Chưa thanh toán',NULL,'NCC001','NV004',NULL),('HD017',0,'Thu','2023-01-17 14:25:00.000000',900000,900000,'Hoàn thành','KH009',NULL,'NV005',NULL),('HD018',250000,'Thu','2023-01-18 10:35:00.000000',2750000,3000000,'Chưa thanh toán','KH010',NULL,'NV005',NULL),('HD019',0,'Chi','2023-01-19 11:15:00.000000',0,400000,'Hoàn thành',NULL,'NCC002','NV004',NULL),('HD020',100000,'Thu','2023-01-20 13:40:00.000000',1400000,1500000,'Chưa thanh toán','KH011',NULL,'NV004',NULL);
 /*!40000 ALTER TABLE `hoa_don` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -481,6 +484,8 @@ CREATE TABLE `nha_cung_cap` (
   `so_dien_thoai` varchar(255) DEFAULT NULL,
   `ten_nha_cung_cap` varchar(255) DEFAULT NULL,
   `ma_nhan_vien` varchar(255) DEFAULT NULL,
+  `no_can_tra` double DEFAULT NULL,
+  `tong_mua` double DEFAULT NULL,
   PRIMARY KEY (`ma_nha_cung_cap`),
   KEY `FKf5u7s4s6dmvwrjkxqcx3d3xoa` (`ma_nhan_vien`),
   CONSTRAINT `FKf5u7s4s6dmvwrjkxqcx3d3xoa` FOREIGN KEY (`ma_nhan_vien`) REFERENCES `nhan_vien` (`ma_nhan_vien`)
@@ -493,7 +498,7 @@ CREATE TABLE `nha_cung_cap` (
 
 LOCK TABLES `nha_cung_cap` WRITE;
 /*!40000 ALTER TABLE `nha_cung_cap` DISABLE KEYS */;
-INSERT INTO `nha_cung_cap` VALUES ('NCC001','123 Đường ABC, Quận XYZ, Thành phố HCM','abc@company.com','ABC123456','2023-01-01 08:00:00.000000','0123456789','Công ty TNHH ABC','NV004'),('NCC002','456 Đường XYZ, Quận ABC, Thành phố Hà Nội','xyz@company.com','XYZ987654','2023-01-02 09:00:00.000000','0987654321','Công ty XYZ Ltd','NV004'),('NCC003','789 Đường MNO, Quận DEF, Thành phố Đà Nẵng','mno@company.com','MNO456789','2023-01-03 10:00:00.000000','0369852147','Công ty MNO','NV005'),('NCC004','101 Đường PQR, Quận GHI, Thành phố Cần Thơ','pqr@company.com','PQR987654','2023-01-04 11:00:00.000000','0246857319','Công ty PQR','NV005'),('NCC005','111 Đường STU, Quận KLM, Thành phố Hải Phòng','stu@company.com','STU123456','2023-01-05 12:00:00.000000','0379514682','Công ty STU','NV005');
+INSERT INTO `nha_cung_cap` VALUES ('NCC001','123 Đường ABC, Quận XYZ, Thành phố HCM','abc@company.com','ABC123456','2023-01-01 08:00:00.000000','0123456789','Công ty TNHH ABC','NV004',0,20000000),('NCC002','456 Đường XYZ, Quận ABC, Thành phố Hà Nội','xyz@company.com','XYZ987654','2023-01-02 09:00:00.000000','0987654321','Công ty XYZ Ltd','NV004',200000,52000000),('NCC003','789 Đường MNO, Quận DEF, Thành phố Đà Nẵng','mno@company.com','MNO456789','2023-01-03 10:00:00.000000','0369852147','Công ty MNO','NV005',150000,30000000),('NCC004','101 Đường PQR, Quận GHI, Thành phố Cần Thơ','pqr@company.com','PQR987654','2023-01-04 11:00:00.000000','0246857319','Công ty PQR','NV005',0,15000000),('NCC005','111 Đường STU, Quận KLM, Thành phố Hải Phòng','stu@company.com','STU123456','2023-01-05 12:00:00.000000','0379514682','Công ty STU','NV005',0,60000000);
 /*!40000 ALTER TABLE `nha_cung_cap` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -516,6 +521,7 @@ CREATE TABLE `nhan_vien` (
   `ma_chi_nhanh` varchar(255) DEFAULT NULL,
   `tao_boi_ma_nhan_vien` varchar(255) DEFAULT NULL,
   `ma_lich_lam_viec` varchar(255) DEFAULT NULL,
+  `no_luong` double DEFAULT NULL,
   PRIMARY KEY (`ma_nhan_vien`),
   UNIQUE KEY `UK_ie7b5kt6wc752x7tvm3sj1ja2` (`ma_lich_lam_viec`),
   KEY `FKb11u6kme9duvp5351r3b1d809` (`ma_chi_nhanh`),
@@ -532,7 +538,7 @@ CREATE TABLE `nhan_vien` (
 
 LOCK TABLES `nhan_vien` WRITE;
 /*!40000 ALTER TABLE `nhan_vien` DISABLE KEYS */;
-INSERT INTO `nhan_vien` VALUES ('NV000','068202006801','admin','Nam','2020-01-01 08:00:00.000000','2002-11-02 00:00:00.000000','0869990187','Võ Văn Đức',NULL,NULL,NULL),('NV001','123456789','Nhân viên sữa chữa','Nam','2020-01-01 08:00:00.000000','1990-01-01 00:00:00.000000','0123456789','Nguyễn Văn Anh','CN001','NV004','LLV001'),('NV002','234567890','Nhân viên kỹ thuật','Nam','2019-12-15 09:00:00.000000','1992-02-02 00:00:00.000000','0987654321','Trần Luyện','CN001','NV004','LLV002'),('NV003','345678901','Bảo vệ','Nam','2021-03-10 10:00:00.000000','1995-03-03 00:00:00.000000','0369852147','Phạm Văn Chiêu','CN001','NV004','LLV003'),('NV004','456789012','Kế toán viên','Nữ','2020-06-20 11:00:00.000000','1988-04-04 00:00:00.000000','0246857319','Hoàng Thị D','CN001','NV000','LLV004'),('NV005','567890123','Kế toán viên','Nữ','2018-09-05 12:00:00.000000','1993-05-05 00:00:00.000000','0379514682','Tuyết Tuyết Nhi','CN001','NV000','LLV005'),('NV006','678901234','Nhân viên sữa chữa','Nam','2019-11-30 08:30:00.000000','1997-06-06 00:00:00.000000','0987654321','Lê Điển Tịch','CN001','NV005','LLV006'),('NV007','789012345','Nhân viên sữa chữa','Nam','2021-01-15 10:45:00.000000','1991-07-07 00:00:00.000000','0369852147','Nguyễn Văn Giang','CN001','NV004','LLV007'),('NV008','890123456','Nhân viên sữa chữa','Nam','2019-07-05 11:15:00.000000','1994-08-08 00:00:00.000000','0246857319','Trần Trúc Huyên','CN001','NV004','LLV008'),('NV009','901234567','Nhân viên sữa chữa','Nam','2022-04-18 13:20:00.000000','1989-09-09 00:00:00.000000','0379514682','Phạm Văn Linh','CN001','NV005','LLV009'),('NV010','012345678','Nhân viên sữa chữa','Nam','2018-11-25 14:30:00.000000','1996-10-10 00:00:00.000000','0987654321','Võ Tòng','CN001','NV005','LLV010');
+INSERT INTO `nhan_vien` VALUES ('NV000','068202006801','admin','Nam','2020-01-01 08:00:00.000000','2002-11-02 00:00:00.000000','0869990187','Võ Văn Đức',NULL,NULL,NULL,NULL),('NV001','123456789','Nhân viên sữa chữa','Nam','2020-01-01 08:00:00.000000','1990-01-01 00:00:00.000000','0123456789','Nguyễn Văn Anh','CN001','NV004','LLV001',0),('NV002','234567890','Nhân viên kỹ thuật','Nam','2019-12-15 09:00:00.000000','1992-02-02 00:00:00.000000','0987654321','Trần Luyện','CN001','NV004','LLV002',0),('NV003','345678901','Bảo vệ','Nam','2021-03-10 10:00:00.000000','1995-03-03 00:00:00.000000','0369852147','Phạm Văn Chiêu','CN001','NV004','LLV003',0),('NV004','456789012','Kế toán viên','Nữ','2020-06-20 11:00:00.000000','1988-04-04 00:00:00.000000','0246857319','Hoàng Thị Diệu','CN001','NV000','LLV004',0),('NV005','567890123','Kế toán viên','Nữ','2018-09-05 12:00:00.000000','1993-05-05 00:00:00.000000','0379514682','Tuyết Tuyết Nhi','CN001','NV000','LLV005',0),('NV006','678901234','Nhân viên sữa chữa','Nam','2019-11-30 08:30:00.000000','1997-06-06 00:00:00.000000','0987654321','Lê Điển Tịch','CN001','NV005','LLV006',0),('NV007','789012345','Nhân viên sữa chữa','Nam','2021-01-15 10:45:00.000000','1991-07-07 00:00:00.000000','0369852147','Nguyễn Văn Giang','CN001','NV004','LLV007',1000000),('NV008','890123456','Nhân viên sữa chữa','Nam','2019-07-05 11:15:00.000000','1994-08-08 00:00:00.000000','0246857319','Trần Trúc Huyên','CN001','NV004','LLV008',2000000),('NV009','901234567','Nhân viên sữa chữa','Nam','2022-04-18 13:20:00.000000','1989-09-09 00:00:00.000000','0379514682','Phạm Văn Linh','CN001','NV005','LLV009',0),('NV010','012345678','Nhân viên sữa chữa','Nam','2018-11-25 14:30:00.000000','1996-10-10 00:00:00.000000','0987654321','Võ Tòng','CN001','NV005','LLV010',0);
 /*!40000 ALTER TABLE `nhan_vien` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -647,6 +653,7 @@ CREATE TABLE `phieu_sua_chua` (
   `ma_loai_xe` varchar(255) DEFAULT NULL,
   `ma_nhan_vien` varchar(255) DEFAULT NULL,
   `ma_nhom_hang` varchar(255) DEFAULT NULL,
+  `thoi_gian` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`ma_phieu_sua_chua`),
   KEY `FK6udsjokgu2si366xfc3r0i4ul` (`ma_hang_hoa`),
   KEY `FKe3ehjl95ayopna4mqko4npj0f` (`ma_khach_hang`),
@@ -667,7 +674,7 @@ CREATE TABLE `phieu_sua_chua` (
 
 LOCK TABLES `phieu_sua_chua` WRITE;
 /*!40000 ALTER TABLE `phieu_sua_chua` DISABLE KEYS */;
-INSERT INTO `phieu_sua_chua` VALUES ('PSC001','Thay nhớt và kiểm tra hệ thống điện',1500000,'Hoàn thành','HH001','KH001','LX001','NV006','NH001'),('PSC002','Sửa chữa hệ thống phanh',1200000,'Đang xử lý','HH002','KH002','LX001','NV006','NH001'),('PSC003','Kiểm tra và sửa chữa hệ thống làm mát',1100000,'Hoàn thành','HH003','KH003','LX002','NV007','NH001'),('PSC004','Thay pin ắc quy',400000,'Hoàn thành','HH004','KH004','LX002','NV007','NH001'),('PSC005','Kiểm tra và sửa chữa hệ thống đèn',1400000,'Đang xử lý','HH005','KH005','LX002','NV008','NH002'),('PSC006','Thay bơm phanh',700000,'Hoàn thành','HH006','KH006','LX003','NV008','NH002'),('PSC007','Sửa chữa hệ thống điều hòa',1700000,'Hoàn thành','HH007','KH007','LX004','NV009','NH002'),('PSC008','Kiểm tra và sửa chữa hệ thống cảm biến',1600000,'Đã hủy','HH017','KH008','LX005','NV009','NH004'),('PSC009','Thay bơm xăng',500000,'Đang xử lý','HH018','KH009','LX006','NV010','NH004'),('PSC010','Kiểm tra và sửa chữa hệ thống lái',1300000,'Hoàn thành','HH019','KH010','LX007','NV001','NH004');
+INSERT INTO `phieu_sua_chua` VALUES ('PSC001','Thay nhớt và kiểm tra hệ thống điện',1500000,'Hoàn thành','HH001','KH001','LX001','NV006','NH001','2024-01-01 08:00:00.000000'),('PSC002','Sửa chữa hệ thống phanh',1200000,'Đang xử lý','HH002','KH002','LX001','NV006','NH001','2024-01-01 08:00:00.000000'),('PSC003','Kiểm tra và sửa chữa hệ thống làm mát',1100000,'Hoàn thành','HH003','KH003','LX002','NV007','NH001','2024-01-01 08:00:00.000000'),('PSC004','Thay pin ắc quy',400000,'Hoàn thành','HH004','KH004','LX002','NV007','NH001','2024-01-01 08:00:00.000000'),('PSC005','Kiểm tra và sửa chữa hệ thống đèn',1400000,'Đang xử lý','HH005','KH005','LX002','NV008','NH002','2024-01-01 08:00:00.000000'),('PSC006','Thay bơm phanh',700000,'Hoàn thành','HH006','KH006','LX003','NV008','NH002','2024-01-01 08:00:00.000000'),('PSC007','Sửa chữa hệ thống điều hòa',1700000,'Hoàn thành','HH007','KH007','LX004','NV009','NH002','2024-01-01 08:00:00.000000'),('PSC008','Kiểm tra và sửa chữa hệ thống cảm biến',1600000,'Đã hủy','HH017','KH008','LX005','NV009','NH004','2024-01-01 08:00:00.000000'),('PSC009','Thay bơm xăng',500000,'Đang xử lý','HH018','KH009','LX006','NV010','NH004','2024-01-01 08:00:00.000000'),('PSC010','Kiểm tra và sửa chữa hệ thống lái',1300000,'Hoàn thành','HH019','KH010','LX007','NV001','NH004','2024-01-01 08:00:00.000000');
 /*!40000 ALTER TABLE `phieu_sua_chua` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -680,19 +687,23 @@ DROP TABLE IF EXISTS `phieu_tra_hang`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `phieu_tra_hang` (
   `ma_phieu_tra_hang` varchar(255) NOT NULL,
-  `can_tra_khach` double DEFAULT NULL,
-  `da_tra_khach` double DEFAULT NULL,
+  `can_tra` double DEFAULT NULL,
+  `da_tra` double DEFAULT NULL,
   `thoi_gian` datetime(6) DEFAULT NULL,
   `ma_hoa_don` varchar(255) DEFAULT NULL,
   `ma_khach_hang` varchar(255) DEFAULT NULL,
   `ma_nhan_vien` varchar(255) DEFAULT NULL,
+  `ma_nha_cung_cap` varchar(255) DEFAULT NULL,
+  `trang_thai` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ma_phieu_tra_hang`),
   UNIQUE KEY `UK_rgogid0kbtv4j2t5qdtm1kcu7` (`ma_hoa_don`),
   KEY `FK8h6q70v26v9b1wbruu4ueycr3` (`ma_khach_hang`),
   KEY `FKsp7xbcksck81jyt11nxeqbt5m` (`ma_nhan_vien`),
+  KEY `fk_ma_nha_cung_cap_phieu_tra_hang` (`ma_nha_cung_cap`),
   CONSTRAINT `FK8h6q70v26v9b1wbruu4ueycr3` FOREIGN KEY (`ma_khach_hang`) REFERENCES `khach_hang` (`ma_khach_hang`),
   CONSTRAINT `FKfxcbvnmn98ximsbvrf4uu52nq` FOREIGN KEY (`ma_hoa_don`) REFERENCES `hoa_don` (`ma_hoa_don`),
-  CONSTRAINT `FKsp7xbcksck81jyt11nxeqbt5m` FOREIGN KEY (`ma_nhan_vien`) REFERENCES `nhan_vien` (`ma_nhan_vien`)
+  CONSTRAINT `FKsp7xbcksck81jyt11nxeqbt5m` FOREIGN KEY (`ma_nhan_vien`) REFERENCES `nhan_vien` (`ma_nhan_vien`),
+  CONSTRAINT `fk_ma_nha_cung_cap_phieu_tra_hang` FOREIGN KEY (`ma_nha_cung_cap`) REFERENCES `nha_cung_cap` (`ma_nha_cung_cap`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -702,7 +713,7 @@ CREATE TABLE `phieu_tra_hang` (
 
 LOCK TABLES `phieu_tra_hang` WRITE;
 /*!40000 ALTER TABLE `phieu_tra_hang` DISABLE KEYS */;
-INSERT INTO `phieu_tra_hang` VALUES ('PTH001',1500000,1000000,'2024-01-18 08:00:00.000000','HD001','KH001','NV004'),('PTH002',1200000,800000,'2024-01-18 09:30:00.000000','HD003','KH002','NV004'),('PTH003',1100000,700000,'2024-01-18 10:45:00.000000','HD008','KH005','NV004');
+INSERT INTO `phieu_tra_hang` VALUES ('PTH001',1500000,1000000,'2024-01-18 08:00:00.000000','HD001','KH001','NV004',NULL,'Đã xử lý'),('PTH002',1200000,800000,'2024-01-18 09:30:00.000000','HD003','KH002','NV004',NULL,'Đang xử lý'),('PTH003',1100000,700000,'2024-01-18 10:45:00.000000','HD008','KH005','NV004',NULL,'Đã xử lý'),('PTH004',2000000,1800000,'2024-01-16 10:45:00.000000','HD002',NULL,'NV005','NCC004','Đang xử lý');
 /*!40000 ALTER TABLE `phieu_tra_hang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -781,4 +792,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-20 20:57:00
+-- Dump completed on 2024-03-25 16:34:05
