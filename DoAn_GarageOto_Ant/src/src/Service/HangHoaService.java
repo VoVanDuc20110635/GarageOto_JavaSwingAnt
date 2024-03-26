@@ -34,6 +34,7 @@ public class HangHoaService {
                 hangHoa.setTenHangHoa(resultTable.getString("ten_hang_hoa"));
                 hangHoa.setTonKho(resultTable.getShort("ton_kho"));
                 hangHoa.setMaNhomHang(resultTable.getString("ma_nhom_hang"));
+                hangHoa.setLoaiHang(resultTable.getString("loai_hang"));
             }
             danhSachHangHoa.add(hangHoa);
         }
@@ -56,8 +57,43 @@ public class HangHoaService {
                 hangHoa.setTenHangHoa(resultTable.getString("ten_hang_hoa"));
                 hangHoa.setTonKho(resultTable.getShort("ton_kho"));
                 hangHoa.setMaNhomHang(resultTable.getString("ma_nhom_hang"));
+                hangHoa.setLoaiHang(resultTable.getString("loai_hang"));
             }
         }
         return hangHoa;
+    }
+    
+    public List<HangHoa> LocHangHoaTheoInput(List<String> inputs) throws SQLException{ //
+        String query = String.format("select * from hang_hoa where ");
+        int j = 1;
+        for (String input : inputs){
+            if (j ==1 ){
+                query += String.format(" ten_hang_hoa LIKE '%%%s%%'", input);
+            } else{
+                query += String.format(" OR ten_hang_hoa LIKE '%%%s%%'", input);
+            }
+            j++;
+        }
+        System.out.println(query);
+        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int q = resultSetMetaData.getColumnCount();
+        int i;
+        List<HangHoa> danhSachHangHoa = new ArrayList<>();
+        while(resultTable.next()){
+            HangHoa hangHoa = new HangHoa();
+            for (i= 1; i <= q; i++){
+                hangHoa.setMaHangHoa(resultTable.getString("ma_hang_hoa"));
+                hangHoa.setGiaBan(resultTable.getDouble("gia_ban"));
+                hangHoa.setGiaVon(resultTable.getDouble("gia_von"));
+                hangHoa.setKhachDat(resultTable.getShort("khach_dat"));
+                hangHoa.setTenHangHoa(resultTable.getString("ten_hang_hoa"));
+                hangHoa.setTonKho(resultTable.getShort("ton_kho"));
+                hangHoa.setMaNhomHang(resultTable.getString("ma_nhom_hang"));
+                hangHoa.setLoaiHang(resultTable.getString("loai_hang"));
+            }
+            danhSachHangHoa.add(hangHoa);
+        }
+        return danhSachHangHoa;
     }
 }

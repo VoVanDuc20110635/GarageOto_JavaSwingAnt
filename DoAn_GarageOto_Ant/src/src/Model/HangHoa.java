@@ -17,6 +17,7 @@ public class HangHoa {
     private short khachDat;
     private String maNhomHang;
     private NhomHang nhomHang;
+    private String loaiHang;
 
     public HangHoa() {
     }
@@ -93,6 +94,14 @@ public class HangHoa {
 
     public void setNhomHang(NhomHang nhomHang) {
         this.nhomHang = nhomHang;
+    }
+
+    public String getLoaiHang() {
+        return loaiHang;
+    }
+
+    public void setLoaiHang(String loaiHang) {
+        this.loaiHang = loaiHang;
     }
     
     

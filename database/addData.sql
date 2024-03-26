@@ -646,3 +646,19 @@ SET @counter = 1; -- Initialize counter variable
 INSERT INTO hinh_anh (ma_hinh_anh, ten_hinh, noi_dung, ma_hang_hoa)
 SELECT CONCAT('HA', LPAD(@counter := @counter + 1, 3, '0')), 'Hình ảnh', ten_hang_hoa, ma_hang_hoa
 FROM hang_hoa;
+
+
+select * from nhom_hang;
+select * from hang_hoa;
+
+-- doi ten cot trong table
+alter table nhom_hang 
+change column ten_nhom_hang  dich_vu_lien_quan varchar(255);
+
+-- them cot moi cho table
+ALTER TABLE hang_hoa
+ADD COLUMN loai_hang nvarchar(255);
+
+-- xoa cot trong table
+alter table nhom_hang
+drop column loai_hang;
