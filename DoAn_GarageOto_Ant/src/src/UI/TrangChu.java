@@ -871,7 +871,7 @@ public class TrangChu extends javax.swing.JFrame {
                 .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel26Layout.createSequentialGroup()
                         .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 755, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 754, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -897,9 +897,11 @@ public class TrangChu extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jPanel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1))
-                .addGap(53, 53, 53))
+                        .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53))
+                    .addGroup(jPanel26Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         jButton1.getAccessibleContext().setAccessibleName("btn_ThemHangHoa");
@@ -2857,7 +2859,6 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
 
         yearChooserChamCong_theoNam_nam.setEnabled(false);
-        yearChooserChamCong_theoNam_nam.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
         buttonGroup2.add(radioChamCong_theoNam);
         radioChamCong_theoNam.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -2906,7 +2907,6 @@ public class TrangChu extends javax.swing.JFrame {
         });
 
         yearChooserChamCong_theoThang_nam.setEnabled(false);
-        yearChooserChamCong_theoThang_nam.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -5340,6 +5340,8 @@ public class TrangChu extends javax.swing.JFrame {
                     // Render the ImageIcon in a JLabel
                     JLabel label = new JLabel((ImageIcon) value);
                     label.setHorizontalAlignment(JLabel.CENTER); // Center the image
+                    label.setOpaque(true); // Make the label opaque
+                    label.setBackground(new Color(255, 255, 255, 0));
                     return label;
                 } else {
                     // Return default renderer for other types

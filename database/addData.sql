@@ -629,3 +629,20 @@ WHERE ngay_lam BETWEEN '2023-01-25' AND '2024-01-30';
 SELECT *
 FROM bang_cham_cong
 WHERE MONTH(ngay_lam) = 1;
+
+-- set toàn bộ giá trị của một cột là null
+update hinh_anh set ma_nhan_vien = NULL;
+
+-- copy toàn bộ giá trị từ 1 cột của bảng này sang 1 cột của bảng khác
+UPDATE hinh_anh AS ha
+JOIN hang_hoa AS hh ON ha.ma_hang_hoa = hh.ma_hang_hoa
+SET ha.noi_dung = hh.ten_hang_hoa;
+
+-- them primary key
+
+-- copy toàn bộ giá trị từ 1 cột của bảng này sang 1 cột của bảng khác
+SET @counter = 1; -- Initialize counter variable
+
+INSERT INTO hinh_anh (ma_hinh_anh, ten_hinh, noi_dung, ma_hang_hoa)
+SELECT CONCAT('HA', LPAD(@counter := @counter + 1, 3, '0')), 'Hình ảnh', ten_hang_hoa, ma_hang_hoa
+FROM hang_hoa;
