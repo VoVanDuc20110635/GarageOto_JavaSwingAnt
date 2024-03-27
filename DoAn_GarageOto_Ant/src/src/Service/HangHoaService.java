@@ -17,8 +17,19 @@ import src.Model.HangHoa;
  * @author WINDOWS 10
  */
 public class HangHoaService {
-    public List<HangHoa> hienThiTatCaHangHoa() throws SQLException{ //
+    public List<HangHoa> hienThiTatCaHangHoa(String maHangHoa, String tenHangHoa) throws SQLException{ //
         String query = String.format("select * from hang_hoa");
+        int flag = 0;
+        if (maHangHoa.equals("") == false ){
+            query += String.format(" where ma_hang_hoa like '%%%s%%' ", maHangHoa);
+            flag = 1;
+            if (tenHangHoa.equals("") == false){
+                query += String.format(" AND ten_hang_hoa like '%%%s%%' ", tenHangHoa);
+            }
+        }
+        if (tenHangHoa.equals("") == false && 0 == flag){
+            query += String.format(" where ten_hang_hoa like '%%%s%%' ", tenHangHoa);
+        }
         ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
@@ -63,16 +74,23 @@ public class HangHoaService {
         return hangHoa;
     }
     
-    public List<HangHoa> LocHangHoaTheoInput(List<String> inputs) throws SQLException{ //
-        String query = String.format("select * from hang_hoa where ");
+    public List<HangHoa> LocHangHoaTheoInput(List<String> inputs, String maHangHoa, String tenHangHoa) throws SQLException{ //
+        String query = String.format("select * from hang_hoa where (");
         int j = 1;
         for (String input : inputs){
             if (j ==1 ){
-                query += String.format(" ten_hang_hoa LIKE '%%%s%%'", input);
+                query += String.format(" ten_hang_hoa LIKE '%%%s%%' ", input);
             } else{
-                query += String.format(" OR ten_hang_hoa LIKE '%%%s%%'", input);
+                query += String.format(" OR ten_hang_hoa LIKE '%%%s%%' ", input);
             }
             j++;
+        }
+        query += ")";
+        if (maHangHoa.equals("") == false ){
+            query += String.format(" AND ma_hang_hoa like '%%%s%%' ", maHangHoa);
+        }
+        if (tenHangHoa.equals("") == false){
+            query += String.format(" AND ten_hang_hoa like '%%%s%%' ", tenHangHoa);
         }
         System.out.println(query);
         ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
