@@ -136,8 +136,8 @@ public class TrangChu extends javax.swing.JFrame {
         cbHangHoa_loaiXeDaChon = new javax.swing.JComboBox<>();
         jPanel31 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        radioBtnHangHoa_conHangTrongKho = new javax.swing.JRadioButton();
+        radioBtnHangHoa_hetHangTrongKho = new javax.swing.JRadioButton();
         jPanel33 = new javax.swing.JPanel();
         tfHangHoa_maHangHoa = new javax.swing.JTextField();
         tfHangHoa_timTheoTen = new javax.swing.JTextField();
@@ -712,9 +712,11 @@ public class TrangChu extends javax.swing.JFrame {
 
         jLabel17.setText("Tồn kho");
 
-        jRadioButton1.setText("Còn hàng trong kho");
+        buttonGroup2.add(radioBtnHangHoa_conHangTrongKho);
+        radioBtnHangHoa_conHangTrongKho.setText("Còn hàng trong kho");
 
-        jRadioButton2.setText("Hết hàng trong kho");
+        buttonGroup2.add(radioBtnHangHoa_hetHangTrongKho);
+        radioBtnHangHoa_hetHangTrongKho.setText("Hết hàng trong kho");
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
@@ -723,11 +725,11 @@ public class TrangChu extends javax.swing.JFrame {
             .addGroup(jPanel31Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(radioBtnHangHoa_conHangTrongKho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel31Layout.createSequentialGroup()
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(radioBtnHangHoa_hetHangTrongKho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel31Layout.setVerticalGroup(
@@ -736,9 +738,9 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton1)
+                .addComponent(radioBtnHangHoa_conHangTrongKho)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton2)
+                .addComponent(radioBtnHangHoa_hetHangTrongKho)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -5128,6 +5130,8 @@ public class TrangChu extends javax.swing.JFrame {
         inputs.clear();
         tfHangHoa_maHangHoa.setText("");
         tfHangHoa_timTheoTen.setText("");
+        radioBtnHangHoa_conHangTrongKho.setSelected(false);
+        radioBtnHangHoa_hetHangTrongKho.setSelected(false);
         try {
             hienThiDanhSachHangHoa();
         } catch (SQLException ex) {
@@ -5405,6 +5409,22 @@ public class TrangChu extends javax.swing.JFrame {
                 }
             }
         });
+        for (int index = 0; index < danhSachHangHoa.size(); index ++){
+            if (radioBtnHangHoa_conHangTrongKho.isSelected() == true){
+                if (danhSachHangHoa.get(index).getTonKho() == 0){
+                    danhSachHangHoa.remove(index);
+                    index --;
+                    continue;
+                }
+            }
+            if (radioBtnHangHoa_hetHangTrongKho.isSelected() == true){
+                if (danhSachHangHoa.get(index).getTonKho() != 0){
+                    danhSachHangHoa.remove(index);
+                    index --;
+                    continue;
+                }
+            }
+        }
         
         for (HangHoa hangHoa : danhSachHangHoa){
             Vector columnData = new Vector();
@@ -5985,11 +6005,9 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel96;
     private javax.swing.JPanel jPanel97;
     private javax.swing.JPanel jPanel98;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton10;
     private javax.swing.JRadioButton jRadioButton11;
     private javax.swing.JRadioButton jRadioButton12;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JRadioButton jRadioButton9;
@@ -6042,6 +6060,8 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel lb_soDienThoai;
     private javax.swing.JLabel lb_tenKhachHang;
     private com.toedter.calendar.JMonthChooser monthChooser_theoThang_thang;
+    private javax.swing.JRadioButton radioBtnHangHoa_conHangTrongKho;
+    private javax.swing.JRadioButton radioBtnHangHoa_hetHangTrongKho;
     private javax.swing.JRadioButton radioChamCong_khoangThoiGian;
     private javax.swing.JRadioButton radioChamCong_theoNam;
     private javax.swing.JRadioButton radioChamCong_theoNgay;
